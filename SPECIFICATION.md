@@ -6,7 +6,7 @@
 
 ## Format
 
-.faf files use YAML syntax for human readability and machine parsing.
+.faf files use a structured key-value format for human readability and machine parsing.
 
 ## Required Fields
 
@@ -142,7 +142,7 @@ metadata:
 ## Validation
 
 A valid .faf file must:
-1. Be valid YAML syntax
+1. Be valid structured syntax
 2. Include all required fields
 3. Have score between 0-100
 4. Include version number

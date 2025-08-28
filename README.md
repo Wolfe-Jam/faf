@@ -35,7 +35,7 @@ metadata:
 1. **Universal** - 150+ file types supported
 2. **Scored** - 0-100% context completeness score
 3. **AI-Optimized** - Structured for maximum AI comprehension
-4. **Human-Readable** - Simple YAML format
+4. **Human-Readable** - Simple, structured format
 5. **Shareable** - One file contains complete context
 
 ## Quick Example
@@ -85,7 +85,7 @@ metadata:
 
 1. **View the [Specification](SPECIFICATION.md)**
 2. **See [example.faf](example.faf)**
-3. **Try it:** Coming soon - reference implementation
+3. **Try it:** [fafdev.tools](https://fafdev.tools/) - Web implementation (Beta)
 
 ## Status
 
