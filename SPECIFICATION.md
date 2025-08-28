@@ -157,4 +157,4 @@ Future versions may add:
 
 ---
 
-*Specification v1.0 - January 2024*
+*Specification v1.0 - January 2025*

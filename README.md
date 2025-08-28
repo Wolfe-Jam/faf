@@ -1,10 +1,12 @@
-# .faf - File as Format
+# .faf - Foundational Universal AI-Context File Format
 
 > **Transform any file into perfect AI context**
 
 ## What is .faf?
 
-**.faf** is a universal file format that scores and structures ANY file type for maximum AI comprehension. Drop a file, get a score (0-100%), understand completeness.
+**.faf** gives any AI complete project context in one concise, shareable format. Your tech stack, dependencies, architecture, and goals - all structured for instant AI understanding.
+
+Instead of explaining your project every time, AI reads your .faf once and knows exactly how to help.
 
 ## The Problem
 
@@ -30,10 +32,11 @@ metadata:
 
 ## Core Principles
 
-1. **Universal** - Any file type can become .faf
+1. **Universal** - 150+ file types supported
 2. **Scored** - 0-100% context completeness score
-3. **Structured** - Consistent format for AI consumption
-4. **Simple** - Human readable, machine parseable
+3. **AI-Optimized** - Structured for maximum AI comprehension
+4. **Human-Readable** - Simple YAML format
+5. **Shareable** - One file contains complete context
 
 ## Quick Example
 
@@ -86,7 +89,7 @@ metadata:
 
 ## Status
 
-🏁 **Early Stage** - Specification v1.0 released January 2024
+🏁 **Early Stage** - Specification v1.0 released January 2025
 
 ## Contributing
 
