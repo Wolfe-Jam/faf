@@ -103,4 +103,4 @@ MIT - Use freely, build anything.
 
 *Created by [wolfejam.dev](https://wolfejam.dev)*
 
-**The dial IS .faf** 🎯
+**The dial IS .faf** Let's RACE 🏎️⚡️🏁
