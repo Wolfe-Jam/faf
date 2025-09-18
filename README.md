@@ -86,6 +86,7 @@ metadata:
 1. **View the [Specification](SPECIFICATION.md)**
 2. **See [example.faf](example.faf)**
 3. **Try it:** [fafdev.tools](https://fafdev.tools/) - Web implementation (Beta)
+4. **Find .faf:** [WHERE-TO-FIND-FAF.md](WHERE-TO-FIND-FAF.md) - Tools, implementations, and community resources
 
 ## Status
 
