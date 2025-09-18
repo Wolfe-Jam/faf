@@ -4,7 +4,7 @@
 
 ## What is .faf?
 
-**.faf** gives any AI complete project context in one concise, shareable format. Your tech stack, dependencies, architecture, and goals - all structured for instant AI understanding.
+**.faf** is an open format for AI context. Transform individual files or entire projects into structured data that AI instantly understands. Your tech stack, dependencies, architecture, and goals - all in one concise, shareable format.
 
 Instead of explaining your project every time, AI reads your .faf once and knows exactly how to help.
 
@@ -80,6 +80,13 @@ metadata:
 | 81-90% | Good | Recommended |
 | 91-99% | Excellent | Optimal |
 | 100% | Perfect | Maximum context |
+
+## Use Cases
+
+- **File Conversion:** Transform any file type into .faf format
+- **Project Context:** Create a single .faf file for your entire project
+- **Build Integration:** Companies can create custom implementations
+- **AI Optimization:** Perfect context for any AI tool
 
 ## Get Started
 
