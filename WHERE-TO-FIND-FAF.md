@@ -10,16 +10,18 @@
 
 ### Specifications & Documentation
 - **Format Specification:** [github.com/Wolfe-Jam/faf](https://github.com/Wolfe-Jam/faf)
+- **Planet dotFAF:** [faf.one](https://faf.one) - The home of .faf 🌍
 - **Web Tool:** [fafdev.tools](https://fafdev.tools) - Try .faf in your browser
 
 ### Official Tools
-- **CLI Tool:** [github.com/Wolfe-Jam/faf-cli](https://github.com/Wolfe-Jam/faf-cli)
-- **Chrome Extension:** [github.com/Wolfe-Jam/faf-chrome-extension](https://github.com/Wolfe-Jam/faf-chrome-extension)
-- **Claude MCP Server:** [github.com/Wolfe-Jam/claude-faf-mcp](https://github.com/Wolfe-Jam/claude-faf-mcp)
+- **CLI Tool:** [github.com/Wolfe-Jam/faf-cli](https://github.com/Wolfe-Jam/faf-cli) - Command line interface for .faf
+- **Chrome Extension:** [github.com/Wolfe-Jam/faf-chrome-extension](https://github.com/Wolfe-Jam/faf-chrome-extension) - Browser integration
+- **Claude MCP Server:** [github.com/Wolfe-Jam/claude-faf-mcp](https://github.com/Wolfe-Jam/claude-faf-mcp) - Claude Desktop integration
 
 ### NPM Packages
-- **@faf/cli** - Command line interface *(coming soon)*
-- **claude-faf-mcp** - Claude Desktop integration *(coming soon)*
+- **faf-cli:** [npmjs.com/package/faf-cli](https://www.npmjs.com/package/faf-cli) - CLI tool *(v1.0.0 coming soon)*
+- **claude-faf-mcp:** [npmjs.com/package/claude-faf-mcp](https://www.npmjs.com/package/claude-faf-mcp) - MCP server *(v2.2.2 coming soon)*
+- **@faf/engine:** Processing engine *(future release)*
 
 ---
 
