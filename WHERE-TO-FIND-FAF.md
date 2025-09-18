@@ -13,6 +13,9 @@
 - **Planet dotFAF:** [faf.one](https://faf.one) - The home of .faf 🌍
 - **Web Tool:** [fafdev.tools](https://fafdev.tools) - Try .faf in your browser
 
+### Try It NOW ⚡️
+- **Claude.ai:** [claude.ai](https://claude.ai) - Simply drop any file and enter `faf auto` to see .FAF in ACTION! ⚡️
+
 ### Official Tools
 - **CLI Tool:** [github.com/Wolfe-Jam/faf-cli](https://github.com/Wolfe-Jam/faf-cli) - Command line interface for .faf
 - **Chrome Extension:** [github.com/Wolfe-Jam/faf-chrome-extension](https://github.com/Wolfe-Jam/faf-chrome-extension) - Browser integration
