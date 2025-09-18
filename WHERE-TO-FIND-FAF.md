@@ -15,6 +15,9 @@
 
 ### Try It NOW ⚡️
 - **Claude.ai:** [claude.ai](https://claude.ai) - Simply drop any file and enter `faf auto` to see .FAF in ACTION! ⚡️
+  - *Note: .FAF availability on Claude.ai depends on Anthropic's MCP service status. Always available for the creator (Wolfe), availability for others may vary.*
+- **Claude Desktop:** [claude.ai/download](https://claude.ai/download) - ALWAYS available with .FAF MCP server
+  - *Advantage: Full local repository support - read, write, and sync your actual project files (not possible on claude.ai due to web security restrictions)*
 
 ### Official Tools
 - **CLI Tool:** [github.com/Wolfe-Jam/faf-cli](https://github.com/Wolfe-Jam/faf-cli) - Command line interface for .faf
