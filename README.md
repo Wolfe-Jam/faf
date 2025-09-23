@@ -1,4 +1,6 @@
-# .faf - Foundational Universal AI-Context File Format
+# .faf - The JPEG for AI
+Foundational AI-context Format
+Universal, shareable AI-Context for any AI, human or team, regardless of size, location, languages, stack, setup or documentation.
 
 > **Transform any file into perfect AI context**
 
@@ -111,4 +113,5 @@ MIT - Use freely, build anything.
 
 *Created by [wolfejam.dev](https://wolfejam.dev)*
 
-**The dial IS .faf** Let's RACE 🏎️⚡️🏁
+**STOP .fafFing About! 
+Let's RACE 🏎️⚡️🏁
