@@ -82,4 +82,4 @@ Trusted-AI
 AI for AI by AI 🤖 and that British Guy 🏎️🇬🇧⚡️
 
 **Ready? Let's race! 🏁**
-🏎️⚡️wolfejam
+🏎️⚡️wolfejam.dev

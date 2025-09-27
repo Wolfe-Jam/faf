@@ -4,6 +4,9 @@ Universal, shareable AI-Context for any AI, human or team, regardless of size, l
 
 > **Transform any file into perfect AI context**
 
+## 🏁 Join the Community!
+**3,000+ dot.faffers racing together!** Join discussions, share wins, get help: [**github.com/Wolfe-Jam/faf/discussions**](https://github.com/Wolfe-Jam/faf/discussions)
+
 ## What is .faf?
 
 **.faf** is an open format for AI context. Transform individual files or entire projects into structured data that AI instantly understands. Your tech stack, dependencies, architecture, and goals - all in one concise, shareable format.
