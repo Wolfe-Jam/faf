@@ -9,6 +9,7 @@
 **A:** 
 - **CLI** → If you love the terminal and want automation
 - **MCP** → If you use Claude Desktop and want 30+ tools
+- **WEB** → fafdev.tools Fun web experience, Try to score 100 and achieve Perfetc AI | HUMAN Balance
 - **Chrome Extension** → If you work in web IDEs
 - **Can't decide?** → Start with CLI, it's the fastest to try
 
