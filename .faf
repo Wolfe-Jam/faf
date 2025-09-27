@@ -1,0 +1,22 @@
+version: 1.1
+score: 100
+type: "specification"
+content:
+  name: "faf"
+  tagline: "The JPEG for AI"
+  description: "Foundational AI-context Format. Universal, shareable AI-Context for any AI, human or team, regardless of size, location, languages, stack, setup or documentation."
+  version: "1.1.0"
+  license: "MIT"
+  repository: "https://github.com/Wolfe-Jam/faf"
+  status: "Early Stage - v1.0 January 2025"
+  features:
+    - "Context-Mirroring: AI remembers and syncs with .faf across sessions"
+    - "Bi-sync: Two-way updates between AI and .faf"
+    - "Persistent context: Pick up where you left off"
+metadata:
+  source: ".faf specification"
+  type: "self-describing"
+tags:
+  - "ai-format"
+  - "universal-standard"
+  - "open-source"

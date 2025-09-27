@@ -1,0 +1,21 @@
+name: Discussion Maintenance
+on:
+  schedule:
+    - cron: '0 0 * * 0' # Weekly on Sunday
+  workflow_dispatch: # Manual trigger option
+
+jobs:
+  mark-stale:
+    runs-on: ubuntu-latest
+    permissions:
+      discussions: write
+    steps:
+      - uses: actions/stale@v9
+        with:
+          stale-issue-message: 'This discussion has been quiet for 30 days. It will auto-close in 7 days if no further activity.'
+          close-issue-message: 'Auto-closed due to inactivity. Feel free to reopen if you still need help!'
+          days-before-stale: 30
+          days-before-close: 7
+          stale-issue-label: 'stale'
+          only-labels: 'help,question'
+          exempt-issue-labels: 'pinned,announcement,faq'

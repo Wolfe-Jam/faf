@@ -1,0 +1,43 @@
+title: "[Help] "
+labels: ["help", "question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Need help getting dot.faffed? You're in the right place!
+
+  - type: dropdown
+    id: tool
+    attributes:
+      label: Which tool are you using?
+      options:
+        - CLI
+        - MCP (Claude)
+        - Chrome Extension
+        - Multiple tools
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's the issue?
+      description: Describe what you're trying to do
+      placeholder: "I'm trying to..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: tried
+    attributes:
+      label: What have you tried?
+      description: Help us help you faster
+      placeholder: "I've tried..."
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-flight checklist
+      options:
+        - label: I've checked existing discussions
+        - label: I've read the Quick Start guide
