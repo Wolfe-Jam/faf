@@ -4,8 +4,13 @@ Universal, shareable AI-Context for any AI, human or team, regardless of size, l
 
 > **Transform any file into perfect AI context**
 
-## 🏁 Join the Community!
-**3,000+ dot.faffers racing together!** Join discussions, share wins, get help: [**github.com/Wolfe-Jam/faf/discussions**](https://github.com/Wolfe-Jam/faf/discussions)
+## ⭐ GitHub Stars NEEDED! You Get Software, We Get a STAR! Deal? ⭐
+
+[![GitHub stars](https://img.shields.io/github/stars/Wolfe-Jam/faf?style=social)](https://github.com/Wolfe-Jam/faf)
+
+**The Deal: 3000+ users got FREE tools. Now it's your turn to give back!**
+
+**[⭐ Star Now](https://github.com/Wolfe-Jam/faf) | [💬 Join Community](https://github.com/Wolfe-Jam/faf/discussions) | Fair Trade = Everyone Wins!**
 
 ## What is .faf?
 
