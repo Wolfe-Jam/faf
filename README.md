@@ -1,10 +1,10 @@
-# .faf - The JPEG for AI
+# .faf - Project DNA ✨ for any AI
 Foundational AI-context Format
 Universal, shareable AI-Context for any AI, human or team, regardless of size, location, languages, stack, setup or documentation.
 
 > **Transform any file into perfect AI context**
 
-## ⭐ GitHub Stars NEEDED! You Get Software, We Get a STAR! Deal? ⭐
+## ⭐ GitHub Stars are appreciated - thank you
 
 [![GitHub stars](https://img.shields.io/github/stars/Wolfe-Jam/faf?style=social)](https://github.com/Wolfe-Jam/faf)
 
