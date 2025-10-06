@@ -8,7 +8,7 @@ Universal, shareable AI-Context for any AI, human or team, regardless of size, l
 
 [![GitHub stars](https://img.shields.io/github/stars/Wolfe-Jam/faf?style=social)](https://github.com/Wolfe-Jam/faf)
 
-**The Deal: 8000+ Downloads got FREE tools, and counting ⚡️
+** 8000+ Downloads got FREE tools, and counting ⚡️
 
 **[⭐ Star Now](https://github.com/Wolfe-Jam/faf) | [💬 Join Community](https://github.com/Wolfe-Jam/faf/discussions) | Fair Trade = Everyone Wins!**
 
