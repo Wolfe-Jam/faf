@@ -98,16 +98,84 @@ metadata:
 - **Build Integration:** Companies can create custom implementations
 - **AI Optimization:** Perfect context for any AI tool
 
-## Get Started
+  ## 🚀 Get Started Now
 
-1. **View the [Specification](SPECIFICATION.md)**
-2. **See [example.faf](example.faf)**
-3. **Try it:** [fafdev.tools](https://fafdev.tools/) - Web implementation (Beta)
-4. **Find .faf:** [WHERE-TO-FIND-FAF.md](WHERE-TO-FIND-FAF.md) - Tools, implementations, and community resources
+  ### For Developers - Install the CLI
 
+  ```bash
+  # Install via npm (works everywhere)
+  npm install -g faf-cli
+
+  # Or via Homebrew (macOS/Linux)
+  brew install faf-cli
+
+  # Then initialize your project
+  cd your-project
+  faf init
+
+  One command. Zero config. Championship context. 🏁
+
+  For Claude Desktop Users - Install MCP Server
+
+  npm install -g claude-faf-mcp
+
+  Then add to your Claude Desktop config. https://github.com/Wolfe-Jam/claude-faf-mcp
+
+  Try Online - No Install Required
+
+  🌐 https://fafdev.tools/ - Web implementation (Beta)
+
+  Drop your files, get instant .faf context!
+
+  ---
+  📚 Learn More
+
+  - ./SPECIFICATION.md - Complete .faf format specification
+  - ./example.faf - See a real .faf file
+  - ./WHERE-TO-FIND-FAF.md - All FAF ecosystem tools
+  - https://github.com/Wolfe-Jam/faf-cli - 41 championship commands
+  - https://github.com/Wolfe-Jam/claude-faf-mcp - Claude Desktop integration
+
+  ---
+  🎯 Quick Start Paths
+
+  Path 1: Fast Setup (5 minutes)
+  npm install -g faf-cli && cd your-project && faf init
+
+  Path 2: Try Before Installing
+  Visit https://fafdev.tools/ and drop a file to see .faf in action
+
+  Path 3: Claude Desktop Integration
+  Install https://github.com/Wolfe-Jam/claude-faf-mcp for seamless AI context
+
+  ---
+  Need help? Check our https://github.com/Wolfe-Jam/faf-cli/discussions or join the community!
+  
 ## Status
 
 🏁 **Early Stage** - Specification v1.0 released January 2025
+🏁 **Stable & Growing** - Specification v1.1.0
+
+  **Latest Release:** v1.1.0 (October 2025)
+  - Professional-grade documentation
+  - 5 real-world examples (n8n, OpenAI, CLI, TypeScript, Chrome Extension)
+  - Enhanced tooling integration
+  - Semantic versioning established
+
+  **Format Stability:**
+  - ✅ Core format is stable and production-ready
+  - ✅ 10,000+ .faf files generated across ecosystem
+  - ✅ Universal AI support (Claude Code, OpenAI Codex CLI, Gemini CLI, Cursor, Warp)
+  - ✅ Backwards compatible (v1.0 files remain valid)
+
+  **Ecosystem Tools:**
+  - [faf-cli](https://github.com/Wolfe-Jam/faf-cli) - 41 championship commands, 153+ format support
+  - [claude-faf-mcp](https://github.com/Wolfe-Jam/claude-faf-mcp) - Claude Desktop integration
+  - [fafdev.tools](https://fafdev.tools) - Web-based .faf generator (Beta)
+
+  **Specification History:**
+  - **v1.1.0** (October 2025) - Professional upgrade, real-world examples
+  - **v1.0** (January 2025) - Initial public release
 
 ## Contributing
 
