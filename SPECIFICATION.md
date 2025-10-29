@@ -1,8 +1,35 @@
-# .faf Specification v1.0
+# .faf Format Specification
+
+**Version:** 1.2.0
+**Status:** Stable
+**Released:** October 2025
+**License:** MIT
 
 ## Overview
 
-**.faf** (File as Format) is a universal format for representing any file's context in an AI-optimized structure.
+**.faf** (Foundational AI-context Format) is a universal format for representing project context in an AI-optimized structure.
+
+**Standard Filename:** `project.faf` (visible standard, like package.json)
+**Legacy Filename:** `.faf` (hidden, still supported for backward compatibility)
+
+## Filename Standard
+
+As of v1.2.0, the standard filename is **`project.faf`** (visible, next to package.json).
+
+**Why the change?**
+- Improved discoverability (visible in standard tools)
+- Easier evangelism ("show, don't tell")
+- Universal like package.json, README.md
+- Path-based identity (no UUID needed)
+
+**Legacy support:**
+- `.faf` (hidden filename) still works
+- Backward compatible with all tools
+- Optional migration via `faf migrate` command
+
+**File lookup priority:**
+1. `project.faf` (standard, preferred)
+2. `.faf` (legacy, shows deprecation warning)
 
 ## Format
 
@@ -27,7 +54,30 @@ metadata:              # Processing metadata
   engine: "engine-id"  # Processing engine identifier
   size: 1024          # Original file size (bytes)
 tags: []              # Descriptive tags
+skills: []            # Claude Code skills (v1.1.0+)
 ```
+
+### skills (v1.1.0+)
+
+List of Claude Code skill names to use with this project. Skills are loaded from `~/.claude/skills/` and provide specialized expertise for specific tasks.
+
+```yaml
+skills:
+  - faf                # .faf format expertise
+  - wjttc-tester       # Championship testing
+  - nextjs-builder     # Next.js development patterns
+```
+
+**When to use:**
+- Document which skills are relevant to the project
+- Help team members know which skills to enable
+- Track recommended skills for specific tech stacks
+
+**Notes:**
+- Skills must exist in `~/.claude/skills/` directory
+- Each skill name matches its directory name
+- Skills are loaded dynamically by Claude Code
+- See: https://github.com/anthropics/skills for skill format
 
 ## Type Categories
 
@@ -157,4 +207,32 @@ Future versions may add:
 
 ---
 
-*Specification v1.0 - January 2025*
+## Version History
+
+**v1.2.0** (October 2025)
+- Standard filename: `project.faf` (visible, like package.json)
+- Legacy filename: `.faf` (hidden, still supported)
+- Improved discoverability and evangelism
+- Backward compatible with v1.1.0 and v1.0.0
+- Path-based identity (no UUID needed)
+- Shareable, fork-friendly format
+
+**v1.1.0** (October 2025)
+- Project-level context support (not just file-level)
+- Architecture and pattern fields
+- Human context (6 W's: who/what/why/where/when/how)
+- Multiple scoring types (faf_score, ai_compatibility_score, completeness_score)
+- Agent context for AI workflows
+- Source data preservation
+- Universal Intelligence Pattern support
+- Enhanced metadata fields
+
+**v1.0.0** (January 2025)
+- Initial stable release
+- Universal format specification
+- Core type categories defined
+- Basic scoring algorithm documented
+
+---
+
+*Maintained by [wolfejam.dev](https://wolfejam.dev) | [faf.one](https://faf.one)*
