@@ -1,0 +1,41 @@
+version: 1.0
+score: 89
+type: "cli-project"
+confidence: 0.95
+content:
+  name: "faf-cli"
+  project_type: "cli-tool"
+  version: "3.0.1"
+  description: "TURBO-CAT: Project DNA for ANY AI"
+  stack:
+    primary_language: "TypeScript"
+    runtime: "Node.js"
+    package_manager: "npm"
+  architecture:
+    pattern: "CLI Tool"
+    commands: 41
+    engine: "FAF-Engine-Mk3"
+  features:
+    - "format-discovery"
+    - "ai-context-generation"
+    - "bi-directional-sync"
+    - "championship-scoring"
+    - "birth-dna-lifecycle"
+  performance:
+    target: "<50ms"
+    avg_command: "18ms"
+    bi_sync: "8ms"
+  dependencies:
+    production: ["inquirer", "yaml"]
+    dev: ["typescript", "jest", "eslint"]
+metadata:
+  source: "package.json"
+  processed: "2025-10-10T16:00:00Z"
+  engine: "faf-cli-v3.0.1"
+  size: 4407
+tags:
+  - "cli"
+  - "typescript"
+  - "ai-tools"
+  - "championship"
+  - "open-source"

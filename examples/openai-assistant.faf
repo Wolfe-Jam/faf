@@ -1,0 +1,35 @@
+version: 1.0
+score: 100
+type: "openai-assistant"
+confidence: 1.0
+content:
+  name: "Customer Support Assistant API"
+  assistant_type: "openai-assistant"
+  schema_version: "3.1.0"
+  pattern: "AI Assistant"
+  actions: 5
+  capabilities:
+    - "listTickets"
+    - "createTicket"
+    - "getTicket"
+    - "updateTicket"
+    - "searchKnowledgeBase"
+  api_endpoints:
+    - path: "/tickets"
+      methods: ["GET", "POST"]
+    - path: "/tickets/{ticketId}"
+      methods: ["GET", "PATCH"]
+    - path: "/knowledge-base/search"
+      methods: ["POST"]
+  authentication: "bearer"
+metadata:
+  source: "customer-support-assistant.json"
+  processed: "2025-10-10T15:38:38.618Z"
+  engine: "faf-universal-intelligence-v3.0.1"
+  size: 8192
+tags:
+  - "openai"
+  - "assistant"
+  - "customer-support"
+  - "api"
+  - "production-ready"

@@ -1,0 +1,37 @@
+version: 1.0
+score: 78
+type: "config"
+confidence: 0.88
+content:
+  name: "tsconfig.json"
+  config_type: "typescript"
+  compiler_options:
+    target: "ES2020"
+    module: "commonjs"
+    lib: ["ES2020"]
+    strict: true
+    esModuleInterop: true
+    skipLibCheck: true
+    forceConsistentCasingInFileNames: true
+  settings:
+    outDir: "./dist"
+    rootDir: "./src"
+    declaration: true
+    declarationMap: true
+    sourceMap: true
+  includes:
+    - "src/**/*"
+  excludes:
+    - "node_modules"
+    - "dist"
+    - "**/*.test.ts"
+metadata:
+  source: "tsconfig.json"
+  processed: "2025-10-10T16:00:00Z"
+  engine: "faf-turbocat-v3.0.0"
+  size: 456
+tags:
+  - "typescript"
+  - "config"
+  - "build-tool"
+  - "strict-mode"

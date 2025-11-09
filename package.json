@@ -1,0 +1,39 @@
+{
+  "name": "@faf/specification",
+  "version": "1.1.0",
+  "description": ".faf (Foundational AI-context Format) - Official format specification",
+  "keywords": [
+    "faf",
+    "format",
+    "specification",
+    "ai-context",
+    "format-spec",
+    "universal-format",
+    "ai-optimization"
+  ],
+  "author": "wolfejam.dev",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Wolfe-Jam/faf.git"
+  },
+  "homepage": "https://faf.one",
+  "bugs": {
+    "url": "https://github.com/Wolfe-Jam/faf/issues"
+  },
+  "files": [
+    "SPECIFICATION.md",
+    "README.md",
+    "example.faf",
+    "examples/**/*.faf",
+    "examples/README.md",
+    "assets/*.png",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

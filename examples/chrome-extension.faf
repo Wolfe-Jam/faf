@@ -1,0 +1,40 @@
+version: 1.0
+score: 92
+type: "chrome-extension"
+confidence: 0.96
+content:
+  name: "FAF Context Extension"
+  extension_type: "chrome-extension"
+  manifest_version: 3
+  version: "1.2.0"
+  description: "Inject .faf context into web pages"
+  permissions:
+    - "activeTab"
+    - "storage"
+    - "tabs"
+  components:
+    background: "service-worker.js"
+    content_scripts:
+      - "content.js"
+    popup: "popup.html"
+    options: "options.html"
+  icons:
+    "16": "icons/icon-16.png"
+    "48": "icons/icon-48.png"
+    "128": "icons/icon-128.png"
+  features:
+    - "context-injection"
+    - "page-analysis"
+    - "ai-optimization"
+    - "local-storage"
+metadata:
+  source: "manifest.json"
+  processed: "2025-10-10T16:00:00Z"
+  engine: "faf-turbocat-v3.0.0"
+  size: 1824
+tags:
+  - "chrome"
+  - "extension"
+  - "browser"
+  - "context"
+  - "production"
