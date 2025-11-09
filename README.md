@@ -1,8 +1,10 @@
-# .faf - The JPEG for AI
+<div align="left">
+  <img src="https://raw.githubusercontent.com/Wolfe-Jam/faf/main/assets/logos/orange-smiley.svg" alt="FAF" width="40" align="left" style="margin-right: 12px;" />
+  <h1>.faf - The JPEG for AI</h1>
+  <p><strong>IANA-Registered Format for AI Context</strong> · <code>application/vnd.faf+yaml</code></p>
+</div>
+<br clear="left"/>
 
-> **🏆 IANA-Registered Internet Standard** - Official media type: `application/vnd.faf+yaml`
-
-Foundational AI-context Format
 Universal, shareable AI-Context for any AI, human or team, regardless of size, location, languages, stack, setup or documentation.
 
 [![IANA Registered](https://img.shields.io/badge/IANA-application%2Fvnd.faf%2Byaml-blue)](https://faf.one/blog/iana-registration)
