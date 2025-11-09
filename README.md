@@ -34,14 +34,6 @@ Universal, shareable AI-Context for any AI, human or team, regardless of size, l
 
 ---
 
-## ⭐ GitHub Stars NEEDED! You Get Software, We Get a STAR! Deal? ⭐
-
-**The Deal: 10,000+ users got FREE tools. Now it's your turn to give back!**
-
-**[⭐ Star Now](https://github.com/Wolfe-Jam/faf) | [💬 Join Community](https://github.com/Wolfe-Jam/faf/discussions) | Fair Trade = Everyone Wins!**
-
----
-
 ## The Visibility Revolution: `project.faf`
 
 **New Standard:** `project.faf` - visible, universal, like `package.json`
