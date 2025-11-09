@@ -32,10 +32,19 @@ Reference assets via GitHub raw URLs in any FAF repository README:
 ## Current Assets
 
 ### Screenshots
-- `package-json-project-faf.png` (88KB) - Shows project.faf file placement between package.json and README.md in VS Code
+- `package-json-project-faf.png` (88KB) - project.faf placement between package.json and README.md
 
 ### Logos
-- Coming soon
+- `orange-smiley.svg` - FAF logo (vector)
+- `faf-icon.png`, `faf-icon-64.png`, `faf-icon-256.png`, `faf-icon-512.png` - Icon sizes
+
+### Demos
+- `birth-dna-12-percent.png` - CLI birth score demonstration
+- `growth-to-89-percent.png` - CLI context score growth
+- `faf-init-demo.gif` (3MB) - Animated CLI demo
+- `ai-human-balance-50-50.png` - AI/Human balance visualization
+- `prd-balance-perfect-green.png` - PRD balance indicator
+- `faf-championship-scorecard.png` - MCP scoring dashboard
 
 ### Branding
 - Coming soon
