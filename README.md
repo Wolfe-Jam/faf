@@ -24,7 +24,7 @@ Universal, shareable AI-Context for any AI, human or team, regardless of size, l
 - ✅ **IANA** - Internet Assigned Numbers Authority (Official Internet Standard)
 - ✅ **Anthropic** - Official MCP Registry (PR #2759 merged)
 - ✅ **Google** - Chrome Web Store (Approved 2x: Sep 11 & Oct 29, 2025)
-- ✅ **Community** - 10,000+ downloads, production-tested
+- ✅ **Community** - 11,000+ downloads, production-tested
 
 ### What IANA Registration Means
 - **Internet-Scale Legitimacy** - Same recognition as `application/pdf`, `application/json`, `application/xml`
@@ -77,7 +77,7 @@ README.md     # Visible (documentation) ✅
 
 Instead of explaining your project every time, AI reads your .faf once and knows exactly how to help.
 
-**10,000+ downloads** across [faf-cli](https://npmjs.com/package/faf-cli) and [claude-faf-mcp](https://npmjs.com/package/claude-faf-mcp) combined.
+**11,000+ downloads** across [faf-cli](https://npmjs.com/package/faf-cli) and [claude-faf-mcp](https://npmjs.com/package/claude-faf-mcp) combined.
 
 ## The Problem
 
@@ -138,7 +138,7 @@ npm install -g claude-faf-mcp
 </tr>
 </table>
 
-**Total: 10,000+ downloads combined** 🎉
+**Total: 11,000+ downloads combined** 🎉
 
 ## Core Principles
 
@@ -233,7 +233,7 @@ npm install -g claude-faf-mcp
 - ✅ Format specification complete
 - ✅ Enhanced with project-level context and AI workflows
 - ✅ Production tools available (faf-cli, claude-faf-mcp)
-- ✅ 10,000+ combined downloads (4,600+ CLI, 800+/week MCP)
+- ✅ 11,000+ combined downloads (4,600+ CLI, 800+/week MCP)
 - ✅ Battle-tested with 12,500+ test iterations (WJTTC GOLD Certified)
 - ✅ Open source (MIT License)
 
