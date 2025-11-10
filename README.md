@@ -1,15 +1,19 @@
 <div align="left">
   <img src="https://raw.githubusercontent.com/Wolfe-Jam/faf/main/assets/logos/orange-smiley.svg" alt="FAF" width="40" align="left" style="margin-right: 12px;" />
-  <h1>.faf - The JPEG for AI</h1>
+  <h1>.faf format | project.faf</h1>
   <p><strong>IANA-Registered Format for AI Context</strong> · <code>application/vnd.faf+yaml</code></p>
 </div>
 <br clear="left"/>
 
 Universal, shareable AI-Context for any AI, human or team, regardless of size, location, languages, stack, setup or documentation.
 
-[![IANA Registered](https://img.shields.io/badge/IANA-application%2Fvnd.faf%2Byaml-blue)](https://faf.one/blog/iana-registration)
 [![GitHub stars](https://img.shields.io/github/stars/Wolfe-Jam/faf?style=social)](https://github.com/Wolfe-Jam/faf)
 [![NPM Downloads](https://img.shields.io/npm/dt/claude-faf-mcp?label=total%20downloads&color=00CCFF)](https://www.npmjs.com/package/claude-faf-mcp)
+[![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?logo=discord&logoColor=white)](https://discord.com/invite/3pjzpKsP)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome-Extension-4285F4?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/lnecebepmpjpilldfmndnaofbfjkjlkm)
+[![Website](https://img.shields.io/badge/Website-faf.one-orange)](https://faf.one)
+[![Spec Version](https://img.shields.io/badge/Spec-v1.1.0-green)](https://github.com/Wolfe-Jam/faf/blob/main/SPECIFICATION.md)
+[![IANA Registered](https://img.shields.io/badge/IANA-application%2Fvnd.faf%2Byaml-blue)](https://faf.one/blog/iana-registration)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
@@ -39,6 +43,12 @@ Universal, shareable AI-Context for any AI, human or team, regardless of size, l
 ## The Visibility Revolution: `project.faf`
 
 **New Standard:** `project.faf` - visible, universal, like `package.json`
+
+<div align="center">
+<img src="assets/Project-faf-pckg-json-README.png" alt=".faf evolved to project.faf" width="500" />
+
+**`.faf` evolved to `project.faf`** - The evolution from hidden to visible.
+</div>
 
 <div align="center">
 <img src="assets/WHITEPAPER-FIGURE-1-project-faf-file-structure.png" alt="project.faf sits between package.json and README.md" width="600" />
@@ -200,24 +210,23 @@ metadata:
 - **Build Integration:** Companies can create custom implementations
 - **AI Optimization:** Perfect context for any AI tool
 
-## Get Started
+## Installation
 
-### 🚀 Quick Install (Recommended)
-
-**Command Line Tool:**
 ```bash
+# CLI Tool (recommended for getting started)
 npm install -g faf-cli
 cd your-project
 faf init
-```
-→ [faf-cli on npm](https://npmjs.com/package/faf-cli) - 4,600+ downloads
 
-**Claude Desktop Integration:**
-```bash
+# Or Claude Desktop Integration
 npm install -g claude-faf-mcp
 # Add to Claude Desktop config
 ```
-→ [claude-faf-mcp on npm](https://npmjs.com/package/claude-faf-mcp) - 800+ weekly downloads
+
+**Universal tools. Zero configuration. Production-ready.**
+
+→ [faf-cli on npm](https://npmjs.com/package/faf-cli) (4,600+ downloads)
+→ [claude-faf-mcp on npm](https://npmjs.com/package/claude-faf-mcp) (800+ weekly downloads)
 
 ### 📚 Learn the Format
 
