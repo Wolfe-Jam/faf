@@ -3,12 +3,12 @@ score: 100
 type: "specification"
 content:
   name: "faf"
-  tagline: "The JPEG for AI"
+  tagline: "Project DNA for any AI"
   description: "Foundational AI-context Format. Universal, shareable AI-Context for any AI, human or team, regardless of size, location, languages, stack, setup or documentation."
   version: "1.1.0"
   license: "MIT"
   repository: "https://github.com/Wolfe-Jam/faf"
-  status: "Early Stage - v1.0 January 2025"
+  status: "IANA-Registered Internet Standard - 27,000+ downloads"
   features:
     - "Context-Mirroring: AI remembers and syncs with .faf across sessions"
     - "Bi-sync: Two-way updates between AI and .faf"

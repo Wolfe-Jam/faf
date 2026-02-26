@@ -1,11 +1,15 @@
 <div align="left">
-  <img src="https://raw.githubusercontent.com/Wolfe-Jam/faf/main/assets/logos/orange-smiley.svg" alt="FAF" width="40" align="left" style="margin-right: 12px;" />
+  <img src="https://www.faf.one/orange-smiley.svg" alt="FAF" width="40" align="left" style="margin-right: 12px;" />
   <h1>.faf format | project.faf</h1>
   <p><strong>IANA-Registered Format for AI Context</strong> · <code>application/vnd.faf+yaml</code></p>
 </div>
 <br clear="left"/>
 
 Universal, shareable AI-Context for any AI, human or team, regardless of size, location, languages, stack, setup or documentation.
+
+<div align="center">
+<img src="assets/faf-hero-clean.png" alt="FAF - Project DNA for any AI" width="700" />
+</div>
 
 [![GitHub stars](https://img.shields.io/github/stars/Wolfe-Jam/faf?style=social)](https://github.com/Wolfe-Jam/faf)
 [![NPM Downloads](https://img.shields.io/npm/dt/claude-faf-mcp?label=total%20downloads&color=00CCFF)](https://www.npmjs.com/package/claude-faf-mcp)
@@ -26,11 +30,12 @@ Universal, shareable AI-Context for any AI, human or team, regardless of size, l
 **IANA Status:** Registered alongside PDF, JSON, XML, and other Internet standards
 **Registration Date:** October 31, 2025
 
-### Quadruple Validation
+### Quintuple Validation
 - ✅ **IANA** - Internet Assigned Numbers Authority (Official Internet Standard)
 - ✅ **Anthropic** - Official MCP Registry (PR #2759 merged)
 - ✅ **Google** - Chrome Web Store (Approved 2x: Sep 11 & Oct 29, 2025)
-- ✅ **Community** - 11,000+ downloads, production-tested
+- ✅ **xAI** - Grok 4.2 recommends native FAF adoption (Feb 2026)
+- ✅ **Community** - 27,000+ downloads, production-tested
 
 ### What IANA Registration Means
 - **Internet-Scale Legitimacy** - Same recognition as `application/pdf`, `application/json`, `application/xml`
@@ -85,11 +90,26 @@ README.md     # Visible (documentation) ✅
 
 ## What is .faf?
 
-**.faf** (Foundational AI-context Format) is an IANA-registered open format for AI context. Transform individual files or entire projects into structured data that AI instantly understands. Your tech stack, dependencies, architecture, and goals - all in one concise, shareable format.
+**.faf** (Foundational AI-context Format) is an IANA-registered open format for AI context — **project DNA for any AI.** Transform individual files or entire projects into structured data that AI instantly understands. Your tech stack, dependencies, architecture, and goals - all in one concise, shareable format.
 
 Instead of explaining your project every time, AI reads your .faf once and knows exactly how to help.
 
-**11,000+ downloads** across [faf-cli](https://npmjs.com/package/faf-cli) and [claude-faf-mcp](https://npmjs.com/package/claude-faf-mcp) combined.
+**27,000+ downloads** across the FAF ecosystem ([faf-cli](https://npmjs.com/package/faf-cli), [claude-faf-mcp](https://npmjs.com/package/claude-faf-mcp), [grok-faf-mcp](https://npmjs.com/package/grok-faf-mcp), and more).
+
+---
+
+## The 6 Ws — Quick Reference
+
+| Question | Answer |
+|----------|--------|
+| **WHO** is this for? | Developers using AI coding assistants (Claude, Gemini, Cursor, Grok, ChatGPT) |
+| **WHAT** is it? | The `package.json` for AI context — IANA-registered format (`application/vnd.faf+yaml`) |
+| **WHERE** does it work? | Everywhere AI needs context (Claude Code, Gemini CLI, Cursor, OpenAI Codex, etc.) |
+| **WHY** do you need it? | 91% fewer tokens wasted on rediscovery. Context persists forever. Bi-syncs automatically. |
+| **WHEN** should you use it? | New projects (day one), existing projects (now), exploring repos (`faf git <url>` — 2 seconds) |
+| **HOW** does it work? | `npx faf-cli init` — or `npx faf-cli git <url>` for any GitHub repo, no install, no clone |
+
+---
 
 ## The Problem
 
@@ -120,12 +140,12 @@ metadata:
 <td width="50%">
 
 ### 🩵 [faf-cli](https://npmjs.com/package/faf-cli)
-**Command-Line Tool** - v3.0.1
+**Command-Line Tool** - v4.5.0
 
-- 41 championship commands
+- 50+ championship commands
+- AI interop: generates AGENTS.md, .cursorrules, CLAUDE.md, GEMINI.md
 - TURBO-CAT format discovery
-- Universal AI support
-- 4,600+ downloads
+- 14,000+ downloads
 
 ```bash
 npm install -g faf-cli
@@ -135,12 +155,12 @@ npm install -g faf-cli
 <td width="50%">
 
 ### 🧡 [claude-faf-mcp](https://npmjs.com/package/claude-faf-mcp)
-**Claude Desktop MCP** - v2.5.5
+**Claude Desktop MCP** - v4.1.3
 
 - 33+ tools for Claude
 - Championship scoring
 - <11ms performance
-- 800+ weekly downloads
+- 9,800+ downloads
 
 ```bash
 npm install -g claude-faf-mcp
@@ -150,7 +170,40 @@ npm install -g claude-faf-mcp
 </tr>
 </table>
 
-**Total: 11,000+ downloads combined** 🎉
+**Total: 27,000+ downloads across the ecosystem** 🎉
+
+## MCP Ecosystem
+
+| Package | Platform | Registry | Downloads |
+|---------|----------|----------|-----------|
+| [claude-faf-mcp](https://npmjs.com/package/claude-faf-mcp) | Anthropic | npm | 9,800+ |
+| [faf-mcp](https://npmjs.com/package/faf-mcp) | Universal | npm | 2,800+ |
+| [grok-faf-mcp](https://npmjs.com/package/grok-faf-mcp) | xAI | npm | 850+ |
+| [gemini-faf-mcp](https://pypi.org/project/gemini-faf-mcp/) | Google | PyPI | v1.0.2 |
+| [MCPaaS](https://mcpaas.live) | Infrastructure | mcpaas.live | 153 souls |
+
+## Compiler Toolchain
+
+FAF compiles to multiple targets:
+
+| Component | Language | Output |
+|-----------|----------|--------|
+| [xai-faf-rust](https://github.com/Wolfe-Jam/xai-faf-rust) | Rust | Native + .fafb binary |
+| [xai-faf-zig](https://github.com/Wolfe-Jam/xai-faf-zig) | Zig→WASM | 2.7KB ghost binary |
+| [faf-wasm-sdk](https://github.com/Wolfe-Jam/faf-wasm-sdk) | Rust→WASM | 211KB browser runtime |
+
+## AI Interop (v4.5.0)
+
+One `.faf` file generates all four AI instruction formats:
+
+```
+project.faf → AGENTS.md   (OpenAI Codex)
+            → .cursorrules (Cursor)
+            → CLAUDE.md    (Anthropic)
+            → GEMINI.md    (Google)
+```
+
+Define once. Every AI reads it in its own language.
 
 ## Core Principles
 
@@ -225,8 +278,8 @@ npm install -g claude-faf-mcp
 
 **Universal tools. Zero configuration. Production-ready.**
 
-→ [faf-cli on npm](https://npmjs.com/package/faf-cli) (4,600+ downloads)
-→ [claude-faf-mcp on npm](https://npmjs.com/package/claude-faf-mcp) (800+ weekly downloads)
+→ [faf-cli on npm](https://npmjs.com/package/faf-cli) (14,000+ downloads)
+→ [claude-faf-mcp on npm](https://npmjs.com/package/claude-faf-mcp) (9,800+ downloads)
 
 ### 📚 Learn the Format
 
@@ -244,12 +297,17 @@ npm install -g claude-faf-mcp
 - ✅ Format specification complete
 - ✅ Enhanced with project-level context and AI workflows
 - ✅ Production tools available (faf-cli, claude-faf-mcp)
-- ✅ 11,000+ combined downloads (4,600+ CLI, 800+/week MCP)
+- ✅ 27,000+ combined downloads across ecosystem
 - ✅ Battle-tested with 12,500+ test iterations (WJTTC GOLD Certified)
 - ✅ Open source (MIT License)
 
 ## Major Milestones
 
+- **Feb 25, 2026** - Grok 4.2 recommends native FAF adoption; integration spec sent to xAI
+- **Feb 24, 2026** - faf-cli v4.5.0 "The AGENTS.md Edition" (AI interop across 4 formats)
+- **Feb 2, 2026** - FAFb binary format v1.0 (Rust + Zig compilers shipping)
+- **Jan 2026** - gemini-faf-mcp v1.0.2 on PyPI (Google MCP bridge)
+- **Nov 2025** - IETF standardization in progress (`vnd` prefix removal)
 - **Oct 31, 2025** - 🏆 **IANA Registration** (`application/vnd.faf+yaml`)
 - **Oct 29, 2025** - Google Chrome Web Store approval (2nd)
 - **Oct 17, 2025** - Official Anthropic MCP Registry merger (PR #2759)
@@ -260,7 +318,7 @@ npm install -g claude-faf-mcp
 - **Sep 1, 2025** - Developer platform launch (fafdev.tools)
 - **Aug 8, 2025** - Format created, first official .faf file generated
 
-**Quadruple Validation: IANA, Anthropic, Google (2x)**
+**Quintuple Validation: IANA, Anthropic, Google (2x), xAI**
 
 ## Contributing
 

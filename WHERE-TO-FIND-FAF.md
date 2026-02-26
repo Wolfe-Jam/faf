@@ -1,154 +1,144 @@
-# 📍 WHERE TO FIND .FAF
+# WHERE TO FIND .FAF
 
-**A community-maintained list of .faf implementations, tools, and examples**
+**Tools, implementations, and resources for the FAF ecosystem**
 
-*Last Updated: September 17, 2025*
+*Last Updated: February 2026*
 
 ---
 
-## 🌍 Official Resources
+## Official Resources
 
 ### Specifications & Documentation
 - **Format Specification:** [github.com/Wolfe-Jam/faf](https://github.com/Wolfe-Jam/faf)
-- **Planet dotFAF:** [faf.one](https://faf.one) - The home of .faf 🌍
-- **Web Tool:** [fafdev.tools](https://fafdev.tools) - Try .faf in your browser
+- **Planet dotFAF:** [faf.one](https://faf.one) - The home of .faf
+- **Developer Tools:** [fafdev.tools](https://fafdev.tools) - Try .faf in your browser
 
-### Try It NOW ⚡️
-- **Claude.ai:** [claude.ai](https://claude.ai) - Simply drop any file and enter `faf auto` to see .FAF in ACTION! ⚡️
-  - *Note: .FAF availability on Claude.ai depends on Anthropic's MCP service status. Always available for the creator (Wolfe), availability for others may vary.*
-- **Claude Desktop:** [claude.ai/download](https://claude.ai/download) - ALWAYS available with .FAF MCP server
-  - *Advantage: Full local repository support - read, write, and sync your actual project files (not possible on claude.ai due to web security restrictions)*
+### Try It NOW
 
-### Official Tools
-- **CLI Tool:** [github.com/Wolfe-Jam/faf-cli](https://github.com/Wolfe-Jam/faf-cli) - Command line interface for .faf
-- **Chrome Extension:** [github.com/Wolfe-Jam/faf-chrome-extension](https://github.com/Wolfe-Jam/faf-chrome-extension) - Browser integration
-- **Claude MCP Server:** [github.com/Wolfe-Jam/claude-faf-mcp](https://github.com/Wolfe-Jam/claude-faf-mcp) - Claude Desktop integration
+```bash
+# Zero install, zero clone — 2 seconds for ANY GitHub repo
+npx faf-cli git https://github.com/facebook/react
+```
 
-### NPM Packages
-- **faf-cli:** [npmjs.com/package/faf-cli](https://www.npmjs.com/package/faf-cli) - CLI tool *(v1.0.0 coming soon)*
-- **claude-faf-mcp:** [npmjs.com/package/claude-faf-mcp](https://www.npmjs.com/package/claude-faf-mcp) - MCP server *(v2.2.2 coming soon)*
-- **@faf/engine:** Processing engine *(future release)*
+- **Claude Code:** `faf init` → `faf go` → 100% AI-Readiness
+- **Claude Desktop:** Full local repo support with MCP server
+- **Any terminal:** `npx faf-cli init` works everywhere
 
 ---
 
-## 🛠️ Implementations
+## Official Tools
 
-### IDE Extensions
-- **VS Code:** *(coming soon)*
-- **IntelliJ:** *(community contribution welcome)*
-- **Sublime:** *(community contribution welcome)*
+### CLI
 
-### Framework Integrations
-- **Next.js:** *(community contribution welcome)*
-- **Vue:** *(community contribution welcome)*
-- **Svelte:** [github.com/Wolfe-Jam/faf-svelte-engine](https://github.com/Wolfe-Jam/faf-svelte-engine)
+| Package | Version | Downloads | Install |
+|---------|---------|-----------|---------|
+| [faf-cli](https://npmjs.com/package/faf-cli) | v4.5.0 | 14,000+ | `npm i -g faf-cli` |
 
----
+**63 commands** including `faf git`, `faf go`, `faf auto`, `faf bi-sync --all`, `faf agents`, `faf cursor`, `faf gemini`
 
-## 📚 Example Projects
+### MCP Servers
 
-### With .faf Files
-*Add your project here! Submit a PR if your project uses .faf*
+| Package | Platform | Registry | Downloads |
+|---------|----------|----------|-----------|
+| [claude-faf-mcp](https://npmjs.com/package/claude-faf-mcp) | Anthropic | npm | 9,800+ |
+| [faf-mcp](https://npmjs.com/package/faf-mcp) | Universal | npm | 2,800+ |
+| [grok-faf-mcp](https://npmjs.com/package/grok-faf-mcp) | xAI | npm | 850+ |
+| [gemini-faf-mcp](https://pypi.org/project/gemini-faf-mcp/) | Google | PyPI | v1.0.2 |
+| [MCPaaS](https://mcpaas.live) | Infrastructure | mcpaas.live | 153 souls |
 
-- **Example:** *(be the first!)*
+**Total: 27,000+ downloads across the ecosystem**
 
-### Templates
-- **Basic Web App:** *(coming soon)*
-- **CLI Tool:** *(coming soon)*
-- **Full Stack:** *(coming soon)*
-
----
-
-## 🌟 Community Contributions
-
-### Third-Party Tools
-*Built something for .faf? Add it here!*
-
-- *(Your tool here)*
-
-### Tutorials & Articles
-*Written about .faf? Share your content!*
-
-- *(Your article here)*
-
-### Videos & Talks
-*Presented about .faf? Link it here!*
-
-- *(Your video here)*
+### Browser & Extensions
+- **Chrome Extension:** [Chrome Web Store](https://chromewebstore.google.com/detail/lnecebepmpjpilldfmndnaofbfjkjlkm) - Google-approved (2x)
 
 ---
 
-## 🤝 How to Add Your Link
+## Compiler Toolchain
 
-We welcome community contributions! To add your .faf resource:
+FAF compiles to native binaries and WebAssembly:
+
+| Component | Language | Output | Link |
+|-----------|----------|--------|------|
+| xai-faf-rust | Rust | Native + .fafb binary | [GitHub](https://github.com/Wolfe-Jam/xai-faf-rust) |
+| xai-faf-zig | Zig→WASM | 2.7KB ghost binary | [GitHub](https://github.com/Wolfe-Jam/xai-faf-zig) |
+| faf-wasm-sdk | Rust→WASM | 211KB browser runtime | [GitHub](https://github.com/Wolfe-Jam/faf-wasm-sdk) |
+| faf-rust-sdk | Rust | crates.io SDK | [GitHub](https://github.com/Wolfe-Jam/faf-rust-sdk) |
+
+### FAFb Binary Format (v1.0)
+- **Header:** 32 bytes (magic "FAFB", version, CRC32 checksum)
+- **Sections:** 11 types with priority truncation
+- **Output:** `.fafb` files for edge/embedded deployment
+
+---
+
+## AI Interop (v4.5.0)
+
+One `project.faf` generates all AI instruction formats:
+
+| Platform | Format | Command |
+|----------|--------|---------|
+| OpenAI Codex | `AGENTS.md` | `faf agents export` |
+| Cursor IDE | `.cursorrules` | `faf cursor export` |
+| Claude Code | `CLAUDE.md` | `faf bi-sync` |
+| Gemini CLI | `GEMINI.md` | `faf gemini export` |
+| All at once | Everything | `faf bi-sync --all` |
+
+---
+
+## NPM Packages
+
+| Package | Purpose | Downloads |
+|---------|---------|-----------|
+| [faf-cli](https://npmjs.com/package/faf-cli) | CLI tool (v4.5.0) | 14,000+ |
+| [claude-faf-mcp](https://npmjs.com/package/claude-faf-mcp) | Anthropic MCP server | 9,800+ |
+| [faf-mcp](https://npmjs.com/package/faf-mcp) | Universal MCP server | 2,800+ |
+| [grok-faf-mcp](https://npmjs.com/package/grok-faf-mcp) | xAI MCP server | 850+ |
+| [faf-wasm](https://npmjs.com/package/faf-wasm) | WASM SDK | — |
+
+### PyPI Packages
+| Package | Purpose | Version |
+|---------|---------|---------|
+| [gemini-faf-mcp](https://pypi.org/project/gemini-faf-mcp/) | Google MCP server | v1.0.2 |
+
+---
+
+## GitHub Search
+- [Search GitHub for .faf files](https://github.com/search?q=extension%3Afaf&type=code)
+- [Search GitHub for faf topics](https://github.com/topics/faf)
+- [NPM packages with 'faf'](https://www.npmjs.com/search?q=faf)
+- [PyPI packages with 'faf'](https://pypi.org/search/?q=faf)
+
+---
+
+## Statistics
+
+- **Total Downloads:** 27,000+
+- **MCP Servers:** 5 (Anthropic, Universal, xAI, Google, MCPaaS)
+- **Compilers:** 3 (Rust, Zig, WASM)
+- **AI Formats:** 4 (AGENTS.md, .cursorrules, CLAUDE.md, GEMINI.md)
+- **File Types Supported:** 153+
+- **IANA Media Type:** `application/vnd.faf+yaml`
+
+---
+
+## Contributing
+
+Want to add your .faf resource? Submit a PR:
 
 1. Fork [this repository](https://github.com/Wolfe-Jam/faf)
 2. Add your link in the appropriate section
-3. Submit a PR with:
-   - Link to your resource
-   - Brief description
-   - Your GitHub handle (optional)
-
-### Format Example
-```markdown
-- **Your Tool Name:** [github.com/you/tool](https://github.com/you/tool) - Brief description
-```
+3. Submit a PR with a brief description
 
 ---
 
-## 🏆 Featured Projects
-
-*Projects with exceptional .faf implementations will be featured here*
-
-- *(Earn your spot with a great implementation!)*
-
----
-
-## 📊 Statistics
-
-- **Known Implementations:** 5+
-- **File Types Supported:** 150+
-- **Community Contributors:** *(be the first!)*
-
----
-
-## 🔍 Find .faf Files
-
-### GitHub Search
-- [Search GitHub for .faf files](https://github.com/search?q=extension%3Afaf&type=code)
-- [Search GitHub for faf topics](https://github.com/topics/faf)
-
-### Package Registries
-- [NPM packages with 'faf'](https://www.npmjs.com/search?q=faf)
-- [PyPI packages with 'faf'](https://pypi.org/search/?q=faf) *(coming soon)*
-
----
-
-## 💡 Ideas & Requests
-
-Want to see .faf somewhere specific? Add your request:
-
-- [ ] GitHub Actions
-- [ ] GitLab CI
-- [ ] Docker integration
-- [ ] Kubernetes configs
-- [ ] *(Add your idea)*
-
----
-
-## 📧 Contact
+## Contact
 
 - **GitHub Issues:** [github.com/Wolfe-Jam/faf/issues](https://github.com/Wolfe-Jam/faf/issues)
 - **Discussions:** [github.com/Wolfe-Jam/faf/discussions](https://github.com/Wolfe-Jam/faf/discussions)
+- **Website:** [faf.one](https://faf.one)
 
 ---
 
-## 🏁 About .faf
+**.faf** (Foundational AI-context Format) — Project DNA for any AI. Learn more at [github.com/Wolfe-Jam/faf](https://github.com/Wolfe-Jam/faf)
 
-**.faf** (Foundational AI-context Format) is a universal format for representing any file's context in an AI-optimized structure. Learn more at [github.com/Wolfe-Jam/faf](https://github.com/Wolfe-Jam/faf)
-
----
-
-*This list is community-maintained. Add your .faf resources via PR!*
-
-**Together, we're making AI context universal!** 🚀
+*Created by [wolfejam.dev](https://wolfejam.dev)*
