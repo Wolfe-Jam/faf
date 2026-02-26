@@ -37,11 +37,18 @@ Universal, shareable AI-Context for any AI, human or team, regardless of size, l
 - ✅ **xAI** - Grok 4.2 recommends native FAF adoption (Feb 2026)
 - ✅ **Community** - 27,000+ downloads, production-tested
 
-### What IANA Registration Means
-- **Internet-Scale Legitimacy** - Same recognition as `application/pdf`, `application/json`, `application/xml`
-- **HTTP Standard Headers** - `Content-Type: application/vnd.faf+yaml` officially recognized
-- **Universal Compatibility** - Browsers, email clients, APIs handle `.faf` files properly
-- **Future-Proof** - Format backed by Internet standards body
+### IANA Media Type
+
+| Field | Value |
+|-------|-------|
+| **Media Type** | `application/vnd.faf+yaml` |
+| **Registration** | [IANA Assignment](https://www.iana.org/assignments/media-types/application/vnd.faf+yaml) |
+| **File Extensions** | `.faf` |
+| **Standard Filename** | `project.faf` |
+| **Encoding** | UTF-8 |
+| **Base Format** | YAML 1.2 |
+
+Same recognition as `application/pdf`, `application/json`, `application/xml`.
 
 ---
 
@@ -108,6 +115,30 @@ Instead of explaining your project every time, AI reads your .faf once and knows
 | **WHY** do you need it? | 91% fewer tokens wasted on rediscovery. Context persists forever. Bi-syncs automatically. |
 | **WHEN** should you use it? | New projects (day one), existing projects (now), exploring repos (`faf git <url>` — 2 seconds) |
 | **HOW** does it work? | `npx faf-cli init` — or `npx faf-cli git <url>` for any GitHub repo, no install, no clone |
+
+---
+
+## What FAF is NOT
+
+- **Not a replacement for README.md** — README is for humans, `project.faf` is for AI
+- **Not executable code** — it's structured data (YAML), not a script or config
+- **Not a build configuration** — it describes your project, it doesn't build it
+- **Not locked to one AI** — works with Claude, Gemini, Cursor, Grok, ChatGPT, any AI tool
+
+---
+
+## How FAF Compares
+
+| | FAF | AGENTS.md | .cursorrules | CLAUDE.md | GEMINI.md |
+|---|---|---|---|---|---|
+| **Format** | Structured YAML | Prose markdown | Prose markdown | Prose markdown | Prose markdown |
+| **IANA Registered** | Yes | No | No | No | No |
+| **Scored** | 0-100% | No | No | No | No |
+| **Portable** | Any AI | OpenAI ecosystem | Cursor only | Claude only | Gemini only |
+| **Machine-readable** | Yes (schema) | No (free text) | No (free text) | No (free text) | No (free text) |
+| **Generates others** | Yes (all 4) | No | No | No | No |
+
+FAF is the structured source. The others are prose outputs. `faf bi-sync --all` generates all four from one `project.faf`.
 
 ---
 
@@ -281,12 +312,12 @@ npm install -g claude-faf-mcp
 → [faf-cli on npm](https://npmjs.com/package/faf-cli) (14,000+ downloads)
 → [claude-faf-mcp on npm](https://npmjs.com/package/claude-faf-mcp) (9,800+ downloads)
 
-### 📚 Learn the Format
+### 📚 Learn More
 
 1. **[Specification](SPECIFICATION.md)** - Complete format documentation
-2. **[Examples](examples/)** - Real-world .faf files (5 examples)
-3. **[example.faf](example.faf)** - Basic example file
-4. **[WHERE-TO-FIND-FAF.md](WHERE-TO-FIND-FAF.md)** - Tools and resources
+2. **[Implementations](IMPLEMENTATIONS.md)** - All tools, SDKs, and servers
+3. **[Examples](examples/)** - Real-world .faf files (5 examples)
+4. **[Where to Find FAF](WHERE-TO-FIND-FAF.md)** - Ecosystem directory
 
 ## Status
 
@@ -320,15 +351,27 @@ npm install -g claude-faf-mcp
 
 **Quintuple Validation: IANA, Anthropic, Google (2x), xAI**
 
+## Show Your Support
+
+Add this badge to your repo's README to show it uses FAF:
+
+```markdown
+[![project.faf](https://img.shields.io/badge/project.faf-inside-00D4D4)](https://github.com/Wolfe-Jam/faf)
+```
+
+[![project.faf](https://img.shields.io/badge/project.faf-inside-00D4D4)](https://github.com/Wolfe-Jam/faf)
+
 ## Contributing
 
 This is an open standard. Ideas, feedback, and contributions welcome.
 
 ## About This Repository
 
-This repository contains the **format specification only**. For working implementations:
-- Use [faf-cli](https://npmjs.com/package/faf-cli) for command-line tools
-- Use [claude-faf-mcp](https://npmjs.com/package/claude-faf-mcp) for Claude Desktop
+This repository contains the **format specification only**. For implementations, see **[IMPLEMENTATIONS.md](IMPLEMENTATIONS.md)**.
+
+Most people get FAF through npm:
+- `npm i -g faf-cli` — CLI tool (14,000+ downloads)
+- `npm i -g claude-faf-mcp` — Claude Desktop MCP (9,800+ downloads)
 
 The package.json in this repo provides spec metadata and versioning but contains no executable code.
 
