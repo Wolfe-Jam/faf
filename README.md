@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/wolfe-jam-faf-badge.png)](https://mseep.ai/app/wolfe-jam-faf)
+
 <div align="left">
   <img src="https://www.faf.one/orange-smiley.svg" alt="FAF" width="40" align="left" style="margin-right: 12px;" />
   <h1>.faf format | project.faf</h1>
