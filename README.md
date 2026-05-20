@@ -37,7 +37,7 @@ Universal, shareable AI-Context for any AI, human or team, regardless of size, l
 - ✅ **Anthropic** - Official MCP Registry (PR #2759 merged)
 - ✅ **Google** - Chrome Web Store (Approved 2x: Sep 11 & Oct 29, 2025)
 - ✅ **xAI** - Grok 4.2 recommends native FAF adoption (Feb 2026)
-- ✅ **Community** - 27,000+ downloads, production-tested
+- ✅ **Community** - 50,000+ downloads across the ecosystem, production-tested
 
 ### IANA Media Type
 
@@ -103,7 +103,7 @@ README.md     # Visible (documentation) ✅
 
 Instead of explaining your project every time, AI reads your .faf once and knows exactly how to help.
 
-**27,000+ downloads** across the FAF ecosystem ([faf-cli](https://npmjs.com/package/faf-cli), [claude-faf-mcp](https://npmjs.com/package/claude-faf-mcp), [grok-faf-mcp](https://npmjs.com/package/grok-faf-mcp), and more).
+**50,000+ downloads** across the FAF ecosystem ([faf-cli](https://npmjs.com/package/faf-cli), [claude-faf-mcp](https://npmjs.com/package/claude-faf-mcp), [grok-faf-mcp](https://npmjs.com/package/grok-faf-mcp), and more).
 
 ---
 
@@ -114,7 +114,7 @@ Instead of explaining your project every time, AI reads your .faf once and knows
 | **WHO** is this for? | Developers using AI coding assistants (Claude, Gemini, Cursor, Grok, ChatGPT) |
 | **WHAT** is it? | The `package.json` for AI context — IANA-registered format (`application/vnd.faf+yaml`) |
 | **WHERE** does it work? | Everywhere AI needs context (Claude Code, Gemini CLI, Cursor, OpenAI Codex, etc.) |
-| **WHY** do you need it? | 91% fewer tokens wasted on rediscovery. Context persists forever. Bi-syncs automatically. |
+| **WHY** do you need it? | Context persists across sessions. Bi-syncs to AGENTS.md, CLAUDE.md, .cursorrules, GEMINI.md automatically. Stop re-explaining your project. |
 | **WHEN** should you use it? | New projects (day one), existing projects (now), exploring repos (`faf git <url>` — 2 seconds) |
 | **HOW** does it work? | `npx faf-cli init` — or `npx faf-cli git <url>` for any GitHub repo, no install, no clone |
 
@@ -173,12 +173,12 @@ metadata:
 <td width="50%">
 
 ### 🩵 [faf-cli](https://npmjs.com/package/faf-cli)
-**Command-Line Tool** - v4.5.0
+**Command-Line Tool** - v6.7.1
 
 - 50+ championship commands
 - AI interop: generates AGENTS.md, .cursorrules, CLAUDE.md, GEMINI.md
 - TURBO-CAT format discovery
-- 14,000+ downloads
+- 25,000+ downloads
 
 ```bash
 npm install -g faf-cli
@@ -188,12 +188,12 @@ npm install -g faf-cli
 <td width="50%">
 
 ### 🧡 [claude-faf-mcp](https://npmjs.com/package/claude-faf-mcp)
-**Claude Desktop MCP** - v4.1.3
+**Claude Desktop MCP** - v5.5.2
 
-- 33+ tools for Claude
-- Championship scoring
-- <11ms performance
-- 9,800+ downloads
+- 38 tools for Claude
+- Championship scoring (0-100% Trophy)
+- Anthropic MCP Registry (PR #2759)
+- 12,000+ downloads
 
 ```bash
 npm install -g claude-faf-mcp
@@ -203,17 +203,17 @@ npm install -g claude-faf-mcp
 </tr>
 </table>
 
-**Total: 27,000+ downloads across the ecosystem** 🎉
+**Total: 50,000+ downloads across the ecosystem** 🎉
 
 ## MCP Ecosystem
 
 | Package | Platform | Registry | Downloads |
 |---------|----------|----------|-----------|
-| [claude-faf-mcp](https://npmjs.com/package/claude-faf-mcp) | Anthropic | npm | 9,800+ |
-| [faf-mcp](https://npmjs.com/package/faf-mcp) | Universal | npm | 2,800+ |
-| [grok-faf-mcp](https://npmjs.com/package/grok-faf-mcp) | xAI | npm | 850+ |
-| [gemini-faf-mcp](https://pypi.org/project/gemini-faf-mcp/) | Google | PyPI | v1.0.2 |
-| [MCPaaS](https://mcpaas.live) | Infrastructure | mcpaas.live | 153 souls |
+| [claude-faf-mcp](https://npmjs.com/package/claude-faf-mcp) | Anthropic | npm | 12,000+ |
+| [faf-mcp](https://npmjs.com/package/faf-mcp) | Universal | npm | 4,000+ |
+| [grok-faf-mcp](https://npmjs.com/package/grok-faf-mcp) | xAI | npm | 2,000+ |
+| [gemini-faf-mcp](https://pypi.org/project/gemini-faf-mcp/) | Google | PyPI | v2.2.5 |
+| [MCPaaS](https://mcpaas.live) | Infrastructure | mcpaas.live | live |
 
 ## Compiler Toolchain
 
@@ -225,7 +225,7 @@ FAF compiles to multiple targets:
 | [xai-faf-zig](https://github.com/Wolfe-Jam/xai-faf-zig) | Zig→WASM | 2.7KB ghost binary |
 | [faf-wasm-sdk](https://github.com/Wolfe-Jam/faf-wasm-sdk) | Rust→WASM | 211KB browser runtime |
 
-## AI Interop (v4.5.0)
+## AI Interop
 
 One `.faf` file generates all four AI instruction formats:
 
@@ -311,8 +311,8 @@ npm install -g claude-faf-mcp
 
 **Universal tools. Zero configuration. Production-ready.**
 
-→ [faf-cli on npm](https://npmjs.com/package/faf-cli) (14,000+ downloads)
-→ [claude-faf-mcp on npm](https://npmjs.com/package/claude-faf-mcp) (9,800+ downloads)
+→ [faf-cli on npm](https://npmjs.com/package/faf-cli) (25,000+ downloads)
+→ [claude-faf-mcp on npm](https://npmjs.com/package/claude-faf-mcp) (12,000+ downloads)
 
 ### 📚 Learn More
 
@@ -330,12 +330,14 @@ npm install -g claude-faf-mcp
 - ✅ Format specification complete
 - ✅ Enhanced with project-level context and AI workflows
 - ✅ Production tools available (faf-cli, claude-faf-mcp)
-- ✅ 27,000+ combined downloads across ecosystem
-- ✅ Battle-tested with 12,500+ test iterations (WJTTC GOLD Certified)
+- ✅ 50,000+ combined downloads across ecosystem
+- ✅ WJTTC Championship-grade testing across ecosystem packages
 - ✅ Open source (MIT License)
 
 ## Major Milestones
 
+- **May 19, 2026** - `grok-faf-mcp` v1.3.1 published — registry-coherent across npm + MCP Registry + GitHub Release
+- **April 2026** - FAF ecosystem crosses 50,000+ downloads across npm, PyPI, and crates.io
 - **Feb 25, 2026** - Grok 4.2 recommends native FAF adoption; integration spec sent to xAI
 - **Feb 24, 2026** - faf-cli v4.5.0 "The AGENTS.md Edition" (AI interop across 4 formats)
 - **Feb 2, 2026** - FAFb binary format v1.0 (Rust + Zig compilers shipping)
@@ -372,8 +374,8 @@ This is an open standard. Ideas, feedback, and contributions welcome.
 This repository contains the **format specification only**. For implementations, see **[IMPLEMENTATIONS.md](IMPLEMENTATIONS.md)**.
 
 Most people get FAF through npm:
-- `npm i -g faf-cli` — CLI tool (14,000+ downloads)
-- `npm i -g claude-faf-mcp` — Claude Desktop MCP (9,800+ downloads)
+- `npm i -g faf-cli` — CLI tool (25,000+ downloads)
+- `npm i -g claude-faf-mcp` — Claude Desktop MCP (12,000+ downloads)
 
 The package.json in this repo provides spec metadata and versioning but contains no executable code.
 
