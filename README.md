@@ -99,7 +99,7 @@ README.md     # Visible (documentation) ✅
 
 ## What is .faf?
 
-**.faf** (Foundational AI-context Format) is an IANA-registered open format for AI context — **project DNA for any AI.** Transform individual files or entire projects into structured data that AI instantly understands. Your tech stack, dependencies, architecture, and goals - all in one concise, shareable format.
+**.faf** (Foundational AI-context Format) is an IANA-registered open format for AI context — **Persistent project context for AI.** Transform individual files or entire projects into structured data that AI instantly understands. Your tech stack, dependencies, architecture, and goals - all in one concise, shareable format.
 
 Instead of explaining your project every time, AI reads your .faf once and knows exactly how to help.
 
