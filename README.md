@@ -1,3 +1,5 @@
+<!-- faf: faf | YAML | format-spec | .faf — the IANA-registered Foundational AI-context Format (application/vnd.faf+yaml). Universal, shareable AI-context for any AI, human, or team. -->
+
 <div align="left">
   <img src="https://www.faf.one/orange-smiley.svg" alt="FAF" width="40" align="left" style="margin-right: 12px;" />
   <h1>.faf format | project.faf</h1>

@@ -1,3 +1,5 @@
+<!-- faf: faf-specification | YAML | specification | .faf Format Specification — the authoritative source for application/vnd.faf+yaml. Defines structure, required fields, scoring, and the project.faf filename standard. -->
+
 # .faf Format Specification
 
 **Version:** 1.2.0
