@@ -1,0 +1,20 @@
+# application/vnd.fafm+yaml — voice profile example
+# Backward-compatible with v1.0 (profile absent would also imply voice).
+version: "1.1"
+profile: "voice"
+namepoint: "@demo-user"
+created: "2026-04-30T12:00:00Z"
+last_etched: "2026-05-21T09:14:00Z"
+retention: "forever"
+
+memory:
+  facts:
+    - "User prefers short answers"
+    - text: "User's name is Alex"
+      tags: ["personal"]
+    - text: "Wraps up calls with 'cheers'"
+      tags: ["style", "paralinguistic"]
+  sessions: []
+  preferences:
+    voice: "leo"
+  custom: {}

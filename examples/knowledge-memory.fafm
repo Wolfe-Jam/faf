@@ -1,0 +1,44 @@
+# application/vnd.fafm+yaml — knowledge profile example
+# A knowledge soul: typed, cross-linked memory. Still a valid v1.0 document
+# (every enrichment field is optional; text: is always present).
+version: "1.1"
+profile: "knowledge"
+namepoint: "@claude-code:demo"
+created: "2026-05-21T00:00:00Z"
+last_etched: "2026-05-21T09:20:00Z"
+retention: "forever"
+
+index:
+  - "precision-is-power — named tiers beat umbrella terms"
+  - "discovery-over-reveal — show receipts, hold the rest"
+
+memory:
+  facts:
+    - text: "Replace lossy umbrella terms with named tiers + a quality assertion when both are true."
+      id: "precision-is-power"
+      type: "feedback"
+      priority: "high"
+      tags: ["copy", "doctrine"]
+      links: ["no-made-up-numbers"]
+      timestamp: "2026-05-20T00:00:00Z"
+      source: "session note"
+      confidence_score: 0.95
+      verification_status: "verified"
+
+    - text: "Discovery > reveal in public copy: show institutional receipts, hold the rest for organic discovery."
+      id: "discovery-over-reveal"
+      type: "feedback"
+      priority: "standard"
+      tags: ["strategy", "doctrine"]
+      timestamp: "2026-05-20T00:00:00Z"
+      source: "session note"
+
+    - text: "Bugs/issues tracked in the project's issue tracker; check there for context."
+      id: "issue-tracker-ref"
+      type: "reference"
+      priority: "standard"
+      tags: ["process"]
+      ttl: "1y"
+  sessions: []
+  preferences: {}
+  custom: {}

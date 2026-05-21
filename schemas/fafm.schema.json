@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://faf.one/schemas/fafm.schema.json",
+  "title": "FAF Memory (.fafm)",
+  "description": "Schema for application/vnd.fafm+yaml v1.1. One format, profiles (voice|knowledge). Unknown fields are permitted and MUST be ignored by consumers (additionalProperties: true throughout).",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["version", "namepoint", "created", "last_etched", "memory"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$",
+      "description": "Semantic version of the document format, e.g. \"1.1\"."
+    },
+    "profile": {
+      "type": "string",
+      "enum": ["voice", "knowledge"],
+      "default": "voice",
+      "description": "Use-case shape. Absent => voice (v1.0 back-compat)."
+    },
+    "namepoint": {
+      "type": "string",
+      "description": "Soul identifier. Voice uses @handle; other profiles MAY namespace, e.g. @claude-code:wolfejam."
+    },
+    "created": { "type": "string", "format": "date-time" },
+    "last_etched": { "type": "string", "format": "date-time" },
+    "retention": {
+      "type": "string",
+      "description": "forever (default) | 30d | 90d | 1y | session-only (or implementation-defined)."
+    },
+    "index": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Optional one-line pointers (knowledge profile)."
+    },
+    "memory": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "facts": {
+          "type": "array",
+          "description": "Memory units. May mix bare strings, {text,tags?} objects, and rich objects in the same array.",
+          "items": {
+            "oneOf": [
+              { "type": "string" },
+              { "$ref": "#/$defs/fact" }
+            ]
+          }
+        },
+        "sessions": { "type": "array" },
+        "preferences": { "type": "object", "additionalProperties": true },
+        "custom": { "type": "object", "additionalProperties": true }
+      }
+    }
+  },
+  "$defs": {
+    "fact": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["text"],
+      "properties": {
+        "text": { "type": "string", "description": "REQUIRED. The memory unit any consumer can read." },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "id": { "type": "string", "description": "Stable unique key (knowledge)." },
+        "type": {
+          "type": "string",
+          "enum": ["user", "feedback", "project", "reference"],
+          "description": "Canonical knowledge types. Domain distinctions use tags/custom, not enum expansion."
+        },
+        "priority": {
+          "type": "string",
+          "enum": ["ephemeral", "standard", "high", "critical"],
+          "description": "Canonical priority vocabulary."
+        },
+        "links": { "type": "array", "items": { "type": "string" }, "description": "Cross-references to other entry ids." },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "source": { "type": "string" },
+        "version_id": { "type": "string", "description": "Reserved: entry revision / etag." },
+        "provenance": { "type": "array", "description": "Reserved: lightweight chain / parent refs." },
+        "parent_id": { "type": "string", "description": "Reserved: merge lineage." },
+        "derived_from": { "type": "array", "items": { "type": "string" } },
+        "etched_by": { "type": "string", "description": "Reserved: human | ai | agent_id." },
+        "confidence_score": { "type": "number", "minimum": 0, "maximum": 1 },
+        "verification_status": {
+          "type": "string",
+          "enum": ["unverified", "verified", "disputed"]
+        },
+        "ttl": { "type": "string", "description": "Reserved: per-entry forgetting duration." },
+        "decay_policy": { "type": "string", "description": "Reserved: named decay policy." },
+        "conflict_metadata": { "type": "object", "additionalProperties": true },
+        "embedding_fingerprint": { "type": "string", "description": "Reserved: semantic dedup hash." },
+        "signature": { "type": "string", "description": "Reserved: optional light provenance (merkle/sig)." }
+      }
+    }
+  }
+}
