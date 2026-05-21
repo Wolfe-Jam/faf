@@ -1,0 +1,18 @@
+faf_version: 2.5.0
+project:
+  name: full-demo
+  goal: Fuller valid faf fixture for conformance
+  main_language: TypeScript
+stack:
+  backend: Node.js
+  runtime: Node.js
+  hosting: Cloudflare
+  build: tsc
+  cicd: GitHub Actions
+human_context:
+  who: developers
+  what: a conformance demo project
+  why: to exercise the scoring kernel across slots
+  where: github
+  when: 2026-05-21
+  how: hand-authored conformance fixture

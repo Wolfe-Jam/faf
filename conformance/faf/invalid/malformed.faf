@@ -1,0 +1,4 @@
+faf_version: 2.5.0
+project:
+  name: broken-demo
+  goal: this value has an unquoted: colon that breaks YAML parsing

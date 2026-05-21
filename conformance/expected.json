@@ -1,0 +1,16 @@
+{
+  "description": "FAF conformance corpus — a SHARED suite every implementation runs to prove it reads the standard identically. Pure data (no code/deps): the spec owns the corpus, implementations own the runner. faf fixtures are validated via a scoring kernel; fafm fixtures via fafm.schema.json (JSON Schema 2020-12).",
+  "faf": {
+    "valid/minimal.faf": { "validates": true },
+    "valid/full.faf": { "validates": true },
+    "invalid/malformed.faf": { "validates": false }
+  },
+  "fafm": {
+    "valid/voice.fafm": { "conforms": true },
+    "valid/knowledge.fafm": { "conforms": true },
+    "valid/unknown-fields.fafm": { "conforms": true },
+    "invalid/missing-required.fafm": { "conforms": false },
+    "invalid/bad-version.fafm": { "conforms": false },
+    "invalid/fact-missing-text.fafm": { "conforms": false }
+  }
+}

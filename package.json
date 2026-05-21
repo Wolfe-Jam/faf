@@ -23,10 +23,16 @@
   },
   "files": [
     "SPECIFICATION.md",
+    "MEMORY-FORMAT.md",
+    "BINARY-FORMAT.md",
+    "AGENT-FORMAT.md",
     "README.md",
     "example.faf",
     "examples/**/*.faf",
+    "examples/**/*.fafm",
     "examples/README.md",
+    "schemas/*.json",
+    "conformance/**",
     "assets/*.png",
     "LICENSE"
   ],

@@ -1,0 +1,5 @@
+faf_version: 2.5.0
+project:
+  name: minimal-demo
+  goal: Minimal valid faf fixture for conformance
+  main_language: TypeScript
