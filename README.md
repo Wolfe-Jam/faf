@@ -9,7 +9,7 @@
 
 <div align="center">
 
-[![DOI: .faf paper](https://zenodo.org/badge/DOI/10.5281/zenodo.18251362.svg)](https://doi.org/10.5281/zenodo.18251362) [![DOI: .fafm paper](https://zenodo.org/badge/DOI/10.5281/zenodo.20348942.svg)](https://doi.org/10.5281/zenodo.20348942)
+[![DOI: Context paper](https://img.shields.io/badge/DOI-Context%20paper-FF6B35)](https://doi.org/10.5281/zenodo.18251362)[![DOI: Memory paper](https://img.shields.io/badge/DOI-Memory%20paper-FF6B35)](https://doi.org/10.5281/zenodo.20348942)
 
 </div>
 
