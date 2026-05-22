@@ -401,6 +401,29 @@ Most people get FAF through npm:
 
 The package.json in this repo provides spec metadata and versioning but contains no executable code.
 
+## Citation
+
+If you use `.fafm` (the FAF Memory format) in research or production, please cite the format paper:
+
+> Wolfe, J. (2026). *Permanent Memory and Instant Recall: The .fafm Standard for Multi-Profile AI Agent Memory*. Zenodo. https://doi.org/10.5281/zenodo.20348942
+
+### BibTeX
+
+```bibtex
+@article{wolfe2026fafm,
+  title     = {Permanent Memory and Instant Recall: The .fafm Standard for Multi-Profile AI Agent Memory},
+  author    = {Wolfe, James},
+  year      = {2026},
+  month     = {may},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.20348942},
+  url       = {https://doi.org/10.5281/zenodo.20348942}
+}
+```
+
+**DOI:** [`10.5281/zenodo.20348942`](https://doi.org/10.5281/zenodo.20348942)
+The companion `.faf` Context paper: [Zenodo #18251362](https://doi.org/10.5281/zenodo.18251362).
+
 ## License
 
 MIT - Use freely, build anything.
