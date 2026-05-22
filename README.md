@@ -7,6 +7,12 @@
 </div>
 <br clear="left"/>
 
+<div align="center">
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20348942.svg)](https://doi.org/10.5281/zenodo.20348942)
+
+</div>
+
 Universal, shareable AI-Context for any AI, human or team, regardless of size, location, languages, stack, setup or documentation.
 
 <div align="center">
