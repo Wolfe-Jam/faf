@@ -3,15 +3,9 @@
 <div align="left">
   <img src="https://www.faf.one/orange-smiley.svg" alt="FAF" width="40" align="left" style="margin-right: 12px;" />
   <h1>.faf format | project.faf</h1>
-  <p><strong>IANA-Registered Format for AI Context</strong> · <code>application/vnd.faf+yaml</code></p>
+  <p><strong>IANA-Registered Formats for AI Context</strong> · <code>application/vnd.faf+yaml</code> · <code>application/vnd.fafm+yaml</code></p>
 </div>
 <br clear="left"/>
-
-<div align="center">
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20348942.svg)](https://doi.org/10.5281/zenodo.20348942)
-
-</div>
 
 Universal, shareable AI-Context for any AI, human or team, regardless of size, location, languages, stack, setup or documentation.
 
@@ -19,24 +13,23 @@ Universal, shareable AI-Context for any AI, human or team, regardless of size, l
 <img src="assets/faf-hero-clean.png" alt="FAF - Project DNA for any AI" width="700" />
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/Wolfe-Jam/faf?style=social)](https://github.com/Wolfe-Jam/faf)
-[![NPM Downloads](https://img.shields.io/npm/dt/claude-faf-mcp?label=total%20downloads&color=00CCFF)](https://www.npmjs.com/package/claude-faf-mcp)
-[![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?logo=discord&logoColor=white)](https://discord.com/invite/3pjzpKsP)
-[![Chrome Web Store](https://img.shields.io/badge/Chrome-Extension-4285F4?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/lnecebepmpjpilldfmndnaofbfjkjlkm)
-[![Website](https://img.shields.io/badge/Website-faf.one-orange)](https://faf.one)
+[![IANA: vnd.faf+yaml](https://img.shields.io/badge/IANA-vnd.faf%2Byaml-00D4D4)](https://www.iana.org/assignments/media-types/application/vnd.faf+yaml)[![IANA: vnd.fafm+yaml](https://img.shields.io/badge/IANA-vnd.fafm%2Byaml-00D4D4)](https://www.iana.org/assignments/media-types/application/vnd.fafm+yaml)
+[![DOI: Context paper](https://img.shields.io/badge/DOI-Context%20paper-FF6B35)](https://doi.org/10.5281/zenodo.18251362)[![DOI: Memory paper](https://img.shields.io/badge/DOI-Memory%20paper-FF6B35)](https://doi.org/10.5281/zenodo.20348942)
 [![Spec Version](https://img.shields.io/badge/Spec-v1.1.0-green)](https://github.com/Wolfe-Jam/faf/blob/main/SPECIFICATION.md)
-[![IANA Registered](https://img.shields.io/badge/IANA-application%2Fvnd.faf%2Byaml-blue)](https://faf.one/blog/iana-registration)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Website](https://img.shields.io/badge/Website-faf.one-orange)](https://faf.one)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome-Extension-4285F4?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/lnecebepmpjpilldfmndnaofbfjkjlkm)
 
 ---
 
-## 🏆 Historic Milestone: IANA Registration (October 31, 2025)
+## 🏆 Historic Milestones: Two IANA Registrations
 
-**.faf is now an officially recognized Internet standard format.**
+**`.faf`** and **`.fafm`** are now officially recognized Internet standard formats — registered alongside PDF, JSON, XML, and other Internet standards.
 
-**Official Media Type:** `application/vnd.faf+yaml`
-**IANA Status:** Registered alongside PDF, JSON, XML, and other Internet standards
-**Registration Date:** October 31, 2025
+**Foundational Context Layer** — `application/vnd.faf+yaml` (registered **October 31, 2025**)
+**Voice Memory Layer (VML)** — `application/vnd.fafm+yaml` (registered **May 13, 2026**)
+
+> *Two formats. Two lifecycles. One ecosystem.* — verbatim from the IANA registration record.
 
 ### Quintuple Validation
 - ✅ **IANA** - Internet Assigned Numbers Authority (Official Internet Standard)
@@ -45,16 +38,17 @@ Universal, shareable AI-Context for any AI, human or team, regardless of size, l
 - ✅ **xAI** - Grok 4.2 recommends native FAF adoption (Feb 2026)
 - ✅ **Community** - 50,000+ downloads across the ecosystem, production-tested
 
-### IANA Media Type
+### IANA Media Types
 
-| Field | Value |
-|-------|-------|
-| **Media Type** | `application/vnd.faf+yaml` |
-| **Registration** | [IANA Assignment](https://www.iana.org/assignments/media-types/application/vnd.faf+yaml) |
-| **File Extensions** | `.faf` |
-| **Standard Filename** | `project.faf` |
-| **Encoding** | UTF-8 |
-| **Base Format** | YAML 1.2 |
+| Field | `.faf` (Foundational Context Layer) | `.fafm` (Voice Memory Layer) |
+|-------|-------------------------------------|------------------------------|
+| **Media Type** | `application/vnd.faf+yaml` | `application/vnd.fafm+yaml` |
+| **Registration** | [IANA Assignment](https://www.iana.org/assignments/media-types/application/vnd.faf+yaml) | [IANA Assignment](https://www.iana.org/assignments/media-types/application/vnd.fafm+yaml) |
+| **File Extension** | `.faf` | `.fafm` |
+| **Standard Filename** | `project.faf` | `project.fafm` |
+| **Encoding** | UTF-8 | UTF-8 |
+| **Base Format** | YAML 1.2 | YAML 1.2 |
+| **Registered** | October 31, 2025 | May 13, 2026 |
 
 Same recognition as `application/pdf`, `application/json`, `application/xml`.
 
@@ -351,8 +345,9 @@ npm install -g claude-faf-mcp
 
 ## Status
 
-🏆 **IANA-Registered Internet Standard** - Specification v1.1.0 (October 2025)
-- ✅ **IANA Registration** - `application/vnd.faf+yaml` (October 31, 2025)
+🏆 **IANA-Registered Internet Standards** — Two registered media types in the FAF family
+- ✅ **IANA Registration** — `application/vnd.faf+yaml` (October 31, 2025)
+- ✅ **IANA Registration** — `application/vnd.fafm+yaml` (May 13, 2026)
 - ✅ **Anthropic Official** - MCP Registry PR #2759 merged (October 17, 2025)
 - ✅ **Google Chrome Verified** - Web Store approved 2x (Sep 11 & Oct 29, 2025)
 - ✅ Format specification complete
@@ -371,7 +366,8 @@ npm install -g claude-faf-mcp
 - **Feb 2, 2026** - FAFb binary format v1.0 (Rust + Zig compilers shipping)
 - **Jan 2026** - gemini-faf-mcp v1.0.2 on PyPI (Google MCP bridge)
 - **Nov 2025** - IETF standardization in progress (`vnd` prefix removal)
-- **Oct 31, 2025** - 🏆 **IANA Registration** (`application/vnd.faf+yaml`)
+- **May 13, 2026** - 🏆 **IANA Registration #2** (`application/vnd.fafm+yaml` — Voice Memory Layer)
+- **Oct 31, 2025** - 🏆 **IANA Registration #1** (`application/vnd.faf+yaml` — Foundational Context Layer)
 - **Oct 29, 2025** - Google Chrome Web Store approval (2nd)
 - **Oct 17, 2025** - Official Anthropic MCP Registry merger (PR #2759)
 - **Oct 12, 2025** - Specification v1.1.0 published
