@@ -1,25 +1,46 @@
-version: 1.1
-score: 100
-type: "specification"
-content:
-  name: "faf"
-  tagline: "Project DNA for any AI"
-  description: "Foundational AI-context Format. Universal, shareable AI-Context for any AI, human or team, regardless of size, location, languages, stack, setup or documentation."
-  version: "1.1.0"
-  license: "MIT"
-  repository: "https://github.com/Wolfe-Jam/faf"
-  status: "IANA-Registered Internet Standard - 27,000+ downloads"
-  features:
-    - "Context-Mirroring: AI remembers and syncs with .faf across sessions"
-    - "Bi-sync: Two-way updates between AI and .faf"
-    - "Persistent context: Pick up where you left off"
-metadata:
-  source: ".faf specification"
-  type: "self-describing"
-tags:
-  - "ai-format"
-  - "universal-standard"
-  - "open-source"
-skills:
-  - faf
-  - skill-creator
+faf_version: 2.5.0
+project:
+  name: "@faf/specification"
+  goal: .faf (Foundational AI-context Format) - Official format specification
+  main_language: JavaScript
+  type: documentation  # found: package name "@faf/specification" → documentation
+stack:
+  frontend: slotignored
+  css_framework: slotignored
+  ui_library: slotignored
+  state_management: slotignored
+  backend: slotignored
+  api_type: slotignored
+  runtime: slotignored
+  database: slotignored
+  connection: slotignored
+  hosting: slotignored
+  build: slotignored
+  cicd: slotignored
+  monorepo_tool: slotignored
+  package_manager: slotignored
+  workspaces: slotignored
+  admin: slotignored
+  cache: slotignored
+  search: slotignored
+  storage: slotignored
+human_context:
+  who: AI agents, developers, and tool implementers who read or write project.faf — anyone building an implementation that conforms to the format
+  what: .faf (Foundational AI-context Format) - Official format specification
+  why: A portable AI-context standard needs one canonical, IANA-registered specification — the authoritative source for application/vnd.faf+yaml that every implementation conforms to
+  where: https://github.com/Wolfe-Jam/faf
+  when: IANA-registered (application/vnd.faf+yaml, October 31 2025) — Specification v1.1.0
+  how: Read SPECIFICATION.md and the JSON schemas; reference example.faf and examples/; implementations generate and consume project.faf files conforming to this spec
+monorepo:
+  packages_count: slotignored
+  build_orchestrator: slotignored
+  versioning_strategy: slotignored
+  shared_configs: slotignored
+  remote_cache: slotignored
+tech_stack:
+  - JavaScript
+key_files:
+  - package.json
+  - README.md
+  - SPECIFICATION.md
+  - BINARY-FORMAT.md

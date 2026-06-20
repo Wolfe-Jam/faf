@@ -1,3 +1,31 @@
+<!-- faf:start -->
+<!-- faf: @faf/specification | JavaScript | documentation | .faf (Foundational AI-context Format) - Official format specification -->
+<!-- faf: claim=project.faf | family=FAF -->
+
+# CLAUDE.md — @faf/specification
+
+## What This Is
+
+.faf (Foundational AI-context Format) - Official format specification
+
+## Stack
+
+- **Language:** JavaScript
+
+## Context
+
+- **Who:** AI agents, developers, and tool implementers who read or write project.faf — anyone building an implementation that conforms to the format
+- **What:** .faf (Foundational AI-context Format) - Official format specification
+- **Why:** A portable AI-context standard needs one canonical, IANA-registered specification — the authoritative source for application/vnd.faf+yaml that every implementation conforms to
+- **Where:** https://github.com/Wolfe-Jam/faf
+- **When:** IANA-registered (application/vnd.faf+yaml, October 31 2025) — Specification v1.1.0
+- **How:** Read SPECIFICATION.md and the JSON schemas; reference example.faf and examples/; implementations generate and consume project.faf files conforming to this spec
+
+---
+
+*STATUS: BI-SYNC ACTIVE — 2026-06-20T01:17:45.287Z*
+<!-- faf:end -->
+
 # 🏎️ CLAUDE.md - @faf/specification
 **Official FAF Format Specification**
 
