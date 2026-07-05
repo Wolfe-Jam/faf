@@ -23,6 +23,10 @@
           "type": "string",
           "description": "Agent name; unique within the issuing vendor namespace."
         },
+        "displayName": {
+          "type": "string",
+          "description": "Human-readable display name, distinct from the machine `name`/id. Used by projections such as the A2A AgentCard (which requires a human name)."
+        },
         "id": {
           "type": "string",
           "description": "Globally unique identifier — DID, URI, or vendor-scoped UUID.",
