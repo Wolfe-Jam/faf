@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://faf.one/schemas/faf.schema.json",
+  "title": "FAF Context (.faf)",
+  "description": "The .faf (Foundational AI-context Format): a portable, scored, YAML project-context file for AI. IANA media type application/vnd.faf+yaml (registered 2025-10-31). Structure follows the faf-cli Mk4 slot model (project meta + 6-W human context + technology stack + monorepo/enterprise). Forward-compatible: unknown keys are permitted at every level. A stack/monorepo slot value is either a detected string or the sentinel \"slotignored\" (not applicable for the project's app type). Legacy on-wire keys and their Mk4 canonical aliases are both accepted.",
+  "type": "object",
+  "required": ["faf_version", "project"],
+  "additionalProperties": true,
+  "properties": {
+    "faf_version": {
+      "type": "string",
+      "description": "Format/generator version, e.g. \"2.5.0\".",
+      "examples": ["2.5.0"]
+    },
+    "project": {
+      "type": "object",
+      "description": "Project meta (slots 1-3 + app type).",
+      "required": ["name"],
+      "additionalProperties": true,
+      "properties": {
+        "name": { "type": "string", "description": "Project name." },
+        "goal": { "type": "string", "description": "Goal / primary use case." },
+        "main_language": { "type": "string", "description": "Primary language." },
+        "type": {
+          "type": "string",
+          "description": "App type from the FAF type ladder (e.g. documentation, cli, library, sdk, wasm, html, server-card, frontend, website, mobile, extension, mcp, backend, data-science, fullstack, svelte, framework, monorepo-root, mcpaas, saas, enterprise, about, intent, encyclopedia). Kept as an open string because the ladder evolves."
+        }
+      }
+    },
+    "human_context": {
+      "type": "object",
+      "description": "The 6 Ws — the human context behind the project (slots 4-9).",
+      "additionalProperties": true,
+      "properties": {
+        "who": { "type": "string", "description": "Who is this for?" },
+        "what": { "type": "string", "description": "What are they building?" },
+        "why": { "type": "string", "description": "Why does it exist?" },
+        "where": { "type": "string", "description": "Where does it run?" },
+        "when": { "type": "string", "description": "When was it started / timeline." },
+        "how": { "type": "string", "description": "How is it built?" }
+      }
+    },
+    "stack": {
+      "type": "object",
+      "description": "Technology slots (10-24, 27-30). Each value is a detected string or the sentinel \"slotignored\". Both legacy keys and Mk4 canonical aliases are accepted.",
+      "additionalProperties": true,
+      "properties": {
+        "frontend": { "type": "string", "description": "Framework (React, Svelte, ...). Canonical alias: framework." },
+        "framework": { "type": "string", "description": "Mk4 canonical alias of frontend." },
+        "css_framework": { "type": "string", "description": "CSS framework. Canonical alias: css." },
+        "css": { "type": "string", "description": "Mk4 canonical alias of css_framework." },
+        "ui_library": { "type": "string", "description": "UI component library." },
+        "state_management": { "type": "string", "description": "State management. Canonical alias: state." },
+        "state": { "type": "string", "description": "Mk4 canonical alias of state_management." },
+        "backend": { "type": "string", "description": "Backend framework." },
+        "api_type": { "type": "string", "description": "API style (REST, GraphQL, ...). Canonical alias: api." },
+        "api": { "type": "string", "description": "Mk4 canonical alias of api_type." },
+        "runtime": { "type": "string", "description": "Runtime (Node, Bun, Python, ...)." },
+        "database": { "type": "string", "description": "Database. Canonical alias: db." },
+        "db": { "type": "string", "description": "Mk4 canonical alias of database." },
+        "connection": { "type": "string", "description": "Connection method (Prisma, ...)." },
+        "hosting": { "type": "string", "description": "Hosting platform." },
+        "build": { "type": "string", "description": "Build tool." },
+        "cicd": { "type": "string", "description": "CI/CD." },
+        "monorepo_tool": { "type": "string", "description": "Monorepo tool." },
+        "package_manager": { "type": "string", "description": "Package manager. Canonical alias: pkg_manager." },
+        "pkg_manager": { "type": "string", "description": "Mk4 canonical alias of package_manager." },
+        "workspaces": { "type": "string", "description": "Workspace configuration." },
+        "admin": { "type": "string", "description": "Admin panel." },
+        "cache": { "type": "string", "description": "Caching layer." },
+        "search": { "type": "string", "description": "Search engine." },
+        "storage": { "type": "string", "description": "Object storage." }
+      }
+    },
+    "monorepo": {
+      "type": "object",
+      "description": "Enterprise infra/ops slots (25-26, 31-33).",
+      "additionalProperties": true,
+      "properties": {
+        "packages_count": { "type": ["integer", "string"], "description": "Number of packages, or \"slotignored\"." },
+        "build_orchestrator": { "type": "string", "description": "Build orchestration tool." },
+        "versioning_strategy": { "type": "string", "description": "Version strategy." },
+        "shared_configs": { "type": "string", "description": "Shared configs." },
+        "remote_cache": { "type": "string", "description": "Remote build cache." }
+      }
+    },
+    "tech_stack": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Flat list of detected technologies."
+    },
+    "key_files": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Key files an AI should read first."
+    },
+    "about": {
+      "type": "object",
+      "description": "For app_type \"about\" (private-source / public-about). Score is inherited, not calculated.",
+      "additionalProperties": true,
+      "properties": {
+        "represents": { "type": "string", "description": "Wolfe-Jam/<source> repo this About repo fronts." },
+        "source_score": { "type": "number", "description": "Inherited score of the represented source." }
+      }
+    }
+  }
+}
