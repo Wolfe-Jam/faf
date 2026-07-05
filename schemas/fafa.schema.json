@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://faf.one/schemas/fafa.schema.json",
+  "title": "FAF Agent (.fafa)",
+  "description": "Schema for application/vnd.fafa+yaml v1.0 — the FAF Agent Card format: a declarative, vendor-neutral YAML declaration of an agent's identity, the capabilities it exposes, and the endpoints through which it is reached. Declarative, never executable. Unknown fields are forward-compatible extensions and MUST be ignored by consumers (additionalProperties: true throughout). Open vocabularies (capability type, endpoint protocol/transport) are validated as strings, not closed enums. Canonical specification: https://github.com/Wolfe-Jam/faf/blob/main/AGENT-FORMAT.md",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["version", "agent", "capabilities", "endpoints"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$",
+      "description": "Version of THIS specification the document conforms to (e.g. \"1.0\"). Distinct from the agent's own version (agent.version).",
+      "examples": ["1.0"]
+    },
+    "agent": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["name", "id"],
+      "description": "Agent identity.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Agent name; unique within the issuing vendor namespace."
+        },
+        "id": {
+          "type": "string",
+          "description": "Globally unique identifier — DID, URI, or vendor-scoped UUID.",
+          "examples": ["did:web:faf.one:agent"]
+        },
+        "vendor": { "type": "string" },
+        "version": {
+          "type": "string",
+          "description": "Semantic version of the AGENT, NOT of this specification.",
+          "examples": ["1.0.0"]
+        },
+        "description": { "type": "string" },
+        "homepage": { "type": "string", "format": "uri" },
+        "license": {
+          "type": "string",
+          "description": "SPDX license identifier."
+        }
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "description": "What the agent can do. MAY be empty. Declaration is not authorization (a consumer MUST NOT auto-execute a capability purely because it is declared).",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["name", "type"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Capability name; unique within the document."
+          },
+          "type": {
+            "type": "string",
+            "description": "Capability kind. Defined values: tool, resource, prompt, event. Other values are permitted (open vocabulary).",
+            "examples": ["tool", "resource", "prompt", "event"]
+          },
+          "description": { "type": "string" },
+          "input_schema": {
+            "type": "object",
+            "description": "Optional schema describing capability input."
+          },
+          "output_schema": {
+            "type": "object",
+            "description": "Optional schema describing capability output."
+          },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "apophatic": {
+            "type": "boolean",
+            "description": "If true, the capability refuses out-of-scope invocation rather than attempting best-effort. A FAF-family convention."
+          },
+          "cites_spec": {
+            "type": "string",
+            "description": "The format/spec the capability operates against, e.g. application/vnd.faf+yaml. A FAF-family convention."
+          }
+        }
+      }
+    },
+    "endpoints": {
+      "type": "array",
+      "minItems": 1,
+      "description": "How to reach the agent. MUST be non-empty. Multiple endpoints MAY declare the same protocol with different transports.",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["protocol", "transport", "location"],
+        "properties": {
+          "protocol": {
+            "type": "string",
+            "description": "Defined values: mcp, a2a, grpc, http. Other values are permitted (open vocabulary).",
+            "examples": ["mcp", "a2a", "grpc", "http"]
+          },
+          "transport": {
+            "type": "string",
+            "description": "Defined values: stdio, http, websocket, quic.",
+            "examples": ["stdio", "http", "websocket", "quic"]
+          },
+          "location": {
+            "type": "string",
+            "description": "Reachable address — URI, package name, or transport-specific locator."
+          },
+          "version": { "type": "string" },
+          "auth": {
+            "description": "Optional authentication descriptor (format implementation-defined)."
+          },
+          "region": { "type": "string" },
+          "health": {
+            "description": "Optional health endpoint or indicator (format implementation-defined)."
+          }
+        }
+      }
+    },
+    "attachment": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Optional infrastructure context within which the agent operates. Requires no particular gateway protocol.",
+      "properties": {
+        "gateway": { "description": "Gateway the agent attaches to." },
+        "domain": { "description": "Operating domain." },
+        "policy": { "description": "Policy scope." },
+        "attachment_point": { "description": "Attachment point." }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Optional context substrate the agent reads from — the FAF-family integration point. An agent SHOULD declare which .faf it reads.",
+      "properties": {
+        "faf": {
+          "type": "string",
+          "description": "Reference to a .faf document — path, URL, or namepoint."
+        },
+        "fafm": {
+          "type": "string",
+          "description": "Reference to a .fafm document."
+        },
+        "spec": {
+          "type": "string",
+          "description": "Media type of the substrate, e.g. application/vnd.faf+yaml."
+        },
+        "version": { "type": "string" }
+      }
+    },
+    "signature": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Optional provenance/integrity material. Where present, consumers MUST treat endpoints as untrusted until verified against it. Verification is the consumer's responsibility.",
+      "properties": {
+        "method": { "type": "string", "description": "Signature method/algorithm." },
+        "value": { "type": "string", "description": "Signature value." }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Free-form vendor extensions."
+    }
+  }
+}
