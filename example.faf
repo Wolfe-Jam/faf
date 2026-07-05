@@ -1,51 +1,54 @@
-version: 1.0
-score: 92
-type: "package"
-confidence: 0.95
-content:
-  name: "awesome-ai-project"
-  version: "3.1.4"
-  description: "Next-generation AI context optimization engine"
-  author: "developer@example.com"
-  license: "MIT"
-  dependencies:
-    - "react@^18.2.0"
-    - "typescript@^5.0.0"
-    - "vite@^5.0.0"
-    - "@vercel/analytics@^1.1.0"
-    - "tailwindcss@^3.4.0"
-  devDependencies:
-    - "vitest@^1.0.0"
-    - "eslint@^8.50.0"
-    - "prettier@^3.0.0"
-  scripts:
-    - "dev"
-    - "build" 
-    - "preview"
-    - "test"
-    - "lint"
-    - "format"
-  keywords:
-    - "ai"
-    - "context"
-    - "optimization"
-    - "typescript"
-    - "react"
-  engines:
-    node: ">=20.0.0"
-    npm: ">=10.0.0"
-metadata:
-  source: "package.json"
-  processed: "2024-01-26T15:30:00Z"
-  engine: "faf-v1.0"
-  size: 3072
-  hash: "sha256:a4b5c6d7e8f9"
-tags:
-  - "frontend"
-  - "typescript"
-  - "production-ready"
-  - "ai-optimized"
-  - "well-documented"
-skills:
-  - faf
-  - wjttc-tester
+# example.faf — an illustrative .faf (Mk4 format).
+# Conforms to https://faf.one/schemas/faf.schema.json (application/vnd.faf+yaml).
+faf_version: 2.5.0
+project:
+  name: awesome-ai-project
+  goal: Next-generation AI context optimization engine
+  main_language: TypeScript
+  type: fullstack
+human_context:
+  who: Developers building AI-assisted tooling who need portable, scored project context
+  what: An engine that scores and optimizes AI context for coding assistants
+  why: AI assistants re-discover project context every session — this eliminates that tax
+  where: Web app on Vercel with a Node API; consumed by editors and CI
+  when: Started 2026; active development
+  how: Reads project.faf for context, scores and optimizes it, exposes results over a REST API
+stack:
+  frontend: React
+  css_framework: Tailwind CSS
+  ui_library: slotignored
+  state_management: Zustand
+  backend: Node.js
+  api_type: REST
+  runtime: Node
+  database: PostgreSQL
+  connection: Prisma
+  hosting: Vercel
+  build: Vite
+  cicd: GitHub Actions
+  monorepo_tool: slotignored
+  package_manager: pnpm
+  workspaces: slotignored
+  admin: slotignored
+  cache: slotignored
+  search: slotignored
+  storage: slotignored
+monorepo:
+  packages_count: slotignored
+  build_orchestrator: slotignored
+  versioning_strategy: slotignored
+  shared_configs: slotignored
+  remote_cache: slotignored
+tech_stack:
+  - TypeScript
+  - React
+  - Tailwind CSS
+  - Node.js
+  - Prisma
+  - PostgreSQL
+  - Vite
+key_files:
+  - package.json
+  - README.md
+  - src/index.ts
+  - project.faf
