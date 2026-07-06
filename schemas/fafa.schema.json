@@ -145,7 +145,7 @@
           "type": "string",
           "description": "Reference to a .fafm document."
         },
-        "spec": {
+        "mediaType": {
           "type": "string",
           "description": "Media type of the substrate, e.g. application/vnd.faf+yaml."
         },
