@@ -116,16 +116,35 @@ A **projection** maps the Agent Context object onto a consumer's surfaces. The r
 5. **Labels travel** — stack slots keep their display labels, so the same fact renders identically on every surface.
 6. **Provenance travels** — every projected surface can trace back to the `.faf` ref it came from.
 
-### First worked example — Grok *(co-sketched with @grok)*
+### Worked examples
 
-| Surface | Grok mapping |
-|---------|--------------|
-| **Orientation** | inject `six_ws` + `goal` + `stack` as the opening context template — every session starts with identical orientation |
-| **Actions** | expose `commands` as callable tool schemas; surface `definition_of_done` as the explicit success criteria in each tool's description |
-| **Policy** | map `always` / `ask_first` / `never` into system policy + tool preconditions |
-| **Memory** | pin `provenance` + `readiness` tier in a shared session slot, so parallel sub-agents share one base |
+The same four surfaces, two providers — provider-agnosticism *proven*, not asserted *(Grok row co-sketched with @grok)*:
 
-`grok-faf-mcp` is the live proof point. Other providers (Claude, Cursor, …) implement the same four surfaces against their own primitives. **Grok is the first worked example; the rules stay provider-agnostic.**
+| Surface | Grok — via `grok-faf-mcp` | Claude — via `claude-faf-mcp` |
+|---------|---------------------------|-------------------------------|
+| **Orientation** | inject `six_ws` + `goal` + `stack` as the opening context template | write the same block into `CLAUDE.md` + the SessionStart context |
+| **Actions** | `commands` as callable tool schemas; `definition_of_done` as each tool's success criteria | `commands` as MCP tools; `definition_of_done` as the done-check |
+| **Policy** | `always` / `ask_first` / `never` → system policy + tool preconditions | `always` / `ask_first` / `never` → `CLAUDE.md` rules + tool preconditions |
+| **Memory** | pin `provenance` + `readiness` in a shared session slot | persist `provenance` + `readiness` via the `.fafm` memory layer |
+
+Both are live proof points. Cursor, Copilot, and future agents implement the same four surfaces against their own primitives. **The mappings differ per provider; the contract does not.**
+
+### The orientation block — worked template
+
+The Orientation surface made concrete: a provider-agnostic template rendered *only* from the object. Grok injects it as the prompt's opening context; Claude writes it into `CLAUDE.md` + SessionStart; the shape is identical.
+
+```text
+# Orientation — <project>   (generated from project.faf @ <ref> · do not edit)
+<goal>
+
+Who    <who>          Where  <where>
+What   <what>         When   <when>
+Why    <why>          How    <how>
+
+Stack  <main_language> · <runtime> · <framework> · …   (labeled slots)
+```
+
+**Deterministic:** the same Agent Context object always renders this same block — no model discretion, no invention.
 
 ## 7. Prototype evidence
 
