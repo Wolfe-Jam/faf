@@ -94,21 +94,38 @@ agent_context:
 - **Readiness is observable, not required.** The `faf score` tier travels when present; basic ingestion does not depend on it.
 - **Forward-compatible.** Unknown fields are ignored, never rejected — a later field cannot break an earlier reader.
 
-## 6. Projection — first reference implementation: Grok
+## 6. Deterministic Projection Rules (v0.1)
 
-The **projection rules** map the Agent Context onto a provider's surfaces while keeping the `.faf` as the single source and preserving guardrails. The first reference implementation is **Grok**, via `grok-faf-mcp` — the live proof point.
+A **projection** maps the Agent Context object onto a consumer's surfaces. The rules are **deterministic and provider-agnostic**: the same object yields the same projection, on any provider, with the `.faf` as the single source and guardrails preserved.
 
-| Agent Context | Grok surface |
-|---------------|--------------|
-| `six_ws` + `goal` + `stack` | the orientation block of the prompt / context template |
-| `commands` + `definition_of_done` | tool schemas — callable actions plus the finish line |
-| `guardrails` (always / ask-first / never) | prompt policy + tool preconditions |
-| `readiness` | a live `faf_score` / `faf_validate` tool |
-| `provenance` | a pinned session memory slot, so parallel sub-agents share one base |
+**The four surfaces** — every consumer has some form of each:
 
-Other providers (Claude, Cursor, …) implement the **same contract** against their own surfaces. **Grok is first; the contract stays neutral.**
+| Surface | What it is | Projected from |
+|---------|------------|----------------|
+| **Orientation** | the opening context an agent reads before acting | `six_ws` + `goal` + `stack` |
+| **Actions** | the callable operations and their success criteria | `commands` + `definition_of_done` |
+| **Policy** | what is free, gated, or forbidden | `guardrails` (always / ask_first / never) |
+| **Memory** | the base every session and sub-agent shares | `provenance` + `readiness` |
 
-*The general (provider-agnostic) projection rules are the next piece to co-sketch — Grok surfaces here are the first worked example.*
+**The rules:**
+
+1. **Deterministic** — the same Agent Context object projects to the same surfaces every time. No model discretion in the mapping.
+2. **Single source** — a projection reads from the object (which reads from the `.faf`); it never adds a fact the `.faf` does not carry.
+3. **Guardrails enforced, not narrated** — `always` / `ask_first` / `never` map to enforceable controls (prompt policy *and* tool preconditions), never to prose an agent can wave past.
+4. **Non-destructive** — where a surface is a file, hand-written content survives; the projection maintains only its own block.
+5. **Labels travel** — stack slots keep their display labels, so the same fact renders identically on every surface.
+6. **Provenance travels** — every projected surface can trace back to the `.faf` ref it came from.
+
+### First worked example — Grok *(co-sketched with @grok)*
+
+| Surface | Grok mapping |
+|---------|--------------|
+| **Orientation** | inject `six_ws` + `goal` + `stack` as the opening context template — every session starts with identical orientation |
+| **Actions** | expose `commands` as callable tool schemas; surface `definition_of_done` as the explicit success criteria in each tool's description |
+| **Policy** | map `always` / `ask_first` / `never` into system policy + tool preconditions |
+| **Memory** | pin `provenance` + `readiness` tier in a shared session slot, so parallel sub-agents share one base |
+
+`grok-faf-mcp` is the live proof point. Other providers (Claude, Cursor, …) implement the same four surfaces against their own primitives. **Grok is the first worked example; the rules stay provider-agnostic.**
 
 ## 7. Prototype evidence
 
