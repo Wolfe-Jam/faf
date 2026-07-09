@@ -8,6 +8,12 @@
 
 ---
 
+**What this is** — the *read*: a `.faf`, ingested into one canonical Agent Context object. Provider-agnostic.
+
+**What this isn't** — the format, the scoring engine, or a transport. It composes with MCP and AGENTS.md; competes with none.
+
+---
+
 ## 1. Purpose
 
 The minimal, provider-agnostic **contract** for *ingesting* a `.faf`: reading it into a canonical **Agent Context** object, so any agent — Grok, Claude, Cursor, the next one — orients instantly (stack, commands, guardrails, provenance) with no re-explaining.
