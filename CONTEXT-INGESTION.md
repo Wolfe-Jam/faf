@@ -39,7 +39,7 @@ A consumer reads a `.faf` into this shape — minimal, portable YAML. Field name
 # The canonical Agent Context object — the stable view a consumer reads a .faf into.
 # The .faf remains the single source of truth; this is never a second source.
 agent_context:
-  spec: "faf-context-ingestion/0.1"
+  spec: "faf-context-ingestion/0.2"
   source:
     media_type: "application/vnd.faf+yaml"   # IANA-registered — the neutral anchor
     faf_ref: "git:owner/repo@<commit>"       # a .faf/.fafb path, a git ref, or a URL
