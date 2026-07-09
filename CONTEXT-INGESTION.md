@@ -146,9 +146,9 @@ Stack  <main_language> · <runtime> · <framework> · …   (labeled slots)
 
 **Deterministic:** the same Agent Context object always renders this same block — no model discretion, no invention.
 
-## 7. Projection to persisted surfaces — the files
+## 7. Projection to persisted surfaces — the sticky ones
 
-Projection is one mechanism. §6 covered the **live** surfaces (prompt, tools, memory) an agent reads at runtime. This section covers the **persisted** surfaces — the instruction files written into the repo. A file is simply a projection that *sticks*: same object, same rules, on disk instead of in the session.
+Projection is one mechanism, in two modes. §6 covered the **live projections** — the surfaces an agent reads at runtime (prompt, tools, memory). This section covers the **sticky projections** — the *persisted* surfaces: the instruction files written into the repo. A file is a projection that *sticks*: same object, same rules, committed to disk instead of held in the session. **Live vs sticky** — both faithful casts of the one source.
 
 > **Define once, project everywhere.** One `project.faf`; every surface — live or on disk — is a faithful projection of it.
 
@@ -173,6 +173,21 @@ Each is the *same* context, projected into the shape its consumer expects — ne
 5. **Current by re-projection** — change the source, re-project, the file follows. No hand-edit, no drift.
 
 **Reference generator:** `faf export --agents` / `export --all` — shipped. The human field guide to a good `AGENTS.md` lives at [faf.one/agents](https://faf.one/agents). The projection *rules* are open and provider-neutral; a generator's own detection and scoring stay its own concern — and its own moat.
+
+### Worked example — `project.faf` → `AGENTS.md`
+
+The file layer made concrete — which object field becomes which section:
+
+| Object field | `AGENTS.md` section |
+|--------------|---------------------|
+| `six_ws` + `goal` | the orientation line + overview |
+| `commands` | `## Setup & build` · `## Run the tests` |
+| `definition_of_done` | `## Definition of Done` |
+| `guardrails` | `## Guardrails` (Always / Ask-first / Never) |
+| `stack` | the labeled stack line |
+| `provenance` | the `<!-- faf -->` marker + a "regenerate" note |
+
+The full rendered file (~35 lines, every line sourced) is live at [faf.one/agents](https://faf.one/agents). The same object also emits `CLAUDE.md`, `.cursorrules`, `GEMINI.md`, and `copilot-instructions.md` — each the same facts in its consumer's shape.
 
 ## 8. Prototype evidence
 
