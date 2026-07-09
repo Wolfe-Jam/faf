@@ -1,42 +1,39 @@
 # `.faf` Context Ingestion — Contract Specification
 
-**Version:** 0.1 locked (2026-07-08) · 0.2 in draft — persisted-surface projection (§7)
-**Status:** Co-sketched in the open with @grok
-**Applies to:** `application/vnd.faf+yaml` (IANA-registered) and its compiled form `.fafb`
+**Version:** 0.2 — sealed with @grok (2026-07-09)
+**Status:** Open standard, co-sketched in public
+**Media type:** `application/vnd.faf+yaml` (IANA-registered) · compiled form `.fafb`
 **Companion specs:** `.faf` → SPECIFICATION.md · `.fafa` → AGENT-FORMAT.md · `.fafm` → MEMORY-FORMAT.md
-**Last Updated:** 2026-07-08
 **Origin:** Proposed by @grok (X, 2026-07-08); co-sketched openly.
 
 ---
 
 ## 1. Purpose
 
-Define the minimal, provider-agnostic **contract** for *ingesting* a `.faf` — reading it into a canonical **Agent Context** object — so any agent (Grok, Claude, Cursor, or a future runtime) gets instant, reliable orientation (stack, commands, guardrails, provenance) with **no re-explaining, ever**.
+The minimal, provider-agnostic **contract** for *ingesting* a `.faf`: reading it into a canonical **Agent Context** object, so any agent — Grok, Claude, Cursor, the next one — orients instantly (stack, commands, guardrails, provenance) with no re-explaining.
 
-This is the *ingestion* side only: how a consumer reads a `.faf` to bootstrap context. *Emission* — rendering a perfect AGENTS.md / CLAUDE.md from the object — is a separate, later piece.
-
-The `.faf` remains the **single source of truth**. The Agent Context object is the stable **view** a consumer reads it into — never a second source.
+The `.faf` stays the single source of truth. The object is the **view** a consumer reads it into — never a second source.
 
 ## 2. Why this exists
 
-Agent tooling keeps re-solving one problem — "how does an agent learn a repo?" — and every MCP server, AGENTS.md generator, and runtime invents its own read. The object model gets respecified repeatedly; the canonical, provider-neutral *contract* is left unowned.
+Every MCP server, AGENTS.md generator, and runtime re-invents the same read: *how does an agent learn a repo?* The object model gets respecified endlessly; the neutral **contract** stays unowned.
 
-`.faf` already owns the **format** (IANA-registered). This contract owns the **read**: one shape every consumer can rely on. Provider-agnostic by design — it composes with MCP, AGENTS.md workflows, and agent runtimes, and competes with none.
+`.faf` owns the format (IANA). This owns the **read** — one shape every consumer trusts. Provider-agnostic; composes with MCP and AGENTS.md workflows, competes with none.
 
 ## 3. Core concepts
 
 | Term | Definition |
 |------|------------|
-| **Source** | A `.faf` (or compiled `.fafb`) — a local file, a git ref (`faf git owner/repo`), or a URL. The single source of truth. |
-| **Agent Context** | The canonical object a consumer reads the source into. Stable, minimal, provider-agnostic. |
-| **Consumer** | Anything that ingests: an MCP server, an AGENTS.md generator, an agent runtime. |
-| **Projection** | The mapping of an Agent Context onto a provider's surfaces (prompt, tool schema, memory). See §6. |
-| **Provenance** | Where the context came from — a git ref plus the media type. Required. |
-| **Readiness** | The observable `faf score` tier. Optional for basic ingestion. |
+| **Source** | A `.faf` / `.fafb` — file, git ref (`faf git owner/repo`), or URL. The single source of truth. |
+| **Agent Context** | The canonical object a consumer reads the source into. Minimal, stable, provider-agnostic. |
+| **Consumer** | Anything that ingests: MCP server, AGENTS.md generator, agent runtime. |
+| **Projection** | An Agent Context mapped onto a surface — live (§6) or sticky (§7). |
+| **Provenance** | Where it came from — git ref + media type. Required. |
+| **Readiness** | The `faf score` tier. Observable; optional. |
 
 ## 4. The Agent Context object
 
-A consumer reads a `.faf` into this shape. It is a minimal, portable YAML projection — field names are the contract's own; each maps to the FAF engine underneath.
+A consumer reads a `.faf` into this shape — minimal, portable YAML. Field names are the contract's; each maps to the FAF engine beneath.
 
 ```yaml
 # The canonical Agent Context object — the stable view a consumer reads a .faf into.
@@ -84,21 +81,21 @@ agent_context:
     tier: "trophy"
 ```
 
-## 5. Rules (v0.1)
+## 5. Rules
 
-- **Single source of truth.** Everything derives from the `.faf`. A consumer surfaces detected facts — it never invents.
+- **Single source.** Everything derives from the `.faf`. Surface facts; never invent.
 - **Provenance required.** Every object carries its source (git ref + media type).
-- **Consistent labels.** Stack slots carry their display labels, so every surface renders the same way.
-- **Provider-agnostic.** The same object serves Grok, Claude, Cursor, and future agents unchanged.
-- **Non-destructive downstream.** Emitted files (AGENTS.md, CLAUDE.md, …) preserve hand-written content.
-- **Readiness is observable, not required.** The `faf score` tier travels when present; basic ingestion does not depend on it.
-- **Forward-compatible.** Unknown fields are ignored, never rejected — a later field cannot break an earlier reader.
+- **Consistent labels.** Slots carry display labels; every surface renders alike.
+- **Provider-agnostic.** One object serves Grok, Claude, Cursor, the next — unchanged.
+- **Non-destructive.** Emitted files preserve hand-written content.
+- **Readiness observable, not required.** The score tier travels when present; ingestion doesn't need it.
+- **Forward-compatible.** Unknown fields ignored, never rejected.
 
-## 6. Deterministic Projection Rules (v0.1)
+## 6. Projection — live surfaces
 
-A **projection** maps the Agent Context object onto a consumer's surfaces. The rules are **deterministic and provider-agnostic**: the same object yields the same projection, on any provider, with the `.faf` as the single source and guardrails preserved.
+A **projection** maps the object onto a consumer's surfaces — **deterministic and provider-agnostic**: same object, same projection, `.faf` the single source, guardrails preserved.
 
-**The four surfaces** — every consumer has some form of each:
+**Four surfaces** — every consumer has each:
 
 | Surface | What it is | Projected from |
 |---------|------------|----------------|
@@ -107,18 +104,18 @@ A **projection** maps the Agent Context object onto a consumer's surfaces. The r
 | **Policy** | what is free, gated, or forbidden | `guardrails` (always / ask_first / never) |
 | **Memory** | the base every session and sub-agent shares | `provenance` + `readiness` |
 
-**The rules:**
+**Rules:**
 
-1. **Deterministic** — the same Agent Context object projects to the same surfaces every time. No model discretion in the mapping.
-2. **Single source** — a projection reads from the object (which reads from the `.faf`); it never adds a fact the `.faf` does not carry.
-3. **Guardrails enforced, not narrated** — `always` / `ask_first` / `never` map to enforceable controls (prompt policy *and* tool preconditions), never to prose an agent can wave past.
-4. **Non-destructive** — where a surface is a file, hand-written content survives; the projection maintains only its own block.
-5. **Labels travel** — stack slots keep their display labels, so the same fact renders identically on every surface.
-6. **Provenance travels** — every projected surface can trace back to the `.faf` ref it came from.
+1. **Deterministic** — same object, same surfaces, every time. No model discretion.
+2. **Single source** — reads the object only; adds no fact the `.faf` lacks.
+3. **Guardrails enforced, not narrated** — always/ask_first/never become enforceable controls (prompt policy + tool preconditions), not prose an agent waves past.
+4. **Non-destructive** — file surfaces keep hand-written content; the projection owns one block.
+5. **Labels travel** — slots keep their labels; the fact renders alike everywhere.
+6. **Provenance travels** — every surface traces to its `.faf` ref.
 
 ### Worked examples
 
-The same four surfaces, two providers — provider-agnosticism *proven*, not asserted *(Grok row co-sketched with @grok)*:
+Same four surfaces, two providers — provider-agnosticism proven, not asserted *(Grok row co-sketched with @grok)*:
 
 | Surface | Grok — via `grok-faf-mcp` | Claude — via `claude-faf-mcp` |
 |---------|---------------------------|-------------------------------|
@@ -127,11 +124,11 @@ The same four surfaces, two providers — provider-agnosticism *proven*, not ass
 | **Policy** | `always` / `ask_first` / `never` → system policy + tool preconditions | `always` / `ask_first` / `never` → `CLAUDE.md` rules + tool preconditions |
 | **Memory** | pin `provenance` + `readiness` in a shared session slot | persist `provenance` + `readiness` via the `.fafm` memory layer |
 
-Both are live proof points. Cursor, Copilot, and future agents implement the same four surfaces against their own primitives. **The mappings differ per provider; the contract does not.**
+Both are live proof points. Cursor, Copilot, and the rest map the same four surfaces to their own primitives. **The mappings differ; the contract does not.**
 
 ### The orientation block — worked template
 
-The Orientation surface made concrete: a provider-agnostic template rendered *only* from the object. Grok injects it as the prompt's opening context; Claude writes it into `CLAUDE.md` + SessionStart; the shape is identical.
+The Orientation surface, concrete — a template rendered *only* from the object. Grok injects it as the prompt's opening; Claude writes it to `CLAUDE.md` + SessionStart. Same shape.
 
 ```text
 # Orientation — <project>   (generated from project.faf @ <ref> · do not edit)
@@ -144,11 +141,11 @@ Why    <why>          How    <how>
 Stack  <main_language> · <runtime> · <framework> · …   (labeled slots)
 ```
 
-**Deterministic:** the same Agent Context object always renders this same block — no model discretion, no invention.
+**Deterministic:** same object, same block — no discretion, no invention.
 
-## 7. Projection to persisted surfaces — the sticky ones
+## 7. Projection — sticky surfaces (files)
 
-Projection is one mechanism, in two modes. §6 covered the **live projections** — the surfaces an agent reads at runtime (prompt, tools, memory). This section covers the **sticky projections** — the *persisted* surfaces: the instruction files written into the repo. A file is a projection that *sticks*: same object, same rules, committed to disk instead of held in the session. **Live vs sticky** — both faithful casts of the one source.
+Projection, one mechanism, two modes. §6 is the **live projections** — surfaces read at runtime (prompt, tools, memory). This is the **sticky projections** — persisted surfaces: the instruction files on disk. A file is a projection that *sticks*: same object, same rules, committed instead of held. **Live vs sticky** — both faithful casts of one source.
 
 > **Define once, project everywhere.** One `project.faf`; every surface — live or on disk — is a faithful projection of it.
 
@@ -162,22 +159,22 @@ Projection is one mechanism, in two modes. §6 covered the **live projections** 
 | `GEMINI.md` | Gemini |
 | `.github/copilot-instructions.md` | GitHub Copilot |
 
-Each is the *same* context, projected into the shape its consumer expects — never re-authored, never drifting apart.
+Each is the *same* context in the shape its consumer expects — never re-authored, never drifting.
 
 **A conformant file projection is:**
 
-1. **Deterministic** — the same object renders the same file every time.
-2. **Sourced, not invented** — every line traces to a field in the object. A projection reflects its source; it has nothing to hallucinate *from*.
-3. **Auditable** — because every line traces to a field, a reviewer (or a linter) can check the whole file against the object, line by line. The projection shows its work. Deterministic + sourced makes it *provable*, not merely claimed.
-4. **Non-destructive** — the projection maintains one marked block; hand-written content around it survives untouched.
-5. **Labeled + provenance-marked** — slots carry their display labels; a quiet marker records the source and how to refresh.
+1. **Deterministic** — same object, same file, every time.
+2. **Sourced, not invented** — every line traces to a field; nothing to hallucinate from.
+3. **Auditable** — every line traces to a field, so a reviewer or linter checks the file against the object, line by line. Provable, not claimed.
+4. **Non-destructive** — one marked block; surrounding hand-written content survives.
+5. **Labeled + provenance-marked** — slots keep their labels; a quiet marker records the source and how to refresh.
 6. **Current by re-projection** — change the source, re-project, the file follows. No hand-edit, no drift.
 
-**Reference generator:** `faf export --agents` / `export --all` — shipped. The human field guide to a good `AGENTS.md` lives at [faf.one/agents](https://faf.one/agents). The projection *rules* are open and provider-neutral; a generator's own detection and scoring stay its own concern — and its own moat.
+**Reference generator:** `faf export --agents` / `export --all` — shipped. Human field guide: [faf.one/agents](https://faf.one/agents). The projection *rules* are open; a generator's detection and scoring are its own moat.
 
 ### Worked example — `project.faf` → `AGENTS.md`
 
-The file layer made concrete — which object field becomes which section:
+Which object field becomes which section:
 
 | Object field | `AGENTS.md` section |
 |--------------|---------------------|
@@ -188,25 +185,28 @@ The file layer made concrete — which object field becomes which section:
 | `stack` | the labeled stack line |
 | `provenance` | the `<!-- faf -->` marker + a "regenerate" note |
 
-The full rendered file (~35 lines, every line sourced) is live at [faf.one/agents](https://faf.one/agents). The same object also emits `CLAUDE.md`, `.cursorrules`, `GEMINI.md`, and `copilot-instructions.md` — each the same facts in its consumer's shape.
+The full rendered file (~35 lines, every line sourced) is live at [faf.one/agents](https://faf.one/agents). The same object also emits `CLAUDE.md`, `.cursorrules`, `GEMINI.md`, and `copilot-instructions.md`.
 
 ## 8. Prototype evidence
 
-This contract describes what the FAF toolchain already does:
+The contract describes what FAF already ships:
 
-- **`faf-cli`** — `export --agents`, `git owner/repo`, `score`, `diff`, `sync`: ingestion and projection already run end to end.
+- **`faf-cli`** — `export --agents`, `git owner/repo`, `score`, `diff`, `sync`: ingestion + projection, end to end.
 - **`grok-faf-mcp`** — URL-based ingestion + live context tools. The Grok proof point.
-- **Per-group guides** (Grok · Claude · Bun) — tailored consumption of the same object.
-- IANA media type · 100,000+ downloads across the FAF ecosystem · deterministic Trophy scoring.
+- **Per-group guides** (Grok · Claude · Bun) — tailored consumption of one object.
+- IANA media type · 100,000+ downloads · deterministic Trophy scoring.
 
 ## 9. Out of scope
 
-- **Scoring rules and weights** — implemented in faf-cli; not part of the ingestion contract.
+- **Scoring rules and weights** — in faf-cli; not the ingestion contract.
 - **`.fafb` binary internals** — see BINARY-FORMAT.md.
 - **Discovery, hosting, auth, registry** — out of band.
 
-## 10. Status & collaboration
+## 10. Status
 
-**v0.1 is locked** — the object (§4) + live projection (§6), sealed with @grok on X, 2026-07-08. **§7 — persisted-surface projection (the files) — is the next layer,** drafted here for review. Provider mappings and feedback welcome via issues and discussions. `.faf` is MIT-licensed and IANA-registered; this contract is open under the same terms.
+- **v0.1 sealed** (2026-07-08) — the object (§4) + live projection (§6), with @grok on X.
+- **v0.2 sealed** (2026-07-09) — sticky projection, the file layer (§7).
+
+Open under `.faf`'s MIT + IANA terms. Provider mappings and feedback via issues and discussions.
 
 *Ingest once. Orient any agent. Re-explain never.*
