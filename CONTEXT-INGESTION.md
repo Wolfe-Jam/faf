@@ -167,10 +167,11 @@ Each is the *same* context, projected into the shape its consumer expects — ne
 **A conformant file projection is:**
 
 1. **Deterministic** — the same object renders the same file every time.
-2. **Sourced, not invented** — every line traces to a field in the object. A projection reflects its source; it has nothing to hallucinate *from*. (This is the structural answer to the auto-generated-slop finding — a projection cannot pad.)
-3. **Non-destructive** — the projection maintains one marked block; hand-written content around it survives untouched.
-4. **Labeled + provenance-marked** — slots carry their display labels; a quiet marker records the source and how to refresh.
-5. **Current by re-projection** — change the source, re-project, the file follows. No hand-edit, no drift.
+2. **Sourced, not invented** — every line traces to a field in the object. A projection reflects its source; it has nothing to hallucinate *from*.
+3. **Auditable** — because every line traces to a field, a reviewer (or a linter) can check the whole file against the object, line by line. The projection shows its work. Deterministic + sourced makes it *provable*, not merely claimed.
+4. **Non-destructive** — the projection maintains one marked block; hand-written content around it survives untouched.
+5. **Labeled + provenance-marked** — slots carry their display labels; a quiet marker records the source and how to refresh.
+6. **Current by re-projection** — change the source, re-project, the file follows. No hand-edit, no drift.
 
 **Reference generator:** `faf export --agents` / `export --all` — shipped. The human field guide to a good `AGENTS.md` lives at [faf.one/agents](https://faf.one/agents). The projection *rules* are open and provider-neutral; a generator's own detection and scoring stay its own concern — and its own moat.
 
