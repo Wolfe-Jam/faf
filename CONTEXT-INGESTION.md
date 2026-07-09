@@ -1,7 +1,7 @@
 # `.faf` Context Ingestion — Contract Specification
 
-**Version:** 0.1 (Working Draft)
-**Status:** Draft — co-sketched in the open
+**Version:** 0.1 locked (2026-07-08) · 0.2 in draft — persisted-surface projection (§7)
+**Status:** Co-sketched in the open with @grok
 **Applies to:** `application/vnd.faf+yaml` (IANA-registered) and its compiled form `.fafb`
 **Companion specs:** `.faf` → SPECIFICATION.md · `.fafa` → AGENT-FORMAT.md · `.fafm` → MEMORY-FORMAT.md
 **Last Updated:** 2026-07-08
@@ -146,7 +146,35 @@ Stack  <main_language> · <runtime> · <framework> · …   (labeled slots)
 
 **Deterministic:** the same Agent Context object always renders this same block — no model discretion, no invention.
 
-## 7. Prototype evidence
+## 7. Projection to persisted surfaces — the files
+
+Projection is one mechanism. §6 covered the **live** surfaces (prompt, tools, memory) an agent reads at runtime. This section covers the **persisted** surfaces — the instruction files written into the repo. A file is simply a projection that *sticks*: same object, same rules, on disk instead of in the session.
+
+> **Define once, project everywhere.** One `project.faf`; every surface — live or on disk — is a faithful projection of it.
+
+**The file family — one object, every surface:**
+
+| File | Consumer |
+|------|----------|
+| `AGENTS.md` | the open standard every agent reads |
+| `CLAUDE.md` | Claude / Claude Code |
+| `.cursorrules` | Cursor |
+| `GEMINI.md` | Gemini |
+| `.github/copilot-instructions.md` | GitHub Copilot |
+
+Each is the *same* context, projected into the shape its consumer expects — never re-authored, never drifting apart.
+
+**A conformant file projection is:**
+
+1. **Deterministic** — the same object renders the same file every time.
+2. **Sourced, not invented** — every line traces to a field in the object. A projection reflects its source; it has nothing to hallucinate *from*. (This is the structural answer to the auto-generated-slop finding — a projection cannot pad.)
+3. **Non-destructive** — the projection maintains one marked block; hand-written content around it survives untouched.
+4. **Labeled + provenance-marked** — slots carry their display labels; a quiet marker records the source and how to refresh.
+5. **Current by re-projection** — change the source, re-project, the file follows. No hand-edit, no drift.
+
+**Reference generator:** `faf export --agents` / `export --all` — shipped. The human field guide to a good `AGENTS.md` lives at [faf.one/agents](https://faf.one/agents). The projection *rules* are open and provider-neutral; a generator's own detection and scoring stay its own concern — and its own moat.
+
+## 8. Prototype evidence
 
 This contract describes what the FAF toolchain already does:
 
@@ -155,15 +183,14 @@ This contract describes what the FAF toolchain already does:
 - **Per-group guides** (Grok · Claude · Bun) — tailored consumption of the same object.
 - IANA media type · 100,000+ downloads across the FAF ecosystem · deterministic Trophy scoring.
 
-## 8. Out of scope for v0.1
+## 9. Out of scope
 
-- **Emission templates** — rendering AGENTS.md / CLAUDE.md from the object (a later piece).
 - **Scoring rules and weights** — implemented in faf-cli; not part of the ingestion contract.
 - **`.fafb` binary internals** — see BINARY-FORMAT.md.
 - **Discovery, hosting, auth, registry** — out of band.
 
-## 9. Status & collaboration
+## 10. Status & collaboration
 
-v0.1 is a **working draft**, co-sketched in the open with @grok (X, 2026-07-08). Provider mappings and feedback are welcome via issues and discussions. `.faf` is MIT-licensed and IANA-registered; this contract is open under the same terms.
+**v0.1 is locked** — the object (§4) + live projection (§6), sealed with @grok on X, 2026-07-08. **§7 — persisted-surface projection (the files) — is the next layer,** drafted here for review. Provider mappings and feedback welcome via issues and discussions. `.faf` is MIT-licensed and IANA-registered; this contract is open under the same terms.
 
 *Ingest once. Orient any agent. Re-explain never.*
