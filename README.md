@@ -161,9 +161,9 @@ Instead of explaining your project every time, AI reads your .faf once and knows
 | **Scored** | 0-100% | No | No | No | No |
 | **Portable** | Any AI | OpenAI ecosystem | Cursor only | Claude only | Gemini only |
 | **Machine-readable** | Yes (schema) | No (free text) | No (free text) | No (free text) | No (free text) |
-| **Generates others** | Yes (all 4) | No | No | No | No |
+| **Authors others** | Yes (all 4) | No | No | No | No |
 
-FAF is the structured source. The others are prose outputs. `faf bi-sync --all` generates all four from one `project.faf`.
+FAF is the structured source. The others are prose outputs. `faf bi-sync --all` authors all four from one `project.faf`.
 
 ---
 
@@ -199,7 +199,7 @@ metadata:
 **Command-Line Tool** - v6.7.1
 
 - 50+ championship commands
-- AI interop: generates AGENTS.md, .cursorrules, CLAUDE.md, GEMINI.md
+- AI interop: authors AGENTS.md, .cursorrules, CLAUDE.md, GEMINI.md
 - TURBO-CAT format discovery
 - 25,000+ downloads
 
@@ -250,7 +250,7 @@ FAF compiles to multiple targets:
 
 ## AI Interop
 
-One `.faf` file generates all four AI instruction formats:
+One `.faf` file authors all four AI instruction formats:
 
 ```
 project.faf → AGENTS.md   (OpenAI Codex)
