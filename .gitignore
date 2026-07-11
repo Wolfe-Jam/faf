@@ -3,4 +3,4 @@ node_modules/
 *.log
 .env
 .vscode/
-.idea/
+.idea/.faf-dna
