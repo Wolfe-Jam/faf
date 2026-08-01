@@ -37,7 +37,7 @@ Universal, shareable AI-Context for any AI, human or team, regardless of size, l
 - ✅ **Anthropic** - Official MCP Registry (PR #2759 merged)
 - ✅ **Google** - Chrome Web Store (Approved 2x: Sep 11 & Oct 29, 2025)
 - ✅ **xAI** - Grok 4.2 recommends native FAF adoption (Feb 2026)
-- ✅ **Community** - [100,000+ downloads hard floor](https://faf.one/downloads) · live totals on faf.one
+- ✅ **Community** - Over 100k downloads; see [faf.one/downloads](https://faf.one/downloads) for latest stats
 
 ### IANA Media Types
 
@@ -126,7 +126,7 @@ README.md     # Visible (documentation) ✅
 
 Instead of explaining your project every time, AI reads your .faf once and knows exactly how to help.
 
-**Live ecosystem totals:** [faf.one/downloads](https://faf.one/downloads) (hard floor · 100,000+ · PyPI without_mirrors).
+**Over 100k downloads** — see [faf.one/downloads](https://faf.one/downloads) for latest stats.
 
 ---
 
@@ -354,7 +354,7 @@ npm install -g claude-faf-mcp
 - ✅ Format specification complete
 - ✅ Enhanced with project-level context and AI workflows
 - ✅ Production tools available (faf-cli, claude-faf-mcp)
-- ✅ [100,000+ downloads hard floor](https://faf.one/downloads) · live ecosystem meter
+- ✅ Over 100k downloads; see [faf.one/downloads](https://faf.one/downloads) for latest stats
 - ✅ WJTTC Championship-grade testing across ecosystem packages
 - ✅ Open source (MIT License)
 
