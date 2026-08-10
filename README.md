@@ -37,7 +37,7 @@ Universal, shareable AI-Context for any AI, human or team, regardless of size, l
 - ✅ **Anthropic** - Official MCP Registry (PR #2759 merged)
 - ✅ **Google** - Chrome Web Store (Approved 2x: Sep 11 & Oct 29, 2025)
 - ✅ **xAI** - Grok 4.2 recommends native FAF adoption (Feb 2026)
-- ✅ **Community** - Over 100k downloads; see [faf.one/downloads](https://faf.one/downloads) for latest stats
+- ✅ **Community** - Over 110k+ downloads; see [faf.one/downloads](https://faf.one/downloads) for latest stats
 
 ### IANA Media Types
 
@@ -126,7 +126,7 @@ README.md     # Visible (documentation) ✅
 
 Instead of explaining your project every time, AI reads your .faf once and knows exactly how to help.
 
-**Over 100k downloads** — see [faf.one/downloads](https://faf.one/downloads) for latest stats.
+**Over 110k+ downloads** — see [faf.one/downloads](https://faf.one/downloads) for latest stats.
 
 ---
 
@@ -354,12 +354,13 @@ npm install -g claude-faf-mcp
 - ✅ Format specification complete
 - ✅ Enhanced with project-level context and AI workflows
 - ✅ Production tools available (faf-cli, claude-faf-mcp)
-- ✅ Over 100k downloads; see [faf.one/downloads](https://faf.one/downloads) for latest stats
+- ✅ Over 110k+ downloads; see [faf.one/downloads](https://faf.one/downloads) for latest stats
 - ✅ WJTTC Championship-grade testing across ecosystem packages
 - ✅ Open source (MIT License)
 
 ## Major Milestones
 
+- **August 10, 2026** - FAF ecosystem crosses 110,000+ downloads across npm, PyPI, and crates.io
 - **May 19, 2026** - `grok-faf-mcp` v1.3.1 published — registry-coherent across npm + MCP Registry + GitHub Release
 - **April 2026** - FAF ecosystem crosses 50,000+ downloads across npm, PyPI, and crates.io
 - **Feb 25, 2026** - Grok 4.2 recommends native FAF adoption; integration spec sent to xAI
