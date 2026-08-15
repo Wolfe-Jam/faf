@@ -1,0 +1,41 @@
+{
+  "birthCertificate": {
+    "born": "2026-06-20T01:16:10.900Z",
+    "birthDNA": 78,
+    "birthDNASource": "init",
+    "projectDNA": "dda7f7c6ec80a1a6",
+    "certificate": "FAF-2026-FAFX-KAUO"
+  },
+  "versions": [
+    {
+      "version": "v1.0.0",
+      "timestamp": "2026-06-20T01:16:10.900Z",
+      "score": 78,
+      "changes": [
+        "Birth — initial context"
+      ],
+      "growth": 0
+    }
+  ],
+  "current": {
+    "version": "v1.0.0",
+    "score": 78,
+    "lastSync": "2026-06-20T01:16:10.900Z"
+  },
+  "growth": {
+    "totalGrowth": 0,
+    "daysActive": 0,
+    "milestones": [
+      {
+        "type": "birth",
+        "score": 78,
+        "date": "2026-06-20T01:16:10.900Z",
+        "version": "v1.0.0",
+        "label": "Birth",
+        "emoji": "🐣"
+      }
+    ]
+  },
+  "lastModified": "2026-06-20T01:16:10.935Z",
+  "format": "faf-dna-v1"
+}
