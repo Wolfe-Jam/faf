@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 type: dataset
-message: "If you use the .fafm format in your work, please cite the paper in `preferred-citation` below."
-title: ".faf and .fafm — Format Specifications"
+message: "If you use the .fafm or .fafa formats in your work, please cite the papers in `preferred-citation` and `references` below."
+title: ".faf, .fafm, and .fafa — Format Specifications"
 authors:
   - family-names: Wolfe
     given-names: James
@@ -13,7 +13,9 @@ url: "https://faf.one"
 keywords:
   - .faf
   - .fafm
+  - .fafa
   - AI agent memory
+  - AI agent identity
   - format specification
   - IANA-registered
   - YAML
@@ -31,3 +33,17 @@ preferred-citation:
   url: "https://doi.org/10.5281/zenodo.20348942"
   publisher:
     name: "Zenodo"
+references:
+  - type: article
+    title: "Why Agents Need a Passport: .fafa — Portable Identity for the Agentic Era"
+    authors:
+      - family-names: Wolfe
+        given-names: James
+        orcid: "https://orcid.org/0009-0007-0801-3841"
+        affiliation: "FAF Foundation"
+    year: 2026
+    month: 8
+    doi: 10.5281/zenodo.21951641
+    url: "https://doi.org/10.5281/zenodo.21951641"
+    publisher:
+      name: "Zenodo"
