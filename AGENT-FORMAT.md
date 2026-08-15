@@ -5,6 +5,7 @@
 **MIME Type:** `application/vnd.fafa+yaml`
 **File Extension:** `.fafa`
 **IANA Registration:** Registered 2026-06-26 (vendor tree)
+**DOI:** [10.5281/zenodo.21951641](https://doi.org/10.5281/zenodo.21951641)
 **Last Updated:** 2026-08-15
 
 ---
@@ -252,7 +253,7 @@ The top-level `version` field declares which version of this specification the d
 **Encoding considerations:** 8bit (UTF-8; binary content, if any, base64-encoded inside YAML)
 **Security considerations:** See §12
 **Interoperability considerations:** See §13
-**Published specification:** This document, canonical at `https://github.com/Wolfe-Jam/faf/blob/main/AGENT-FORMAT.md`; reference implementation `faf-agent-mcp` (PyPI)
+**Published specification:** This document, canonical at `https://github.com/Wolfe-Jam/faf/blob/main/AGENT-FORMAT.md`; paper DOI [10.5281/zenodo.21951641](https://doi.org/10.5281/zenodo.21951641); reference implementation `faf-agent-mcp` (PyPI)
 **Applications that use this media type:** faf-agent-mcp (reference implementation), xAI/Grok, claude-faf-mcp, gemini-faf-mcp and future FAF MCP-family integrations
 **Fragment identifier considerations:** N/A
 **Additional information — File extension:** `.fafa`
@@ -272,6 +273,7 @@ The top-level `version` field declares which version of this specification the d
 |---------|-------------------|
 | PyPI | `faf-agent-mcp` |
 | Canonical spec | `https://github.com/Wolfe-Jam/faf/blob/main/AGENT-FORMAT.md` |
+| Paper | [10.5281/zenodo.21951641](https://doi.org/10.5281/zenodo.21951641) |
 | Family siblings | `application/vnd.faf+yaml`, `application/vnd.fafm+yaml` |
 
 ---

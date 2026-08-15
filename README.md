@@ -3,7 +3,7 @@
 <div align="left">
   <img src="https://www.faf.one/orange-smiley.svg" alt="FAF" width="40" align="left" style="margin-right: 12px;" />
   <h1>.faf format | project.faf</h1>
-  <p><strong>IANA-Registered Formats for AI Context</strong> · <code>application/vnd.faf+yaml</code> · <code>application/vnd.fafm+yaml</code></p>
+  <p><strong>IANA-Registered Formats for AI Context</strong> · <code>application/vnd.faf+yaml</code> · <code>application/vnd.fafm+yaml</code> · <code>application/vnd.fafa+yaml</code></p>
 </div>
 <br clear="left"/>
 
@@ -13,8 +13,8 @@ Universal, shareable AI-Context for any AI, human or team, regardless of size, l
 <img src="assets/faf-hero-clean.png" alt="FAF - Project DNA for any AI" width="700" />
 </div>
 
-[![IANA: vnd.faf+yaml](https://img.shields.io/badge/IANA-vnd.faf%2Byaml-00D4D4)](https://www.iana.org/assignments/media-types/application/vnd.faf+yaml)[![IANA: vnd.fafm+yaml](https://img.shields.io/badge/IANA-vnd.fafm%2Byaml-00D4D4)](https://www.iana.org/assignments/media-types/application/vnd.fafm+yaml)
-[![DOI: Context paper](https://img.shields.io/badge/DOI-Context%20paper-FF6B35)](https://doi.org/10.5281/zenodo.18251362)[![DOI: Memory paper](https://img.shields.io/badge/DOI-Memory%20paper-FF6B35)](https://doi.org/10.5281/zenodo.20348942)
+[![IANA: vnd.faf+yaml](https://img.shields.io/badge/IANA-vnd.faf%2Byaml-00D4D4)](https://www.iana.org/assignments/media-types/application/vnd.faf+yaml)[![IANA: vnd.fafm+yaml](https://img.shields.io/badge/IANA-vnd.fafm%2Byaml-00D4D4)](https://www.iana.org/assignments/media-types/application/vnd.fafm+yaml)[![IANA: vnd.fafa+yaml](https://img.shields.io/badge/IANA-vnd.fafa%2Byaml-00D4D4)](https://www.iana.org/assignments/media-types/application/vnd.fafa+yaml)
+[![DOI: Context paper](https://img.shields.io/badge/DOI-Context%20paper-FF6B35)](https://doi.org/10.5281/zenodo.18251362)[![DOI: Memory paper](https://img.shields.io/badge/DOI-Memory%20paper-FF6B35)](https://doi.org/10.5281/zenodo.20348942)[![DOI: Agents paper](https://img.shields.io/badge/DOI-Agents%20paper-FF6B35)](https://doi.org/10.5281/zenodo.21951641)
 
 **Home:** [faf.one](https://faf.one)
 [![Spec Version](https://img.shields.io/badge/Spec-v1.1.0-green)](https://github.com/Wolfe-Jam/faf/blob/main/SPECIFICATION.md)
@@ -23,14 +23,15 @@ Universal, shareable AI-Context for any AI, human or team, regardless of size, l
 
 ---
 
-## 🏆 Historic Milestones: Two IANA Registrations
+## 🏆 Historic Milestones: Three IANA Registrations
 
-**`.faf`** and **`.fafm`** are now officially recognized Internet standard formats — registered alongside PDF, JSON, XML, and other Internet standards.
+**`.faf`**, **`.fafm`**, and **`.fafa`** are now officially recognized Internet standard formats — registered alongside PDF, JSON, XML, and other Internet standards.
 
 **Foundational Context Layer** — `application/vnd.faf+yaml` (registered **October 31, 2025**)
 **Voice Memory Layer (VML)** — `application/vnd.fafm+yaml` (registered **May 13, 2026**)
+**Agent Card** — `application/vnd.fafa+yaml` (registered **June 26, 2026**)
 
-> *Two formats. Two lifecycles. One ecosystem.* — verbatim from the IANA registration record.
+> *Two formats. Two lifecycles. One ecosystem.* — verbatim from the IANA registration record for `.faf` / `.fafm`. `.fafa` is the third registered type.
 
 ### Quintuple Validation
 - ✅ **IANA** - Internet Assigned Numbers Authority (Official Internet Standard)
@@ -41,15 +42,15 @@ Universal, shareable AI-Context for any AI, human or team, regardless of size, l
 
 ### IANA Media Types
 
-| Field | `.faf` (Foundational Context Layer) | `.fafm` (Voice Memory Layer) |
-|-------|-------------------------------------|------------------------------|
-| **Media Type** | `application/vnd.faf+yaml` | `application/vnd.fafm+yaml` |
-| **Registration** | [IANA Assignment](https://www.iana.org/assignments/media-types/application/vnd.faf+yaml) | [IANA Assignment](https://www.iana.org/assignments/media-types/application/vnd.fafm+yaml) |
-| **File Extension** | `.faf` | `.fafm` |
-| **Standard Filename** | `project.faf` | `project.fafm` |
-| **Encoding** | UTF-8 | UTF-8 |
-| **Base Format** | YAML 1.2 | YAML 1.2 |
-| **Registered** | October 31, 2025 | May 13, 2026 |
+| Field | `.faf` (Foundational Context Layer) | `.fafm` (Voice Memory Layer) | `.fafa` (Agent Card) |
+|-------|-------------------------------------|------------------------------|----------------------|
+| **Media Type** | `application/vnd.faf+yaml` | `application/vnd.fafm+yaml` | `application/vnd.fafa+yaml` |
+| **Registration** | [IANA Assignment](https://www.iana.org/assignments/media-types/application/vnd.faf+yaml) | [IANA Assignment](https://www.iana.org/assignments/media-types/application/vnd.fafm+yaml) | [IANA Assignment](https://www.iana.org/assignments/media-types/application/vnd.fafa+yaml) |
+| **File Extension** | `.faf` | `.fafm` | `.fafa` |
+| **Standard Filename** | `project.faf` | `project.fafm` | `agent.fafa` |
+| **Encoding** | UTF-8 | UTF-8 | UTF-8 |
+| **Base Format** | YAML 1.2 | YAML 1.2 | YAML 1.2 |
+| **Registered** | October 31, 2025 | May 13, 2026 | June 26, 2026 |
 
 Same recognition as `application/pdf`, `application/json`, `application/xml`.
 
@@ -407,7 +408,9 @@ The package.json in this repo provides spec metadata and versioning but contains
 
 ## Citation
 
-If you use `.fafm` (the FAF Memory format) or `.fafa` (the FAF Agent format) in research or production, please cite the format papers:
+If you use `.faf`, `.fafm`, or `.fafa` in research or production, please cite the format papers:
+
+> Wolfe, J. (2025). *Format-Driven AI Context Architecture: The .faf Standard for Persistent Project Understanding*. Zenodo. https://doi.org/10.5281/zenodo.18251362
 
 > Wolfe, J. (2026). *Permanent Memory and Instant Recall: The .fafm Standard for Multi-Profile AI Agent Memory*. Zenodo. https://doi.org/10.5281/zenodo.20348942
 
@@ -416,6 +419,16 @@ If you use `.fafm` (the FAF Memory format) or `.fafa` (the FAF Agent format) in 
 ### BibTeX
 
 ```bibtex
+@article{wolfe2025faf,
+  title     = {Format-Driven AI Context Architecture: The .faf Standard for Persistent Project Understanding},
+  author    = {Wolfe, James},
+  year      = {2025},
+  month     = {nov},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.18251362},
+  url       = {https://doi.org/10.5281/zenodo.18251362}
+}
+
 @article{wolfe2026fafm,
   title     = {Permanent Memory and Instant Recall: The .fafm Standard for Multi-Profile AI Agent Memory},
   author    = {Wolfe, James},
@@ -437,8 +450,7 @@ If you use `.fafm` (the FAF Memory format) or `.fafa` (the FAF Agent format) in 
 }
 ```
 
-**DOI:** [`10.5281/zenodo.20348942`](https://doi.org/10.5281/zenodo.20348942) (.fafm) · [`10.5281/zenodo.21951641`](https://doi.org/10.5281/zenodo.21951641) (.fafa)
-The companion `.faf` Context paper: [Zenodo #18251362](https://doi.org/10.5281/zenodo.18251362).
+**DOI:** [`10.5281/zenodo.18251362`](https://doi.org/10.5281/zenodo.18251362) (.faf) · [`10.5281/zenodo.20348942`](https://doi.org/10.5281/zenodo.20348942) (.fafm) · [`10.5281/zenodo.21951641`](https://doi.org/10.5281/zenodo.21951641) (.fafa)
 
 ## License
 
