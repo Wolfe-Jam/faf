@@ -6,6 +6,12 @@ Thank you for your interest in contributing to the .faf (Foundational AI-context
 
 .faf is an IANA-registered format (application/vnd.faf+yaml) designed as universal AI context infrastructure. The specification defines how AI context should be structured, validated, and exchanged across tools and platforms.
 
+## FAF files live in git
+
+If it is FAF, it lives in git unless there is a named reason it cannot.
+
+Track `project.faf`, `.fafm`, `.fafa`, `.fafi`, and `.faf-dna`. `.faf-dna` is the birth certificate `faf init` writes — lineage, not junk. Gitignore is for caches, secrets, personal souls, generated scratch, and installer lockfiles (`uv.lock`). A reason must be written next to the ignore line.
+
 ## Development Philosophy
 
 This specification follows format design principles:

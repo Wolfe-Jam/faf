@@ -4,3 +4,5 @@ node_modules/
 .env
 .vscode/
 .idea/
+
+# FAF files live in git — do not add project.faf / .fafa / .fafi / .faf-dna here.
