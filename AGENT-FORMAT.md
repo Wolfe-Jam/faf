@@ -2,10 +2,10 @@
 
 **Version:** 1.0
 **Status:** Stable
-**MIME Type (proposed):** `application/vnd.fafa+yaml`
+**MIME Type:** `application/vnd.fafa+yaml`
 **File Extension:** `.fafa`
-**IANA Registration:** Planned (queued behind `application/vnd.fafm+yaml`, registered 2026-05-13)
-**Last Updated:** 2026-05-18
+**IANA Registration:** Registered 2026-06-26 (vendor tree)
+**Last Updated:** 2026-08-15
 
 ---
 
@@ -243,7 +243,7 @@ The top-level `version` field declares which version of this specification the d
 
 ---
 
-## 16. IANA Registration Notes (Planned)
+## 16. IANA Registration Notes
 
 **Type name:** application
 **Subtype name:** vnd.fafa+yaml
