@@ -29,7 +29,7 @@ human_context:
   what: .faf (Foundational AI-context Format) - Official format specification
   why: A portable AI-context standard needs one canonical, IANA-registered specification — the authoritative source for application/vnd.faf+yaml that every implementation conforms to
   where: https://github.com/Wolfe-Jam/faf
-  when: IANA-registered (application/vnd.faf+yaml, October 31 2025) — Specification v1.1.0
+  when: IANA-registered (application/vnd.faf+yaml, October 30 2025) — Specification v1.1.0
   how: Read SPECIFICATION.md and the JSON schemas; reference example.faf and examples/; implementations generate and consume project.faf files conforming to this spec
 monorepo:
   packages_count: slotignored

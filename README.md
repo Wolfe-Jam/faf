@@ -27,7 +27,7 @@ Universal, shareable AI-Context for any AI, human or team, regardless of size, l
 
 **`.faf`**, **`.fafm`**, and **`.fafa`** are now officially recognized Internet standard formats — registered alongside PDF, JSON, XML, and other Internet standards.
 
-**Foundational Context Layer** — `application/vnd.faf+yaml` (registered **October 31, 2025**)
+**Foundational Context Layer** — `application/vnd.faf+yaml` (registered **October 30, 2025**)
 **Voice Memory Layer (VML)** — `application/vnd.fafm+yaml` (registered **May 13, 2026**)
 **Agent Card** — `application/vnd.fafa+yaml` (registered **June 26, 2026**)
 
@@ -50,7 +50,7 @@ Universal, shareable AI-Context for any AI, human or team, regardless of size, l
 | **Standard Filename** | `project.faf` | `project.fafm` | `agent.fafa` |
 | **Encoding** | UTF-8 | UTF-8 | UTF-8 |
 | **Base Format** | YAML 1.2 | YAML 1.2 | YAML 1.2 |
-| **Registered** | October 31, 2025 | May 13, 2026 | June 26, 2026 |
+| **Registered** | October 30, 2025 | May 13, 2026 | June 26, 2026 |
 
 Same recognition as `application/pdf`, `application/json`, `application/xml`.
 
@@ -348,7 +348,7 @@ npm install -g claude-faf-mcp
 ## Status
 
 🏆 **IANA-Registered Internet Standards** — Two registered media types in the FAF family
-- ✅ **IANA Registration** — `application/vnd.faf+yaml` (October 31, 2025)
+- ✅ **IANA Registration** — `application/vnd.faf+yaml` (October 30, 2025)
 - ✅ **IANA Registration** — `application/vnd.fafm+yaml` (May 13, 2026)
 - ✅ **Anthropic Official** - MCP Registry PR #2759 merged (October 17, 2025)
 - ✅ **Google Chrome Verified** - Web Store approved 2x (Sep 11 & Oct 29, 2025)
@@ -370,7 +370,7 @@ npm install -g claude-faf-mcp
 - **Jan 2026** - gemini-faf-mcp v1.0.2 on PyPI (Google MCP bridge)
 - **Nov 2025** - IETF standardization in progress (`vnd` prefix removal)
 - **May 13, 2026** - 🏆 **IANA Registration #2** (`application/vnd.fafm+yaml` — Voice Memory Layer)
-- **Oct 31, 2025** - 🏆 **IANA Registration #1** (`application/vnd.faf+yaml` — Foundational Context Layer)
+- **Oct 30, 2025** - 🏆 **IANA Registration #1** (`application/vnd.faf+yaml` — Foundational Context Layer)
 - **Oct 29, 2025** - Google Chrome Web Store approval (2nd)
 - **Oct 17, 2025** - Official Anthropic MCP Registry merger (PR #2759)
 - **Oct 12, 2025** - Specification v1.1.0 published

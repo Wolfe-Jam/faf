@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://faf.one/schemas/faf.schema.json",
   "title": "FAF Context (.faf)",
-  "description": "The .faf (Foundational AI-context Format): a portable, scored, YAML project-context file for AI. IANA media type application/vnd.faf+yaml (registered 2025-10-31). Structure follows the faf-cli Mk4 slot model (project meta + 6-W human context + technology stack + monorepo/enterprise). Forward-compatible: unknown keys are permitted at every level. A stack/monorepo slot value is either a detected string or the sentinel \"slotignored\" (not applicable for the project's app type). Legacy on-wire keys and their Mk4 canonical aliases are both accepted.",
+  "description": "The .faf (Foundational AI-context Format): a portable, scored, YAML project-context file for AI. IANA media type application/vnd.faf+yaml (registered 2025-10-30). Structure follows the faf-cli Mk4 slot model (project meta + 6-W human context + technology stack + monorepo/enterprise). Forward-compatible: unknown keys are permitted at every level. A stack/monorepo slot value is either a detected string or the sentinel \"slotignored\" (not applicable for the project's app type). Legacy on-wire keys and their Mk4 canonical aliases are both accepted.",
   "type": "object",
   "required": ["faf_version", "project"],
   "additionalProperties": true,

@@ -18,7 +18,7 @@
 - **What:** .faf (Foundational AI-context Format) - Official format specification
 - **Why:** A portable AI-context standard needs one canonical, IANA-registered specification — the authoritative source for application/vnd.faf+yaml that every implementation conforms to
 - **Where:** https://github.com/Wolfe-Jam/faf
-- **When:** IANA-registered (application/vnd.faf+yaml, October 31 2025) — Specification v1.1.0
+- **When:** IANA-registered (application/vnd.faf+yaml, October 30 2025) — Specification v1.1.0
 - **How:** Read SPECIFICATION.md and the JSON schemas; reference example.faf and examples/; implementations generate and consume project.faf files conforming to this spec
 
 ---
@@ -60,7 +60,7 @@
 ```
 
 **CRITICAL: This is the FORMAT DEFINITION, not implementation code**
-- ✅ IANA-registered (October 31, 2025)
+- ✅ IANA-registered (October 30, 2025)
 - ✅ Official media type: `application/vnd.faf+yaml`
 - ✅ Same status as PDF, JSON, XML
 - ✅ Internet standard format
@@ -70,7 +70,7 @@
 ### Historic Achievement
 
 **Quadruple Validation:**
-1. **IANA** - Internet Assigned Numbers Authority (Oct 31, 2025)
+1. **IANA** - Internet Assigned Numbers Authority (Oct 30, 2025)
 2. **Anthropic** - Official MCP Registry PR #2759 merged (Oct 17, 2025)
 3. **Google** - Chrome Web Store approved 2x (Sep 11 & Oct 29, 2025)
 4. **Community** - 11,000+ downloads, production-tested
@@ -444,7 +444,7 @@ faf-cli  MCP  Chrome Ext  Future Tools
 
 **Historic Achievements:**
 
-- **Oct 31, 2025** - 🏆 IANA Registration (application/vnd.faf+yaml)
+- **Oct 30, 2025** - 🏆 IANA Registration (application/vnd.faf+yaml)
 - **Oct 29, 2025** - Google Chrome Web Store approval (2nd)
 - **Oct 17, 2025** - Anthropic MCP Registry merger (PR #2759)
 - **Oct 12, 2025** - Specification v1.1.0 published
