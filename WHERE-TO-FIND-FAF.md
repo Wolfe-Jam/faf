@@ -11,7 +11,7 @@
 ### Specifications & Documentation
 - **Format Specification:** [github.com/Wolfe-Jam/faf](https://github.com/Wolfe-Jam/faf)
 - **Planet dotFAF:** [faf.one](https://faf.one) - The home of .faf
-- **Developer Tools:** [fafdev.tools](https://fafdev.tools) - Try .faf in your browser
+- **Developer Tools:** [devtools.faf.one](https://devtools.faf.one) - Try .faf in your browser
 
 ### Try It NOW
 

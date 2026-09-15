@@ -38,7 +38,7 @@ All implementations read or write `project.faf` files conforming to [SPECIFICATI
 | Tool | Platform | Link |
 |------|----------|------|
 | FAF Chrome Extension | Chrome Web Store | [Install](https://chromewebstore.google.com/detail/lnecebepmpjpilldfmndnaofbfjkjlkm) |
-| fafdev.tools | Web | [Try it](https://fafdev.tools) |
+| devtools.faf.one | Web | [Try it](https://devtools.faf.one) |
 
 ## AI Interop
 

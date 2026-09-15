@@ -16,7 +16,7 @@ The official home of the .faf format community! This is where dot.faffers from a
 Whether you're using:
 - 🏆 **CLI** (`faf init`, scoring, automation) - 1,942 downloads
 - 🤖 **MCP** (30+ tools for Claude) - 1,125 downloads
-- 🌐 **WEB/Chrome Extension** (fafdev.tools/AI | HUMAN Balance, or context from web IDEs)
+- 🌐 **WEB/Chrome Extension** (devtools.faf.one/AI | HUMAN Balance, or context from web IDEs)
 - 🚀 **ALL THREE** (championship mode!)
 
 You belong here. From beginners getting their first dot.faf score to experts pushing performance limits.
