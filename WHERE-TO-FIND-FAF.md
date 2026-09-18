@@ -55,19 +55,14 @@ npx faf-cli git https://github.com/facebook/react
 
 ## Compiler Toolchain
 
-FAF compiles to native binaries and WebAssembly:
+FAFb **wire v2** is the brick. Spec: [faf-rust `BINARY-FORMAT.md`](https://github.com/Wolfe-Jam/faf-rust/blob/main/crates/faf-fafb/BINARY-FORMAT.md) · [faf.one/spec](https://faf.one/spec). This repo’s `BINARY-FORMAT.md` is a retired v1 pointer.
 
 | Component | Language | Output | Link |
 |-----------|----------|--------|------|
-| xai-faf-rust | Rust | Native + .fafb binary | [GitHub](https://github.com/Wolfe-Jam/xai-faf-rust) |
-| xai-faf-zig | Zig→WASM | 2.7KB ghost binary | [GitHub](https://github.com/Wolfe-Jam/xai-faf-zig) |
-| faf-wasm-sdk | Rust→WASM | 211KB browser runtime | [GitHub](https://github.com/Wolfe-Jam/faf-wasm-sdk) |
-| faf-rust-sdk | Rust | crates.io SDK | [GitHub](https://github.com/Wolfe-Jam/faf-rust-sdk) |
-
-### FAFb Binary Format (v1.0)
-- **Header:** 32 bytes (magic "FAFB", version, CRC32 checksum)
-- **Sections:** 11 types with priority truncation
-- **Output:** `.fafb` files for edge/embedded deployment
+| faf-fafb | Rust | FAFb v2 brick | [crates.io](https://crates.io/crates/faf-fafb) |
+| faf-cli | TypeScript + WASM | `faf compile` | [npm](https://www.npmjs.com/package/faf-cli) |
+| faf-wasm-sdk | Rust→WASM | same v2 engine | [crates.io](https://crates.io/crates/faf-wasm-sdk) |
+| faf-rust-sdk | Rust | facade | [crates.io](https://crates.io/crates/faf-rust-sdk) |
 
 ---
 

@@ -2,7 +2,8 @@
 
 **Tools, SDKs, and servers that implement the FAF specification.**
 
-All implementations read or write `project.faf` files conforming to [SPECIFICATION.md](SPECIFICATION.md).
+YAML `.faf` files follow [SPECIFICATION.md](SPECIFICATION.md) and the live human spec at [faf.one/spec](https://faf.one/spec).  
+FAFb **wire v2** is specified in [faf-rust `BINARY-FORMAT.md`](https://github.com/Wolfe-Jam/faf-rust/blob/main/crates/faf-fafb/BINARY-FORMAT.md). The `BINARY-FORMAT.md` in this repo is a retired v1 pointer.
 
 ---
 
@@ -10,9 +11,9 @@ All implementations read or write `project.faf` files conforming to [SPECIFICATI
 
 | Package | Version | Registry | Install |
 |---------|---------|----------|---------|
-| [faf-cli](https://npmjs.com/package/faf-cli) | v4.5.0 | npm | `npm i -g faf-cli` |
+| [faf-cli](https://npmjs.com/package/faf-cli) | v7.16.1 | npm | `npm i -g faf-cli` |
 
-63 commands. Generates `project.faf` from any codebase or GitHub URL.
+`npx faf-cli auto` writes or refreshes `project.faf`. `faf compile` emits a `.fafb` via the WASM kernel. Live totals: [faf.one/downloads](https://faf.one/downloads).
 
 ## MCP Servers
 
@@ -26,31 +27,34 @@ All implementations read or write `project.faf` files conforming to [SPECIFICATI
 
 ## Compilers & Runtimes
 
+The brick is FAFb **v2**. These emit or read that layout:
+
 | Component | Language | Output | Link |
 |-----------|----------|--------|------|
-| xai-faf-rust | Rust | Native binary + `.fafb` | [GitHub](https://github.com/Wolfe-Jam/xai-faf-rust) |
-| xai-faf-zig | Zig | 2.7KB WASM | [GitHub](https://github.com/Wolfe-Jam/xai-faf-zig) |
-| faf-wasm-sdk | Rust→WASM | 211KB browser runtime | [GitHub](https://github.com/Wolfe-Jam/faf-wasm-sdk) |
-| faf-rust-sdk | Rust | crates.io SDK | [GitHub](https://github.com/Wolfe-Jam/faf-rust-sdk) |
+| faf-fafb | Rust | FAFb v2 brick | [crates.io](https://crates.io/crates/faf-fafb) · [faf-rust](https://github.com/Wolfe-Jam/faf-rust) |
+| faf-cli | TypeScript + WASM | `faf compile` via faf-scoring-kernel | [npm](https://www.npmjs.com/package/faf-cli) |
+| faf-wasm-sdk | Rust→WASM | same v2 engine | [crates.io](https://crates.io/crates/faf-wasm-sdk) |
+| faf-rust-sdk | Rust | facade over kernel + faf-fafb | [crates.io](https://crates.io/crates/faf-rust-sdk) |
+
+v1 ROMs (numeric section types, `version_major = 1`) are not this format. A v2 reader rejects them. Recompile from `.faf`.
 
 ## Browser
 
 | Tool | Platform | Link |
 |------|----------|------|
 | FAF Chrome Extension | Chrome Web Store | [Install](https://chromewebstore.google.com/detail/lnecebepmpjpilldfmndnaofbfjkjlkm) |
-| devtools.faf.one | Web | [Try it](https://devtools.faf.one) |
+| faf.one | Web | [faf.one](https://faf.one) |
 
 ## AI Interop
 
-faf-cli v4.5.0 generates all four AI instruction formats from a single `project.faf`:
+faf-cli v7.16.1 authors the instruction files from one `project.faf`:
 
 | Format | Platform | Command |
 |--------|----------|---------|
-| `CLAUDE.md` | Anthropic Claude | `faf bi-sync` |
-| `AGENTS.md` | OpenAI Codex + 20 tools | `faf agents export` |
-| `.cursorrules` | Cursor IDE | `faf cursor export` |
-| `GEMINI.md` | Google Gemini | `faf gemini export` |
-| All at once | Everything | `faf bi-sync --all` |
+| `AGENTS.md` | OpenAI Codex + tools | `faf export --agents` |
+| `GEMINI.md` | Google Gemini | `faf export --gemini` |
+| `.cursorrules` | Cursor | `faf export --cursor` |
+| `CLAUDE.md` | Anthropic Claude | `faf sync` |
 
 ---
 

@@ -241,13 +241,13 @@ npm install -g claude-faf-mcp
 
 ## Compiler Toolchain
 
-FAF compiles to multiple targets:
+FAFb **wire v2** is the brick. Spec: [`BINARY-FORMAT.md` in faf-rust](https://github.com/Wolfe-Jam/faf-rust/blob/main/crates/faf-fafb/BINARY-FORMAT.md) · human page [faf.one/spec](https://faf.one/spec). This repo’s `BINARY-FORMAT.md` is a retired v1 pointer, not the live spec.
 
 | Component | Language | Output |
 |-----------|----------|--------|
-| [xai-faf-rust](https://github.com/Wolfe-Jam/xai-faf-rust) | Rust | Native + .fafb binary |
-| [xai-faf-zig](https://github.com/Wolfe-Jam/xai-faf-zig) | Zig→WASM | 2.7KB ghost binary |
-| [faf-wasm-sdk](https://github.com/Wolfe-Jam/faf-wasm-sdk) | Rust→WASM | 211KB browser runtime |
+| [faf-fafb](https://crates.io/crates/faf-fafb) | Rust | FAFb v2 brick |
+| [faf-cli](https://www.npmjs.com/package/faf-cli) | TypeScript + WASM | `faf compile` via the scoring kernel |
+| [faf-wasm-sdk](https://crates.io/crates/faf-wasm-sdk) | Rust→WASM | same v2 engine, browser and edge |
 
 ## AI Interop
 
@@ -366,7 +366,7 @@ npm install -g claude-faf-mcp
 - **April 2026** - FAF ecosystem crosses 50,000+ downloads across npm, PyPI, and crates.io
 - **Feb 25, 2026** - Grok 4.2 recommends native FAF adoption; integration spec sent to xAI
 - **Feb 24, 2026** - faf-cli v4.5.0 "The AGENTS.md Edition" (AI interop across 4 formats)
-- **Feb 2, 2026** - FAFb binary format v1.0 (Rust + Zig compilers shipping)
+- **Feb 2, 2026** - FAFb v1 pre-release wire (retired). Live spec is **wire v2** in [faf-rust](https://github.com/Wolfe-Jam/faf-rust/blob/main/crates/faf-fafb/BINARY-FORMAT.md)
 - **Jan 2026** - gemini-faf-mcp v1.0.2 on PyPI (Google MCP bridge)
 - **Nov 2025** - IETF standardization in progress (`vnd` prefix removal)
 - **May 13, 2026** - 🏆 **IANA Registration #2** (`application/vnd.fafm+yaml` — Voice Memory Layer)
