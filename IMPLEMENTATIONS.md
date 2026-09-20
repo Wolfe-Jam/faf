@@ -11,7 +11,7 @@ FAFb **wire v2** is specified in [faf-rust `BINARY-FORMAT.md`](https://github.co
 
 | Package | Version | Registry | Install |
 |---------|---------|----------|---------|
-| [faf-cli](https://npmjs.com/package/faf-cli) | v7.16.1 | npm | `npm i -g faf-cli` |
+| [faf-cli](https://npmjs.com/package/faf-cli) | v7.16.2 | npm | `npm i -g faf-cli` |
 
 `npx faf-cli auto` writes or refreshes `project.faf`. `faf compile` emits a `.fafb` via the WASM kernel. Live totals: [faf.one/downloads](https://faf.one/downloads).
 
@@ -47,7 +47,7 @@ v1 ROMs (numeric section types, `version_major = 1`) are not this format. A v2 r
 
 ## AI Interop
 
-faf-cli v7.16.1 authors the instruction files from one `project.faf`:
+faf-cli v7.16.2 authors the instruction files from one `project.faf`:
 
 | Format | Platform | Command |
 |--------|----------|---------|
