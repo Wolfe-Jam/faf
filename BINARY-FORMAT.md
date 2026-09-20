@@ -7,8 +7,7 @@
 
 **Human page:** [faf.one/spec](https://faf.one/spec)
 
-The `.faf` YAML format is IANA-registered as `application/vnd.faf+yaml`.  
-FAFb’s type string is `application/vnd.fafb` — **deliberately unregistered. Do not file it.**
+The `.faf` YAML format is IANA-registered as `application/vnd.faf+yaml`.
 
 v1 files are rejected by a v2 reader. The `.faf` source is always authoritative: **recompile, never migrate.**
 
