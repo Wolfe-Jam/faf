@@ -1,0 +1,59 @@
+# monorepo-root.faf — the twelve slots the other examples never reach.
+#
+# app_type: monorepo-root activates 21 slots: project (3) + human context (6) +
+# monorepo infrastructure (5) + team application (4) + team operations (3).
+#
+# This is the part of the 33 that only exists once a project stops being one
+# application. A single app is never asked how it versions its packages or
+# whether it shares a build cache — those slots are not required, so they never
+# count against it. At the root of a monorepo they are the whole question.
+#
+# Note the frontend and backend slots are absent here: the root is not an
+# application, it is the organisation of several. Each package carries its own
+# project.faf.
+faf_version: 2.5.0
+
+app_type: monorepo-root
+
+project:
+  name: acme-platform
+  goal: One repository for the web app, the API and the shared design system
+  main_language: TypeScript
+
+human_context:
+  who: Twelve engineers across three teams, plus the platform group who own the build
+  what: The root of a monorepo holding four published packages and two applications
+  why: The packages change together; separate repositories meant version drift and duplicated config
+  where: GitHub, built on CI runners with a shared remote cache
+  when: Migrated from four repositories in 2026; steady state since
+  how: Workspaces resolve the packages, a task orchestrator builds them in dependency order
+
+stack:
+  monorepo_tool: Turborepo
+  package_manager: pnpm
+  workspaces: pnpm-workspace.yaml
+  admin: slotignored
+  cache: Redis
+  search: slotignored
+  storage: Amazon S3
+
+
+# The root is not an application — each package carries its own project.faf.
+  frontend: slotignored
+  css_framework: slotignored
+  ui_library: slotignored
+  state_management: slotignored
+  backend: slotignored
+  api_type: slotignored
+  runtime: slotignored
+  database: slotignored
+  connection: slotignored
+  hosting: slotignored
+  build: slotignored
+  cicd: slotignored
+monorepo:
+  packages_count: 4
+  build_orchestrator: Turborepo
+  versioning_strategy: Changesets (independent versions)
+  shared_configs: tsconfig, eslint and prettier published as internal packages
+  remote_cache: Vercel Remote Cache

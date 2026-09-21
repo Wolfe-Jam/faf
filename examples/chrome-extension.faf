@@ -1,40 +1,55 @@
-version: 1.0
-score: 92
-type: "chrome-extension"
-confidence: 0.96
-content:
-  name: "FAF Context Extension"
-  extension_type: "chrome-extension"
-  manifest_version: 3
-  version: "1.2.0"
-  description: "Inject .faf context into web pages"
-  permissions:
-    - "activeTab"
-    - "storage"
-    - "tabs"
-  components:
-    background: "service-worker.js"
-    content_scripts:
-      - "content.js"
-    popup: "popup.html"
-    options: "options.html"
-  icons:
-    "16": "icons/icon-16.png"
-    "48": "icons/icon-48.png"
-    "128": "icons/icon-128.png"
-  features:
-    - "context-injection"
-    - "page-analysis"
-    - "ai-optimization"
-    - "local-storage"
-metadata:
-  source: "manifest.json"
-  processed: "2025-10-10T16:00:00Z"
-  engine: "faf-turbocat-v3.0.0"
-  size: 1824
-tags:
-  - "chrome"
-  - "extension"
-  - "browser"
-  - "context"
-  - "production"
+# chrome-extension.faf — a browser extension.
+#
+# app_type: extension activates 16 slots: project (3) + human context (6) +
+# frontend (4) + delivery (3). An extension has a UI, so the frontend slots
+# count. It has no server or database, so the backend slots are not required.
+#
+# Note ui_library: slotignored — this extension styles its popup directly and
+# uses no component library. Saying so removes the slot from the denominator.
+# That is the honest answer, and it is not the same as leaving it empty.
+faf_version: 2.5.0
+
+app_type: extension
+
+project:
+  name: faf-context-extension
+  goal: Read the project.faf of any repository you are looking at, in the browser
+  main_language: TypeScript
+
+human_context:
+  who: Developers browsing repositories who want the project's context without cloning it
+  what: A Chrome extension that finds project.faf on a repository page and renders its score and slots
+  why: Judging an unfamiliar repository means reading a lot of files; the .faf says it in one
+  where: Chrome Web Store; runs on github.com and gitlab.com pages
+  when: Maintained alongside the format; updated when the slot model changes
+  how: A content script locates project.faf via the host API, parses it, and renders a panel
+
+stack:
+  frontend: Svelte
+  css_framework: Tailwind CSS
+  ui_library: slotignored
+  state_management: Svelte stores
+  hosting: Chrome Web Store
+  build: Vite
+  cicd: GitHub Actions
+
+# An extension has a UI but no server of its own.
+  backend: slotignored
+  api_type: slotignored
+  runtime: slotignored
+  database: slotignored
+  connection: slotignored
+  monorepo_tool: slotignored
+  package_manager: slotignored
+  workspaces: slotignored
+  admin: slotignored
+  cache: slotignored
+  search: slotignored
+  storage: slotignored
+
+monorepo:
+  packages_count: slotignored
+  build_orchestrator: slotignored
+  versioning_strategy: slotignored
+  shared_configs: slotignored
+  remote_cache: slotignored

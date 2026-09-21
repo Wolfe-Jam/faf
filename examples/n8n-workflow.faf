@@ -1,34 +1,56 @@
-version: 1.0
-score: 85
-type: "n8n-workflow"
-confidence: 0.95
-content:
-  name: "RAG Support Bot"
-  workflow_type: "n8n-workflow"
-  pattern: "RAG"
-  nodes: 5
-  architecture:
-    - "Knowledge ingestion pipeline"
-    - "AI agent with vector tool access"
-    - "AI agent core"
-  integrations:
-    - "Webhook"
-    - "Anthropic Claude"
-    - "Pinecone Vector Store"
-    - "Slack"
-  ai_models:
-    - "claude-3-5-sonnet"
-  infrastructure:
-    - "n8n webhook endpoints"
-    - "Pinecone vector database"
-metadata:
-  source: "RAG Support Bot.json"
-  processed: "2025-10-10T15:38:38.590Z"
-  engine: "faf-universal-intelligence-v3.0.1"
-  size: 28672
-tags:
-  - "automation"
-  - "rag"
-  - "ai-agent"
-  - "n8n"
-  - "production-ready"
+# n8n-workflow.faf — a deployed automation, described as the project it is.
+#
+# app_type: backend activates 17 slots: project (3) + human context (6) +
+# backend (5) + delivery (3). The workflow is a running service with a vector
+# store behind it, so the backend slots count. It has no UI of its own, so the
+# frontend slots are not required.
+#
+# This example is also a reminder of what a .faf describes: the project, not a
+# file. The earlier version of this example transcribed a workflow JSON. The
+# subject is the support bot, not the export.
+faf_version: 2.5.0
+
+app_type: backend
+
+project:
+  name: rag-support-bot
+  goal: Answer customer questions from the knowledge base before a human sees them
+  main_language: JavaScript
+
+human_context:
+  who: The support team, and the customers who get an answer in seconds rather than hours
+  what: An n8n workflow that retrieves from a vector store and answers over Slack
+  why: Most tickets repeat questions already answered in the docs; retrieval handles those
+  where: Self-hosted n8n, reachable on an internal webhook endpoint
+  when: In production; the knowledge base reindexes nightly
+  how: Webhook receives the question, retrieves matching passages, answers with a model, posts to Slack
+
+stack:
+  backend: n8n
+  api_type: Webhook
+  runtime: Node.js
+  database: Pinecone
+  connection: n8n credentials store
+  hosting: Self-hosted (Docker)
+  build: slotignored
+  cicd: GitHub Actions
+
+# The workflow has no UI of its own — it answers over Slack.
+  frontend: slotignored
+  css_framework: slotignored
+  ui_library: slotignored
+  state_management: slotignored
+  monorepo_tool: slotignored
+  package_manager: slotignored
+  workspaces: slotignored
+  admin: slotignored
+  cache: slotignored
+  search: slotignored
+  storage: slotignored
+
+monorepo:
+  packages_count: slotignored
+  build_orchestrator: slotignored
+  versioning_strategy: slotignored
+  shared_configs: slotignored
+  remote_cache: slotignored

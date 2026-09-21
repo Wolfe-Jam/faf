@@ -1,41 +1,53 @@
-version: 1.0
-score: 89
-type: "cli-project"
-confidence: 0.95
-content:
-  name: "faf-cli"
-  project_type: "cli-tool"
-  version: "3.0.1"
-  description: "TURBO-CAT: Project DNA for ANY AI"
-  stack:
-    primary_language: "TypeScript"
-    runtime: "Node.js"
-    package_manager: "npm"
-  architecture:
-    pattern: "CLI Tool"
-    commands: 41
-    engine: "FAF-Engine-Mk3"
-  features:
-    - "format-discovery"
-    - "ai-context-generation"
-    - "bi-directional-sync"
-    - "championship-scoring"
-    - "birth-dna-lifecycle"
-  performance:
-    target: "<50ms"
-    avg_command: "18ms"
-    bi_sync: "8ms"
-  dependencies:
-    production: ["inquirer", "yaml"]
-    dev: ["typescript", "jest", "eslint"]
-metadata:
-  source: "package.json"
-  processed: "2025-10-10T16:00:00Z"
-  engine: "faf-cli-v3.0.1"
-  size: 4407
-tags:
-  - "cli"
-  - "typescript"
-  - "ai-tools"
-  - "championship"
-  - "open-source"
+# cli-project.faf — a command-line tool.
+#
+# app_type: cli activates 12 slots: project (3) + human context (6) +
+# delivery (3: hosting, build, cicd). A CLI ships and builds somewhere, so
+# those count. It has no frontend and no database, so those slots are not
+# required and never enter the score.
+faf_version: 2.5.0
+
+app_type: cli
+
+project:
+  name: faf-cli
+  goal: Read, write and score project.faf from the command line
+  main_language: TypeScript
+
+human_context:
+  who: Developers who want their project context portable across AI tools
+  what: A CLI that detects a project's stack, writes project.faf, and scores it
+  why: Every AI session re-discovers the same project facts; writing them down once ends that
+  where: Installed from npm, run in any repository
+  when: Active development; released continuously
+  how: Detects the stack from manifests, fills what the tree can prove, leaves the rest for a human
+
+stack:
+  hosting: npm registry
+  build: tsup
+  cicd: GitHub Actions
+
+# Not required for a CLI. Marked slotignored so they leave the denominator —
+# absent would read as empty and count against the score.
+  frontend: slotignored
+  css_framework: slotignored
+  ui_library: slotignored
+  state_management: slotignored
+  backend: slotignored
+  api_type: slotignored
+  runtime: slotignored
+  database: slotignored
+  connection: slotignored
+  monorepo_tool: slotignored
+  package_manager: slotignored
+  workspaces: slotignored
+  admin: slotignored
+  cache: slotignored
+  search: slotignored
+  storage: slotignored
+
+monorepo:
+  packages_count: slotignored
+  build_orchestrator: slotignored
+  versioning_strategy: slotignored
+  shared_configs: slotignored
+  remote_cache: slotignored

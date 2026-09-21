@@ -1,0 +1,52 @@
+# documentation.faf — the smallest honest .faf.
+#
+# app_type: documentation activates 9 slots: project (3) + human context (6).
+# A docs repo has no stack to describe, so the stack slots are not required and
+# never enter the score. Nothing is held against it for lacking them.
+faf_version: 2.5.0
+
+app_type: documentation
+
+project:
+  name: faf-handbook
+  goal: Teach the .faf format in one sitting, with runnable examples
+  main_language: Markdown
+
+human_context:
+  who: Developers meeting .faf for the first time, and implementers writing a parser
+  what: A handbook covering the file, the 33 slots, and how a score is worked out
+  why: The specification is precise but terse; a newcomer needs worked examples before it reads clearly
+  where: Published at faf.one/handbook, source in this repository
+  when: Written alongside specification 3.3.0; revised whenever the spec moves
+  how: Markdown chapters built to static HTML, each example verified by running a scorer over it
+
+# Everything below is not required for a documentation project. Marking each
+# one slotignored is what removes it from the denominator — leaving it absent
+# would read as empty and count against the score.
+stack:
+  frontend: slotignored
+  css_framework: slotignored
+  ui_library: slotignored
+  state_management: slotignored
+  backend: slotignored
+  api_type: slotignored
+  runtime: slotignored
+  database: slotignored
+  connection: slotignored
+  hosting: slotignored
+  build: slotignored
+  cicd: slotignored
+  monorepo_tool: slotignored
+  package_manager: slotignored
+  workspaces: slotignored
+  admin: slotignored
+  cache: slotignored
+  search: slotignored
+  storage: slotignored
+
+monorepo:
+  packages_count: slotignored
+  build_orchestrator: slotignored
+  versioning_strategy: slotignored
+  shared_configs: slotignored
+  remote_cache: slotignored
