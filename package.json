@@ -1,6 +1,6 @@
 {
   "name": "@faf/specification",
-  "version": "1.1.0",
+  "version": "3.3.0",
   "description": ".faf (Foundational AI-context Format) - Official format specification",
   "keywords": [
     "faf",
