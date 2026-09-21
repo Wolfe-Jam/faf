@@ -1,4 +1,4 @@
-<!-- faf: faf | YAML | format-spec | .faf — the IANA-registered Foundational AI-context Format (application/vnd.faf+yaml). Universal, shareable AI-context for any AI, human, or team. -->
+<!-- faf: faf | YAML | format-spec | .faf — the IANA-registered Foundational AI-context Format (application/vnd.faf+yaml). Portable, shareable AI-context for any AI, human, or team. -->
 
 <div align="left">
   <img src="https://www.faf.one/orange-smiley.svg" alt="FAF" width="40" align="left" style="margin-right: 12px;" />
@@ -7,7 +7,7 @@
 </div>
 <br clear="left"/>
 
-Universal, shareable AI-Context for any AI, human or team, regardless of size, location, languages, stack, setup or documentation.
+Portable, shareable AI-Context for any AI, human or team, regardless of size, location, languages, stack, setup or documentation.
 
 <div align="center">
 <img src="assets/faf-hero-clean.png" alt="FAF - Project DNA for any AI" width="700" />
@@ -17,7 +17,7 @@ Universal, shareable AI-Context for any AI, human or team, regardless of size, l
 [![DOI: Context paper](https://img.shields.io/badge/DOI-Context%20paper-FF6B35)](https://doi.org/10.5281/zenodo.18251362)[![DOI: Memory paper](https://img.shields.io/badge/DOI-Memory%20paper-FF6B35)](https://doi.org/10.5281/zenodo.20348942)[![DOI: Agents paper](https://img.shields.io/badge/DOI-Agents%20paper-FF6B35)](https://doi.org/10.5281/zenodo.21951641)
 
 **Home:** [faf.one](https://faf.one)
-[![Spec Version](https://img.shields.io/badge/Spec-v1.1.0-green)](https://github.com/Wolfe-Jam/faf/blob/main/SPECIFICATION.md)
+[![Spec Version](https://img.shields.io/badge/Spec-3.3.0-green)](https://github.com/Wolfe-Jam/faf/blob/main/SPECIFICATION.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Chrome Web Store](https://img.shields.io/badge/Chrome-Extension-4285F4?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/lnecebepmpjpilldfmndnaofbfjkjlkm)
 
@@ -175,19 +175,28 @@ AI tools need context. Files have context. But there's no standard way to measur
 ## The Solution
 
 ```yaml
-# example.faf
-version: 1.0
-score: 85
-type: package
-confidence: 0.92
-content:
-  name: "my-project"
-  dependencies: ["react", "typescript", "vite"]
-  scripts: ["dev", "build", "test"]
-metadata:
-  source: "package.json"
-  processed: "2024-01-26T12:00:00Z"
-  engine: "faf-v1"
+# project.faf
+faf_version: 2.5.0
+
+app_type: cli
+
+project:
+  name: my-project
+  goal: Ship a fast command-line tool
+  main_language: TypeScript
+
+human_context:
+  who: Developers who live in the terminal
+  what: A CLI that does one job well
+  why: The existing tools need a config file before they do anything
+  where: Installed from npm, run anywhere
+  when: Active development
+  how: Reads the project, writes the answer, exits
+
+stack:
+  hosting: npm registry
+  build: tsup
+  cicd: GitHub Actions
 ```
 
 ## Official Tools
@@ -264,37 +273,36 @@ Define once. Every AI reads it in its own language.
 
 ## Core Principles
 
-1. **Universal** - 153+ file types supported
-2. **Scored** - 0-100% context completeness score
-3. **AI-Optimized** - Structured for maximum AI comprehension
-4. **Human-Readable** - Simple, structured format
-5. **Shareable** - One file contains complete context
+1. **Portable** - one file, any AI tool, any stack
+2. **Scored** - 33 slots, a deterministic 0-100
+3. **Checkable** - the arithmetic is public; anyone can verify a score by hand
+4. **Human-Readable** - plain YAML, reviewable in a pull request
+5. **Shareable** - one file carries the whole context
 
 ## Quick Example
 
-**Input:** `package.json`
-```json
-{
-  "name": "my-app",
-  "version": "1.0.0",
-  "dependencies": {
-    "react": "^18.0.0"
-  }
-}
+**Input:** your project — `faf init` then `faf auto`
+
+**Output:** `project.faf`
+```yaml
+faf_version: 2.5.0
+
+app_type: frontend
+
+project:
+  name: my-app
+  goal: A dashboard people actually want to open
+  main_language: TypeScript
+
+stack:
+  frontend: React
+  build: Vite
+  hosting: Vercel
+  cicd: GitHub Actions
 ```
 
-**Output:** `package.faf` (85% context score)
-```yaml
-version: 1.0
-score: 85
-type: package
-content:
-  name: "my-app"
-  version: "1.0.0"
-  dependencies: ["react@^18.0.0"]
-metadata:
-  processed: "2024-01-26"
-```
+`faf auto` fills what the project tree can prove. The six Ws are yours to
+answer — they are the part no tool can infer.
 
 ## Why .faf?
 
@@ -303,20 +311,29 @@ metadata:
 - **🚀 Standardize** - One format for all file types
 - **🤖 AI-Ready** - Optimized for LLM consumption
 
-## File Scoring
+## Scoring
 
-| Score | Meaning | AI Readiness |
-|-------|---------|--------------|
-| 0-60% | Incomplete | Poor context |
-| 61-80% | Basic | Acceptable |
-| 81-90% | Good | Recommended |
-| 91-99% | Excellent | Optimal |
-| 100% | Perfect | Maximum context |
+33 slots. `app_type` decides which a project is asked about; the rest are marked
+`slotignored` and leave the denominator.
+
+```
+score = populated / active × 100
+```
+
+| Score | Reading |
+|-------|---------|
+| 0-60% | Incomplete |
+| 61-80% | Basic |
+| 81-90% | Good |
+| 91-99% | Excellent |
+| 100% | ✪ Trophy |
+
+See [SPECIFICATION.md](SPECIFICATION.md) for the slot list and the rule.
 
 ## Use Cases
 
-- **File Conversion:** Transform any file type into .faf format
-- **Project Context:** Create a single .faf file for your entire project
+- **Project Context:** one `project.faf` carries what a project is, how it is built, and why
+- **Onboarding:** a newcomer — human or AI — reads one file instead of twenty
 - **Build Integration:** Companies can create custom implementations
 - **AI Optimization:** Perfect context for any AI tool
 
@@ -333,7 +350,7 @@ npm install -g claude-faf-mcp
 # Add to Claude Desktop config
 ```
 
-**Universal tools. Zero configuration. Production-ready.**
+**Portable tools. Zero configuration. Production-ready.**
 
 → [faf-cli on npm](https://npmjs.com/package/faf-cli) · [live totals](https://faf.one/downloads)
 → [claude-faf-mcp on npm](https://npmjs.com/package/claude-faf-mcp) · [live totals](https://faf.one/downloads)
@@ -378,7 +395,7 @@ npm install -g claude-faf-mcp
 - **Sep 16, 2025** - MCP Server v2.0.0 published to npm
 - **Sep 11, 2025** - Google Chrome Web Store approval (1st)
 - **Sep 1, 2025** - Developer platform launch (fafdev.tools)
-- **Aug 8, 2025** - Format created, first official .faf file generated
+- **Aug 8, 2025** - Format created, first official .faf file written
 
 **Quintuple Validation: IANA, Anthropic, Google (2x), xAI**
 

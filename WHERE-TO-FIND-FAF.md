@@ -68,7 +68,7 @@ FAFb **wire v2** is the brick. Spec: [faf-rust `BINARY-FORMAT.md`](https://githu
 
 ## AI Interop (v4.5.0)
 
-One `project.faf` generates all AI instruction formats:
+One `project.faf` authors all AI instruction formats:
 
 | Platform | Format | Command |
 |----------|--------|---------|
@@ -111,7 +111,7 @@ One `project.faf` generates all AI instruction formats:
 - **MCP Servers:** 5 (Anthropic, Universal, xAI, Google, MCPaaS)
 - **Compilers:** 3 (Rust, Zig, WASM)
 - **AI Formats:** 4 (AGENTS.md, .cursorrules, CLAUDE.md, GEMINI.md)
-- **File Types Supported:** 153+
+- **Slots:** 33 (21 scored by the MIT toolchain)
 - **IANA Media Type:** `application/vnd.faf+yaml`
 
 ---

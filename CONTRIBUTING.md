@@ -18,7 +18,7 @@ This specification follows format design principles:
 
 - **Stability** - Changes must maintain backward compatibility
 - **Simplicity** - Complexity is the enemy of adoption
-- **Universality** - Works across all AI tools, stacks, and platforms
+- **Portability** - Works across all AI tools, stacks, and platforms
 - **Interoperability** - Standards-compliant YAML structure
 - **Longevity** - Built to last decades, like .iff format (1985-present)
 

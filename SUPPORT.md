@@ -243,6 +243,6 @@ Built to last. Built for everyone.
 
 ---
 
-**Universal AI context. Open specification. Free forever.**
+**Portable AI context. Open specification. Free forever.**
 
 Format designed for decades of interoperability.

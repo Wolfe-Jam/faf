@@ -56,13 +56,15 @@ The most confusing thing about this repo, and getting it wrong has already shipp
 | **Spec 3.3.0** | the `.faf` format — "the 33" | `SPECIFICATION.md` header |
 | **`faf_version: 2.5.0`** | the file being written | stamped inside each `.faf` |
 | **FAFb wire v2** | the compiled binary container | `faf-fafb/BINARY-FORMAT.md` |
-| **`@faf/specification` 1.1.0** | the npm package of these docs | `package.json` |
 
 One sentence from the FAFb spec ties two together: *"faf-fafb wire v2 implements
 FAF-33 (spec 3.3.0)."*
 
-**`package.json` is still 1.1.0 while the spec is 3.3.0.** Bumping it means publishing
-to npm — a `/pubpro` job with his GO, never folded into a docs commit.
+`package.json` was a fourth axis until 2026-09-21; it now carries the spec version
+(3.3.0), so there is one number fewer to conflate. **`@faf/specification` is not
+published** — npm returns 404 — so a version bump here is a stamp, not a release.
+A *first* publish would claim the `@faf` scope and start a contract implementers
+pin to; that goes through `/pubpro` with his GO.
 
 ---
 

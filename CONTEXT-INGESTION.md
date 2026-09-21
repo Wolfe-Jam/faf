@@ -176,7 +176,7 @@ Each is the *same* context in the shape its consumer expects — never re-author
 5. **Labeled + provenance-marked** — slots keep their labels; a quiet marker records the source and how to refresh.
 6. **Current by re-projection** — change the source, re-project, the file follows. No hand-edit, no drift.
 
-**Reference generator:** `faf export --agents` / `export --all` — shipped. Human field guide: [faf.one/agents](https://faf.one/agents). The projection *rules* are open; a generator's detection and scoring are its own moat.
+**Reference implementation:** `faf export --agents` / `export --all` — shipped. Human field guide: [faf.one/agents](https://faf.one/agents). The projection *rules* are open; a generator's detection and scoring are its own moat.
 
 ### Worked example — `project.faf` → `AGENTS.md`
 

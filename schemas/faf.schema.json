@@ -9,7 +9,7 @@
   "properties": {
     "faf_version": {
       "type": "string",
-      "description": "Format/generator version, e.g. \"2.5.0\".",
+      "description": "Format version of this file, e.g. \"2.5.0\".",
       "examples": ["2.5.0"]
     },
     "project": {
