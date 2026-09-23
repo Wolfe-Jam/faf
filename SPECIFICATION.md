@@ -174,7 +174,8 @@ A valid `.faf` file:
 Schema: <https://faf.one/schemas/faf.schema.json>
 
 Siblings, each IANA-registered in its own right: `.fafm` (memory), `.fafa` (agents).
-The compiled binary form is `.fafb` — `application/vnd.fafb`.
+The compiled binary form is `.fafb` — `application/vnd.fafb`. That one is private and
+carries no registration of its own; it builds on the registered `.faf`.
 
 ## Version history
 
