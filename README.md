@@ -250,7 +250,7 @@ npm install -g claude-faf-mcp
 
 ## Compiler Toolchain
 
-FAFb **wire v2** is the brick. Spec: [`BINARY-FORMAT.md` in faf-rust](https://github.com/Wolfe-Jam/faf-rust/blob/main/crates/faf-fafb/BINARY-FORMAT.md) · human page [faf.one/spec](https://faf.one/spec). This repo’s `BINARY-FORMAT.md` is a retired v1 pointer, not the live spec.
+FAFb **wire v2** is the brick. Spec: [`BINARY-FORMAT.md` in faf-rust](https://github.com/Wolfe-Jam/faf-rust/blob/main/crates/faf-fafb/BINARY-FORMAT.md) · human page [faf.one/spec](https://faf.one/spec) · the tour [faf.one/bricks](https://faf.one/bricks). This repo’s `BINARY-FORMAT.md` is a retired v1 pointer, not the live spec.
 
 | Component | Language | Output |
 |-----------|----------|--------|
