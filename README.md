@@ -72,7 +72,7 @@ Permanent Memory. Instant Recall.
 - **[FAFipedia](https://github.com/Wolfe-Jam/fafipedia)** — the canonical knowledge base we're shipping page-by-page
 - **[ZEPH💨](https://github.com/Wolfe-Jam/xai-faf-zeph)** — page 3 Ultra Context Layer (Pure Zig → WASM 2.7 KB)
 
-Page four dropping next. Star the repos if you're riding with us ⚡️x12
+⭐ [Star it on GitHub](https://github.com/Wolfe-Jam/faf): bookmarks it for you, helps other devs find it too.
 
 **Full conversation:** [x.com/wolfe_jam/status/2057226405017010686](https://x.com/wolfe_jam/status/2057226405017010686)
 
