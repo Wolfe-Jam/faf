@@ -1,0 +1,16 @@
+# §5 + §8.1 conformance (v1.2): a spoken form on a fact, and tombstones keyed by id and txt_hash.
+version: "1.2"
+profile: voice
+namepoint: "@demo"
+created: "2026-11-02T00:00:00Z"
+last_etched: "2026-11-02T00:00:00Z"
+memory:
+  facts:
+    - text: "Siobhan"
+      say: "shi-VAWN"
+      tags: ["pronunciation", "name"]
+  tombstones:
+    - id: "old-preference"
+      deleted_at: "2026-11-01T09:00:00Z"
+    - txt_hash: "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"
+      deleted_at: "2026-11-01T09:05:00Z"

@@ -1,0 +1,10 @@
+# §6.1 conformance (v1.2): a priority value outside the canonical four is valid; consumers treat it as standard.
+version: "1.2"
+profile: voice
+namepoint: "@demo"
+created: "2026-11-02T00:00:00Z"
+last_etched: "2026-11-02T00:00:00Z"
+memory:
+  facts:
+    - text: "a legacy scratchpad priority"
+      priority: "low"

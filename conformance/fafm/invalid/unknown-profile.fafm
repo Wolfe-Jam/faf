@@ -1,0 +1,8 @@
+# §3 conformance (v1.2): an unknown profile is invalid (a profile changes how facts are read).
+version: "1.2"
+profile: "telepathy"
+namepoint: "@demo"
+created: "2026-11-02T00:00:00Z"
+last_etched: "2026-11-02T00:00:00Z"
+memory:
+  facts: []

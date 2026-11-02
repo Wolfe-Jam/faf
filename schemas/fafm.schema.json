@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://faf.one/schemas/fafm.schema.json",
   "title": "FAF Memory (.fafm)",
-  "description": "Schema for application/vnd.fafm+yaml v1.1. One format, profiles (voice|knowledge). Unknown fields are permitted and MUST be ignored by consumers (additionalProperties: true throughout).",
+  "description": "Schema for application/vnd.fafm+yaml v1.2. One format, profiles (voice|knowledge). Unknown fields are permitted and MUST be ignored by consumers (additionalProperties: true throughout); writers MUST preserve them. Date-times are RFC 3339 strings.",
   "type": "object",
   "additionalProperties": true,
   "required": ["version", "namepoint", "created", "last_etched", "memory"],
@@ -10,13 +10,13 @@
     "version": {
       "type": "string",
       "pattern": "^\\d+\\.\\d+$",
-      "description": "Semantic version of the document format, e.g. \"1.1\"."
+      "description": "Semantic version of the document format, e.g. \"1.2\". Readers accept a higher minor of the same major."
     },
     "profile": {
       "type": "string",
       "enum": ["voice", "knowledge"],
       "default": "voice",
-      "description": "Use-case shape. Absent => voice (v1.0 back-compat)."
+      "description": "Use-case shape. Absent => voice (v1.0 back-compat). Unknown values are invalid."
     },
     "namepoint": {
       "type": "string",
@@ -49,7 +49,22 @@
         },
         "sessions": { "type": "array" },
         "preferences": { "type": "object", "additionalProperties": true },
-        "custom": { "type": "object", "additionalProperties": true }
+        "custom": { "type": "object", "additionalProperties": true },
+        "tombstones": {
+          "type": "array",
+          "description": "Optional (v1.2): deletes recorded for sync/merge. Each entry has id or txt_hash, plus deleted_at. Never holds the forgotten text.",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["deleted_at"],
+            "anyOf": [{ "required": ["id"] }, { "required": ["txt_hash"] }],
+            "properties": {
+              "id": { "type": "string" },
+              "txt_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+              "deleted_at": { "type": "string", "format": "date-time" }
+            }
+          }
+        }
       }
     }
   },
@@ -60,17 +75,18 @@
       "required": ["text"],
       "properties": {
         "text": { "type": "string", "description": "REQUIRED. The memory unit any consumer can read." },
+        "say": { "type": "string", "description": "Optional (v1.2): the spoken form of text, as a plain-text respelling. Never spoken as content." },
         "tags": { "type": "array", "items": { "type": "string" } },
         "id": { "type": "string", "description": "Stable unique key (knowledge)." },
         "type": {
           "type": "string",
-          "enum": ["user", "feedback", "project", "reference"],
-          "description": "Canonical knowledge types. Domain distinctions use tags/custom, not enum expansion."
+          "examples": ["user", "feedback", "project", "reference"],
+          "description": "Canonical knowledge types: user | feedback | project | reference. Other values are valid and treated as unclassified (v1.2). Domain distinctions use tags/custom, not enum expansion."
         },
         "priority": {
           "type": "string",
-          "enum": ["ephemeral", "standard", "high", "critical"],
-          "description": "Canonical priority vocabulary."
+          "examples": ["ephemeral", "standard", "high", "critical"],
+          "description": "Canonical priority vocabulary: ephemeral | standard | high | critical. Other values are valid and treated as standard (v1.2)."
         },
         "links": { "type": "array", "items": { "type": "string" }, "description": "Cross-references to other entry ids." },
         "timestamp": { "type": "string", "format": "date-time" },
