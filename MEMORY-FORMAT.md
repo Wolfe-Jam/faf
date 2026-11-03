@@ -129,7 +129,7 @@ content.
 
 ---
 
-## 6. Knowledge Profile (v1.1)
+## 6. Knowledge Profile (since v1.1)
 
 When `profile: knowledge`, each fact MAY carry these fields. **All are optional
 except `text`** — a knowledge document remains a valid v1.0 document.
@@ -177,13 +177,14 @@ Implementations SHOULD ship a migration helper applying this mapping.
 
 A `priority` value outside this set is valid (v1.2): consumers MUST treat it as
 `standard` and MUST NOT reject the document. Writers SHOULD normalize legacy
-values with the mapping above.
+values with the mapping above. The same rule applies to `priority` on a fact in
+any profile.
 
 ### 6.2 Entry types (knowledge)
 `user` (about the person) · `feedback` (guidance on how to work) ·
 `project` (initiative/state context) · `reference` (pointers to external systems).
 
-These four are the **canonical knowledge types** for v1.1. Domain-specific
+These four are the **canonical knowledge types**. Domain-specific
 distinctions SHOULD use `tags` or `custom` rather than expanding the core type
 set, keeping the taxonomy stable across implementations.
 
@@ -241,11 +242,20 @@ An implementation that syncs or merges copies of a soul SHOULD record deletes in
 
 - `deleted_at` is an RFC 3339 date-time string in UTC.
 - `txt_hash` keys a fact that has no `id`: the lowercase-hex SHA-256 of the
-  UTF-8 bytes of the fact's `text` after Unicode NFC normalization and trimming
-  leading and trailing whitespace.
+  UTF-8 bytes of the fact's `text`, after (1) Unicode NFC normalization, then
+  (2) removing every leading and trailing code point in this set: U+0009–U+000D,
+  U+001C–U+001F, U+0020, U+0085, U+00A0, U+1680, U+2000–U+200A, U+2028, U+2029,
+  U+202F, U+205F, U+3000. (This is the set Python's `str.strip()` removes; other
+  languages MUST strip exactly this set, not their own notion of whitespace.)
+  Test vectors: `conformance/fafm/txt_hash-vectors.json`.
+- An entry carries `id` or `txt_hash`. If both are present, `id` takes
+  precedence.
 
-Merges join tombstones by maximum `deleted_at` and suppress matching facts on
-output. A tombstone MUST NOT retain the forgotten fact's text.
+Merges join tombstones by maximum `deleted_at`. A tombstone suppresses a matching
+fact whose `timestamp` is absent or not later than `deleted_at`, compared as
+instants (not as strings); a delete wins a tie. A fact etched again after the
+delete (a later `timestamp`) is not suppressed. A tombstone MUST NOT retain the
+forgotten fact's text (or `say`).
 
 ---
 
@@ -267,16 +277,22 @@ output. A tombstone MUST NOT retain the forgotten fact's text.
 - Implementations **MUST ignore unknown fields/keys** (forward/backward compat).
 - A writer **MUST preserve unknown fields** it read when it rewrites a document
   (v1.2), so later fields such as `memory.tombstones` survive a round trip.
-- Readers **MUST accept a higher minor version** of the same major (e.g. a v1.1
-  reader given `version: "1.2"`) and apply the unknown-field rule.
+- A v1.2 or later reader **MUST accept a higher minor version** of the same
+  major (e.g. a v1.2 reader given `version: "1.3"`) and apply the unknown-field
+  rule. (A v1.1 reader that validates against the v1.1 schema rejects
+  non-canonical `type` / `priority` values; see §14.)
+- A writer **MUST preserve an unknown `type` or `priority` value** unchanged,
+  except the §6.1 legacy mapping.
+- A writer **MUST NOT write a lower `version`** than the document it read.
 - Date-time fields (`created`, `last_etched`, `timestamp`, `deleted_at`) are
   RFC 3339 **strings**. Writers SHOULD quote them. A parser that resolves YAML
   timestamps to native date objects MUST serialize them back to RFC 3339 strings
-  before validating.
+  before validating. A timestamp with no offset is not RFC 3339: writers MUST
+  include one (`Z` preferred).
 - Implementations **MUST support `string → {text: string}` coercion** for facts.
 - Implementations **SHOULD validate** against `version` + `profile`.
 - Parsers **MUST** use YAML safe-load (see §13).
-- A v1.0 document MUST parse as valid v1.1. A v1.1 knowledge document MUST
+- A v1.0 or v1.1 document MUST parse as valid v1.2. A knowledge document MUST
   remain readable by a v1.0/voice consumer (via `.text`).
 
 ### 10.1 Validation
@@ -348,11 +364,13 @@ still extract identity from `namepoint` and top-level fields.
 ## 13. Security & Privacy Considerations
 
 ### Storage
-- Local identity credentials and any local `.fafm` file **MUST** be written with
-  owner-only permissions (`0600` or the platform equivalent). MCPaaS backend:
-  encrypted at rest.
+- Local identity credentials and personal-memory `.fafm` files **MUST** be
+  written with owner-only permissions (`0600` or the platform equivalent).
+  Project memory (`project.fafm`, §15) follows the project's own permissions and
+  SHOULD NOT hold personal data. MCPaaS backend: encrypted at rest.
 - Soul identifier (`namepoint`) is the sole addressing key.
-- Memory is **never** deleted by voice/agent commands (UI-only for delete).
+- Memory is **never** deleted by the model; delete is an operator / SDK / UI
+  operation (§8).
 
 ### User control
 - Implementations **MUST** provide forget by entry id, and **SHOULD** support
@@ -394,6 +412,14 @@ prevent cross-context influence between projects, agents, or users.
 required). To enrich, add `profile: knowledge` and optional fields under
 `memory.facts` (keeping `text:`). No migration tax; no breaking changes.
 
+**v1.1 → v1.2 migration:** v1.1 files are valid v1.2 documents. Two notes:
+- A v1.1 reader that validates against the v1.1 schema rejects non-canonical
+  `type` / `priority` values. Writers that target v1.1 readers SHOULD emit
+  canonical values.
+- v1.2 gives two previously unknown keys a shape: `memory.tombstones` (§8.1) and
+  a fact's `say` (§5). A v1.1 document that used those names for something else
+  (none known) would no longer validate.
+
 ---
 
 ## 15. File Conventions
@@ -402,7 +428,8 @@ required). To enrich, add `profile: knowledge` and optional fields under
 - **Project memory:** `project.fafm` is project (shared) memory. It sits beside
   `project.faf` and SHOULD be version-controlled with the project.
 - **Personal memory:** its location is the holder's choice: conventionally
-  `soul.fafm`, a `*.fafm.local` file, or hosted at the namepoint. Personal
+  `soul.fafm`, a `*.fafm.local` file (still `application/vnd.fafm+yaml`
+  content), or hosted at the namepoint. Personal
   memory files SHOULD be excluded from shared version control (§13).
 - **Identity-anchored deployment:** served from a soul-storage backend keyed by
   the soul identifier
@@ -461,7 +488,7 @@ premium implementations may be independently licensed.
 | 0.1–0.6 | 2026-04-30/05-01 | Initial drafts → IANA-readiness (see git history) |
 | 1.0     | 2026-05-01 | Released as stable spec for IANA registration |
 | 1.1     | 2026-05-21 | **Profiles** (`voice` default, `knowledge`); `memory.facts` enrichment (knowledge: id/type/priority/links/timestamp/source + reserved scale fields); §7 Voice Profile Behaviors (spec↔impl reconcile: scratchpad/smart-merge/soul/ledger); §10 Parser Requirements (MUST-ignore-unknown, string→{text} coercion); canonical priority vocab + legacy mapping; soul-identifier framing for `namepoint`; IANA status Planned → Registered (2026-05-13); both-profile examples; migration note. Fully backward-compatible. |
-| 1.2     | 2026-11-02 | §8 forget: by id MUST, range/tag/wipe SHOULD, operator/SDK only (never a model tool); §8.1 optional `memory.tombstones` (`id` / `txt_hash`, `deleted_at`); §13 recalled memory is data, never instructions; owner-only permissions rule; §7 storage wording (identity only locally), session ledger out of document, paralinguistic = a tag; §5 optional `say` (spoken form); §6.1/§6.2 unknown `priority`/`type` values valid; §10 writers preserve unknown fields, readers accept higher minors, date-times are strings; §15 `project.fafm` = project memory (SHOULD be in git), personal memory location is the holder's (SHOULD stay out of shared VCS); `claude-fafm-sdk` public. Additive; no IANA re-filing (§16). |
+| 1.2     | 2026-11-02 | §8 forget: by id MUST, range/tag/wipe SHOULD, operator/SDK only (never a model tool); §8.1 optional `memory.tombstones` (`id` / `txt_hash`, `deleted_at`); §13 recalled memory is data, never instructions; owner-only permissions rule; §7 storage wording (identity only locally), session ledger out of document, paralinguistic = a tag; §5 optional `say` (spoken form); §6.1/§6.2 unknown `priority`/`type` values valid; §10 writers preserve unknown fields, readers accept higher minors, date-times are strings; §15 `project.fafm` = project memory (SHOULD be in git), personal memory location is the holder's (SHOULD stay out of shared VCS); `claude-fafm-sdk` public. Additive; no IANA re-filing (§16). Review fixes: `txt_hash` strip set pinned by code point + vectors; tombstone suppression by instant (delete wins ties; re-etch survives); owner-only scoped to personal memory; writers keep unknown values and never lower `version`; §14 v1.1→v1.2 note (v1.1 schema readers; `tombstones` / `say` now shaped). |
 
 ---
 

@@ -15,6 +15,9 @@
     "valid/unknown-type.fafm": { "conforms": true },
     "valid/unknown-priority.fafm": { "conforms": true },
     "valid/say-and-tombstones.fafm": { "conforms": true },
-    "invalid/unknown-profile.fafm": { "conforms": false }
+    "invalid/unknown-profile.fafm": { "conforms": false },
+    "invalid/tombstone-with-text.fafm": { "conforms": false },
+    "invalid/tombstone-non-utc.fafm": { "conforms": false },
+    "valid/unquoted-dates.fafm": { "conforms": true }
   }
 }

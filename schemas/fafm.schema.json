@@ -9,7 +9,7 @@
   "properties": {
     "version": {
       "type": "string",
-      "pattern": "^\\d+\\.\\d+$",
+      "pattern": "^1\\.\\d+$",
       "description": "Semantic version of the document format, e.g. \"1.2\". Readers accept a higher minor of the same major."
     },
     "profile": {
@@ -52,16 +52,25 @@
         "custom": { "type": "object", "additionalProperties": true },
         "tombstones": {
           "type": "array",
-          "description": "Optional (v1.2): deletes recorded for sync/merge. Each entry has id or txt_hash, plus deleted_at. Never holds the forgotten text.",
+          "description": "Optional (v1.2): deletes recorded for sync/merge. Each entry has id or txt_hash (id wins if both), plus deleted_at in UTC (Z). Never holds the forgotten text or say.",
           "items": {
             "type": "object",
             "additionalProperties": true,
             "required": ["deleted_at"],
-            "anyOf": [{ "required": ["id"] }, { "required": ["txt_hash"] }],
+            "anyOf": [
+              { "required": ["id"], "properties": { "id": { "type": "string" } } },
+              { "required": ["txt_hash"], "properties": { "txt_hash": { "type": "string" } } }
+            ],
+            "not": {
+              "anyOf": [
+                { "required": ["text"], "properties": { "text": true } },
+                { "required": ["say"], "properties": { "say": true } }
+              ]
+            },
             "properties": {
               "id": { "type": "string" },
               "txt_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
-              "deleted_at": { "type": "string", "format": "date-time" }
+              "deleted_at": { "type": "string", "format": "date-time", "pattern": "Z$" }
             }
           }
         }

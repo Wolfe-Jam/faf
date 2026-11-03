@@ -1,0 +1,11 @@
+# §8.1 conformance (v1.2): a tombstone MUST NOT retain the forgotten fact's text.
+version: "1.2"
+namepoint: "@demo"
+created: "2026-11-02T00:00:00Z"
+last_etched: "2026-11-02T00:00:00Z"
+memory:
+  facts: []
+  tombstones:
+    - id: "x"
+      text: "the forgotten fact"
+      deleted_at: "2026-11-01T09:00:00Z"
