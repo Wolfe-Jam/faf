@@ -30,5 +30,13 @@ conformance/
   `invalid/` cases are deliberately broken and no tool would author them.
 - `fafm/valid/unknown-fields.fafm` encodes the §10 rule: unknown fields are
   permitted and MUST be ignored, not rejected.
+- `fafm/valid/unquoted-dates.fafm` encodes the §10 date rule: a parser that
+  turns YAML timestamps into native dates (PyYAML, js-yaml 4) must serialize
+  them back to RFC 3339 strings before validating. `yaml` (eemeli) returns
+  strings already.
+- `fafm/txt_hash-vectors.json` holds `txt_hash` test vectors (§8.1): input,
+  normalized text and expected hash, including the code points that are and
+  aren't stripped. Every implementation that writes tombstones should match all
+  of them.
 - To add a fixture: drop the file in the right `valid/` or `invalid/` dir and
   add its expected outcome to `expected.json`.

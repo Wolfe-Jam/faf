@@ -1,0 +1,89 @@
+{
+  "description": "txt_hash test vectors (.fafm v1.2 \u00a78.1): lowercase-hex SHA-256 of UTF-8 after NFC, then stripping the pinned code-point set. Computed with claude-fafm-sdk's normalize_text/txt_hash.",
+  "vectors": [
+    {
+      "name": "ascii spaces and newline",
+      "text": "  Prefers concise answers \n",
+      "normalized": "Prefers concise answers",
+      "txt_hash": "4d3baaccb2278b2460705324203191f5382d4669995088dd9d98239491630096"
+    },
+    {
+      "name": "NFD input equals NFC",
+      "text": "Cafe\u0301",
+      "normalized": "Caf\u00e9",
+      "txt_hash": "73473dcc12b763085904a5279d048c4d5b3b008c46f1f32443b99de04aa83a14"
+    },
+    {
+      "name": "NFC input",
+      "text": "Caf\u00e9",
+      "normalized": "Caf\u00e9",
+      "txt_hash": "73473dcc12b763085904a5279d048c4d5b3b008c46f1f32443b99de04aa83a14"
+    },
+    {
+      "name": "ideographic space U+3000",
+      "text": "\u3000hello\u3000",
+      "normalized": "hello",
+      "txt_hash": "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824"
+    },
+    {
+      "name": "no-break space U+00A0",
+      "text": "\u00a0hello\u00a0",
+      "normalized": "hello",
+      "txt_hash": "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824"
+    },
+    {
+      "name": "NEL U+0085 is stripped",
+      "text": "\u0085hello",
+      "normalized": "hello",
+      "txt_hash": "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824"
+    },
+    {
+      "name": "U+001C-U+001F are stripped",
+      "text": "\u001fhello\u001c",
+      "normalized": "hello",
+      "txt_hash": "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824"
+    },
+    {
+      "name": "BOM U+FEFF is NOT stripped",
+      "text": "\ufeffhello",
+      "normalized": "\ufeffhello",
+      "txt_hash": "7489ebbcc2a00056ddaaaac190bce473e5c03696ea1bd8ed83cf59a174283862"
+    },
+    {
+      "name": "ZWSP U+200B is NOT stripped",
+      "text": "\u200bhello",
+      "normalized": "\u200bhello",
+      "txt_hash": "02970d4c03ed2ae17010cf60b154fc187e892f0cb49adea23a9541c485401eff"
+    },
+    {
+      "name": "plain",
+      "text": "hello",
+      "normalized": "hello",
+      "txt_hash": "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824"
+    },
+    {
+      "name": "U+180E is NOT stripped (it left White_Space in Unicode 6.3)",
+      "text": "\u180ehello",
+      "normalized": "\u180ehello",
+      "txt_hash": "a226d8965514bf46c92c7fcca204f67a3504901ea24823c88570b40d1e4dc077"
+    },
+    {
+      "name": "U+2000 is stripped (NFC maps it to U+2002, also in the set)",
+      "text": "\u2000hello\u2000",
+      "normalized": "hello",
+      "txt_hash": "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824"
+    },
+    {
+      "name": "interior whitespace is kept",
+      "text": "a  b",
+      "normalized": "a  b",
+      "txt_hash": "6e12db73209a66d147a67a15868bdb4b8ae57b884d4731310b62f82a7d67611e"
+    },
+    {
+      "name": "empty after strip",
+      "text": "  \u3000 ",
+      "normalized": "",
+      "txt_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

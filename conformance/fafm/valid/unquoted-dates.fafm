@@ -1,0 +1,12 @@
+# §10 conformance (v1.2): unquoted timestamps. A parser that resolves YAML timestamps
+# to native dates (e.g. PyYAML) MUST serialize them back to RFC 3339 strings, with Z, before validating.
+version: "1.2"
+namepoint: "@demo"
+created: 2026-11-02T00:00:00Z
+last_etched: 2026-11-02T00:00:00Z
+memory:
+  facts:
+    - "a fact in a file whose dates are unquoted"
+  tombstones:
+    - id: "old-fact"
+      deleted_at: 2026-11-01T09:00:00Z

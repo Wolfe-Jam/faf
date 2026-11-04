@@ -2,8 +2,8 @@
 version: "1.1"
 profile: voice
 namepoint: "@demo"
-created: 2026-05-21T00:00:00Z
-last_etched: 2026-05-21T00:00:00Z
+created: "2026-05-21T00:00:00Z"
+last_etched: "2026-05-21T00:00:00Z"
 future_root_field: "a consumer MUST ignore this, not reject it"
 memory:
   facts:
