@@ -240,22 +240,26 @@ model can call (§13).
 An implementation that syncs or merges copies of a soul SHOULD record deletes in
 `memory.tombstones`, a list of `{id, deleted_at}` or `{txt_hash, deleted_at}`:
 
-- `deleted_at` is an RFC 3339 date-time string in UTC.
+- `deleted_at` is an RFC 3339 date-time string in UTC, written with an uppercase
+  `Z`.
 - `txt_hash` keys a fact that has no `id`: the lowercase-hex SHA-256 of the
   UTF-8 bytes of the fact's `text`, after (1) Unicode NFC normalization, then
   (2) removing every leading and trailing code point in this set: U+0009–U+000D,
   U+001C–U+001F, U+0020, U+0085, U+00A0, U+1680, U+2000–U+200A, U+2028, U+2029,
-  U+202F, U+205F, U+3000. (This is the set Python's `str.strip()` removes; other
-  languages MUST strip exactly this set, not their own notion of whitespace.)
+  U+202F, U+205F, U+3000. (This is the set Python 3.13's `str.strip()` removes, under Unicode 15.1;
+  the list above is normative. Other languages, and later Python versions, MUST
+  strip exactly this set, not their own notion of whitespace.)
   Test vectors: `conformance/fafm/txt_hash-vectors.json`.
 - An entry carries `id` or `txt_hash`. If both are present, `id` takes
-  precedence.
+  precedence. A `txt_hash` tombstone matches only facts without an `id`.
 
-Merges join tombstones by maximum `deleted_at`. A tombstone suppresses a matching
+Merges join tombstones by maximum `deleted_at` (as instants). A tombstone suppresses a matching
 fact whose `timestamp` is absent or not later than `deleted_at`, compared as
 instants (not as strings); a delete wins a tie. A fact etched again after the
 delete (a later `timestamp`) is not suppressed. A tombstone MUST NOT retain the
-forgotten fact's text (or `say`).
+forgotten fact's text (or `say`). A writer that re-etches a fact matching a
+tombstone MUST give it a `timestamp` later than `deleted_at` (the object form, for
+a voice fact).
 
 ---
 
@@ -287,8 +291,10 @@ forgotten fact's text (or `say`).
 - Date-time fields (`created`, `last_etched`, `timestamp`, `deleted_at`) are
   RFC 3339 **strings**. Writers SHOULD quote them. A parser that resolves YAML
   timestamps to native date objects MUST serialize them back to RFC 3339 strings
-  before validating. A timestamp with no offset is not RFC 3339: writers MUST
-  include one (`Z` preferred).
+  before validating, writing a UTC instant with `Z`. A timestamp with no offset
+  is not RFC 3339: writers MUST include one (`Z` preferred).
+- `version` MUST be a quoted string (YAML reads an unquoted `1.2` as a number
+  and `1.10` as `1.1`).
 - Implementations **MUST support `string → {text: string}` coercion** for facts.
 - Implementations **SHOULD validate** against `version` + `profile`.
 - Parsers **MUST** use YAML safe-load (see §13).
@@ -415,7 +421,8 @@ required). To enrich, add `profile: knowledge` and optional fields under
 **v1.1 → v1.2 migration:** v1.1 files are valid v1.2 documents. Two notes:
 - A v1.1 reader that validates against the v1.1 schema rejects non-canonical
   `type` / `priority` values. Writers that target v1.1 readers SHOULD emit
-  canonical values.
+  canonical values for the values they author (§10 still requires preserving a
+  value they read).
 - v1.2 gives two previously unknown keys a shape: `memory.tombstones` (§8.1) and
   a fact's `say` (§5). A v1.1 document that used those names for something else
   (none known) would no longer validate.

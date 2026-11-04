@@ -60,6 +60,30 @@
       "text": "hello",
       "normalized": "hello",
       "txt_hash": "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824"
+    },
+    {
+      "name": "U+180E is NOT stripped (it left White_Space in Unicode 6.3)",
+      "text": "\u180ehello",
+      "normalized": "\u180ehello",
+      "txt_hash": "a226d8965514bf46c92c7fcca204f67a3504901ea24823c88570b40d1e4dc077"
+    },
+    {
+      "name": "U+2000 is stripped (NFC maps it to U+2002, also in the set)",
+      "text": "\u2000hello\u2000",
+      "normalized": "hello",
+      "txt_hash": "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824"
+    },
+    {
+      "name": "interior whitespace is kept",
+      "text": "a  b",
+      "normalized": "a  b",
+      "txt_hash": "6e12db73209a66d147a67a15868bdb4b8ae57b884d4731310b62f82a7d67611e"
+    },
+    {
+      "name": "empty after strip",
+      "text": "  \u3000 ",
+      "normalized": "",
+      "txt_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     }
   ]
 }
