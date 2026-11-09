@@ -37,7 +37,7 @@
         "why": { "type": "string", "description": "Why does it exist?" },
         "where": { "type": "string", "description": "Where does it run?" },
         "when": { "type": "string", "description": "When was it started / timeline." },
-        "how": { "type": "string", "description": "How is it built?" }
+        "how": { "type": "string", "description": "How does it work? The mechanism, and the choice that shapes the code." }
       }
     },
     "stack": {
