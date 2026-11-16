@@ -9,9 +9,9 @@ FAFb **wire v2** is specified in [faf-rust `BINARY-FORMAT.md`](https://github.co
 
 ## CLI
 
-| Package | Registry | Install |
-|---------|----------|---------|
-| [faf-cli](https://npmjs.com/package/faf-cli) | npm · Homebrew | `npm i -g faf-cli` · `brew install wolfe-jam/faf/faf-cli` |
+| Package | Version | Registry | Install |
+|---------|---------|----------|---------|
+| [faf-cli](https://npmjs.com/package/faf-cli) | v8.10.0 | npm · Homebrew | `npm i -g faf-cli` · `brew install wolfe-jam/faf/faf-cli` |
 
 `npx faf-cli auto` writes or refreshes `project.faf`. `faf compile` emits a `.fafb` via the WASM kernel. Live totals: [faf.one/downloads](https://faf.one/downloads).
 
