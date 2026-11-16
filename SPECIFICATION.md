@@ -173,6 +173,8 @@ A valid `.faf` file:
 
 Schema: <https://faf.one/schemas/faf.schema.json>
 
+Worked examples, one task each (valid, invalid, 100%, slotignored, schema validation, `.fafm`, `.fafa`): [docs/EXAMPLES.md](docs/EXAMPLES.md).
+
 Siblings, each IANA-registered in its own right: `.fafm` (memory), `.fafa` (agents).
 The compiled binary form is `.fafb` — `application/vnd.fafb`. That one is private and
 carries no registration of its own; it builds on the registered `.faf`.
