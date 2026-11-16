@@ -1,0 +1,21 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "FAF format specification (.faf)",
+  "description": "Specification for .faf, an IANA-registered YAML format (application/vnd.faf+yaml) for a project's facts: name, goal, stack and the six W's, in project.faf. Covers the 33 slots and how a score is worked out, JSON Schemas, conformance files, and the sibling formats .fafm (memory) and .fafa (agents).",
+  "excludeFolders": [".github", "assets", "discussions", "invalid", "node_modules", "archive", "deprecated", "legacy"],
+  "excludeFiles": [
+    "CHANGELOG.md",
+    "LICENSE.md",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "CLAUDE.md",
+    "NPM-COMMUNITY-UPDATE.md",
+    "BINARY-FORMAT.md"
+  ],
+  "includeExtensions": [".faf", ".fafm"],
+  "rules": [
+    "Name the file project.faf and keep it beside package.json; tools look for project.faf first, and the hidden name .faf still parses.",
+    "A valid .faf file parses as YAML and has faf_version and project.name; every other field is optional.",
+    "Each slot is populated, empty or slotignored; slotignored means the slot does not apply to the project's app type and does not count toward the score."
+  ]
+}
