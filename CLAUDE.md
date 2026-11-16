@@ -54,7 +54,7 @@ The most confusing thing about this repo, and getting it wrong has already shipp
 | Number | Versions | Lives in |
 |--------|----------|----------|
 | **Spec 3.3.0** | the `.faf` format — "the 33" | `SPECIFICATION.md` header |
-| **`faf_version: 2.5.0`** | the file being written | stamped inside each `.faf` |
+| **`faf_version: "3.0"`** | the file being written | stamped inside each `.faf` |
 | **FAFb wire v2** | the compiled binary container | `faf-fafb/BINARY-FORMAT.md` |
 
 One sentence from the FAFb spec ties two together: *"faf-fafb wire v2 implements
@@ -87,14 +87,16 @@ describes — which is exactly the state it was in until 2026-09-20.
 ## The model, in short
 
 Every slot starts **empty**. Three states, never a fourth: `empty`, `slotignored`
-(not required for this `app_type`), `populated` (holds a verified fact).
+(not required for this app type, `project.type`), `populated` (holds a verified fact).
 
 ```
 score = populated / active × 100        active = 33 − slotignored
 ```
 
-`app_type` selects which slots are required. faf-cli (MIT, free) scores 21 slots for
-every app type; the full 33 adds monorepo and team slots.
+The app type (`project.type`) selects which slots are required. Always-33: every
+scorer counts the same 33 slots and gives a file the same number. faf-cli (MIT, free)
+fills the 21 a single application can have; the 12 monorepo and team slots are
+`slotignored` until a project is a monorepo or a team.
 
 ---
 

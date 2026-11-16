@@ -1,6 +1,6 @@
 # n8n-workflow.faf — a deployed automation, described as the project it is.
 #
-# app_type: backend activates 17 slots: project (3) + human context (6) +
+# type: backend activates 17 slots: project (3) + human context (6) +
 # backend (5) + delivery (3). The workflow is a running service with a vector
 # store behind it, so the backend slots count. It has no UI of its own, so the
 # frontend slots are not required.
@@ -8,14 +8,13 @@
 # This example is also a reminder of what a .faf describes: the project, not a
 # file. The earlier version of this example transcribed a workflow JSON. The
 # subject is the support bot, not the export.
-faf_version: 2.5.0
-
-app_type: backend
+faf_version: "3.0"
 
 project:
   name: rag-support-bot
   goal: Answer customer questions from the knowledge base before a human sees them
   main_language: JavaScript
+  type: backend
 
 human_context:
   who: The support team, and the customers who get an answer in seconds rather than hours

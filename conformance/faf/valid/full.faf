@@ -1,4 +1,4 @@
-faf_version: 2.5.0
+faf_version: "3.0"
 project:
   name: full-demo
   goal: Fuller valid faf fixture for conformance

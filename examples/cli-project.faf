@@ -1,17 +1,16 @@
 # cli-project.faf — a command-line tool.
 #
-# app_type: cli activates 12 slots: project (3) + human context (6) +
+# type: cli activates 12 slots: project (3) + human context (6) +
 # delivery (3: hosting, build, cicd). A CLI ships and builds somewhere, so
 # those count. It has no frontend and no database, so those slots are not
 # required and never enter the score.
-faf_version: 2.5.0
-
-app_type: cli
+faf_version: "3.0"
 
 project:
   name: faf-cli
   goal: Read, write and score project.faf from the command line
   main_language: TypeScript
+  type: cli
 
 human_context:
   who: Developers who want their project context portable across AI tools
