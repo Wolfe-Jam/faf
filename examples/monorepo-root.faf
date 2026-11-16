@@ -1,6 +1,6 @@
 # monorepo-root.faf — the twelve slots the other examples never reach.
 #
-# app_type: monorepo-root activates 21 slots: project (3) + human context (6) +
+# type: monorepo-root activates 21 slots: project (3) + human context (6) +
 # monorepo infrastructure (5) + team application (4) + team operations (3).
 #
 # This is the part of the 33 that only exists once a project stops being one
@@ -11,14 +11,13 @@
 # Note the frontend and backend slots are absent here: the root is not an
 # application, it is the organisation of several. Each package carries its own
 # project.faf.
-faf_version: 2.5.0
-
-app_type: monorepo-root
+faf_version: "3.0"
 
 project:
   name: acme-platform
   goal: One repository for the web app, the API and the shared design system
   main_language: TypeScript
+  type: monorepo-root
 
 human_context:
   who: Twelve engineers across three teams, plus the platform group who own the build
@@ -36,7 +35,6 @@ stack:
   cache: Redis
   search: slotignored
   storage: Amazon S3
-
 
 # The root is not an application — each package carries its own project.faf.
   frontend: slotignored

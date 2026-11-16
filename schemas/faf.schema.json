@@ -9,8 +9,8 @@
   "properties": {
     "faf_version": {
       "type": "string",
-      "description": "Format version of this file, e.g. \"2.5.0\".",
-      "examples": ["2.5.0"]
+      "description": "Format version of this file: \"3.0\" for files written today; \"2.5.0\" files still parse.",
+      "examples": ["3.0"]
     },
     "project": {
       "type": "object",

@@ -1,4 +1,4 @@
-faf_version: 2.5.0
+faf_version: "3.0"
 project:
   name: minimal-demo
   goal: Minimal valid faf fixture for conformance

@@ -1,16 +1,15 @@
 # documentation.faf — the smallest honest .faf.
 #
-# app_type: documentation activates 9 slots: project (3) + human context (6).
+# type: documentation activates 9 slots: project (3) + human context (6).
 # A docs repo has no stack to describe, so the stack slots are not required and
 # never enter the score. Nothing is held against it for lacking them.
-faf_version: 2.5.0
-
-app_type: documentation
+faf_version: "3.0"
 
 project:
   name: faf-handbook
   goal: Teach the .faf format in one sitting, with runnable examples
   main_language: Markdown
+  type: documentation
 
 human_context:
   who: Developers meeting .faf for the first time, and implementers writing a parser

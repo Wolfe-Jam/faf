@@ -1,6 +1,6 @@
 # example.faf — an illustrative .faf (Mk4 format).
 # Conforms to https://faf.one/schemas/faf.schema.json (application/vnd.faf+yaml).
-faf_version: 2.5.0
+faf_version: "3.0"
 project:
   name: awesome-ai-project
   goal: Next-generation AI context optimization engine

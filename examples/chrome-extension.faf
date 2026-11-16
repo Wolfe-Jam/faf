@@ -1,20 +1,19 @@
 # chrome-extension.faf — a browser extension.
 #
-# app_type: extension activates 16 slots: project (3) + human context (6) +
+# type: extension activates 16 slots: project (3) + human context (6) +
 # frontend (4) + delivery (3). An extension has a UI, so the frontend slots
 # count. It has no server or database, so the backend slots are not required.
 #
 # Note ui_library: slotignored — this extension styles its popup directly and
 # uses no component library. Saying so removes the slot from the denominator.
 # That is the honest answer, and it is not the same as leaving it empty.
-faf_version: 2.5.0
-
-app_type: extension
+faf_version: "3.0"
 
 project:
   name: faf-context-extension
   goal: Read the project.faf of any repository you are looking at, in the browser
   main_language: TypeScript
+  type: extension
 
 human_context:
   who: Developers browsing repositories who want the project's context without cloning it

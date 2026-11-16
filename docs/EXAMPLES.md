@@ -18,7 +18,7 @@ One task per section: a sentence, then a file or a command. Every file below is 
 A valid `.faf` needs `faf_version` and `project.name`. Everything else is optional. This file is [`conformance/faf/valid/minimal.faf`](../conformance/faf/valid/minimal.faf).
 
 ```yaml
-faf_version: 2.5.0
+faf_version: "3.0"
 project:
   name: minimal-demo
   goal: Minimal valid faf fixture for conformance
@@ -36,17 +36,16 @@ valid conformance/faf/valid/minimal.faf
 
 ## A complete project.faf that scores 100%
 
-A CLI tool: the project block, the six W's, the three delivery slots it needs, and every other slot marked `slotignored`. This file is [`examples/cli-project.faf`](../examples/cli-project.faf) (comments trimmed).
+A CLI tool (`type: cli`): the project block, the six W's, the three delivery slots it needs, and every other slot marked `slotignored`. This file is [`examples/cli-project.faf`](../examples/cli-project.faf) (comments trimmed).
 
 ```yaml
-faf_version: 2.5.0
-
-app_type: cli
+faf_version: "3.0"
 
 project:
   name: faf-cli
   goal: Read, write and score project.faf from the command line
   main_language: TypeScript
+  type: cli
 
 human_context:
   who: Developers who want their project context portable across AI tools
@@ -127,7 +126,7 @@ Tiers: ✪ Trophy 100 · ★ Gold 99 · ◆ Silver 95 · ◇ Bronze 85 · ● Gr
 A `.faf` is invalid if it isn't YAML, or lacks `faf_version` or `project.name`. This file is [`conformance/faf/invalid/malformed.faf`](../conformance/faf/invalid/malformed.faf): an unquoted colon breaks the YAML.
 
 ```yaml
-faf_version: 2.5.0
+faf_version: "3.0"
 project:
   name: broken-demo
   goal: this value has an unquoted: colon that breaks YAML parsing

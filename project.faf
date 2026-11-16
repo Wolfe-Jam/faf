@@ -1,4 +1,4 @@
-faf_version: 2.5.0
+faf_version: "3.0"
 project:
   name: "@faf/specification"
   goal: .faf (Foundational AI-context Format) - Official format specification

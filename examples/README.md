@@ -1,6 +1,6 @@
 # .faf Examples
 
-Five `.faf` files, each a different `app_type`, arranged as a ladder — from the
+Five `.faf` files, each a different app type (`project.type`), arranged as a ladder — from the
 smallest honest file to the root of a monorepo.
 
 Every score below was produced by running a scorer over the file in this
@@ -8,7 +8,7 @@ directory. None is written by hand.
 
 ## The ladder
 
-| Example | `app_type` | Active slots | Score |
+| Example | `project.type` | Active slots | Score |
 |---------|-----------|-------------:|------:|
 | [`documentation.faf`](documentation.faf) | `documentation` | 9 | 100 ✪ |
 | [`cli-project.faf`](cli-project.faf) | `cli` | 12 | 100 ✪ |
@@ -43,15 +43,15 @@ are organised, what orchestrates the build, how versioning and shared config
 work. Worth comparing across tools:
 
 ```
-faf-cli (21 slots)   100 — 9 active     the enterprise slots are not in scope
-33-slot engine       100 — 19 active    they are
+faf-cli 8.10.0   ✪ TROPHY 100% 19/19 slots
+33-slot engine   100 — 19 active
 ```
 
-Same file, same answer, different universe.
+Same file, same number.
 
 ## The mechanism
 
-`app_type` says which slots a project is asked about. Everything it is not asked
+The app type (`project.type`) says which slots a project is asked about. Everything it is not asked
 about is written into the file as `slotignored`, which removes it from the
 denominator:
 

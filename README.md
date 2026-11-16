@@ -176,14 +176,13 @@ AI tools need context. Files have context. But there's no standard way to measur
 
 ```yaml
 # project.faf
-faf_version: 2.5.0
-
-app_type: cli
+faf_version: "3.0"
 
 project:
   name: my-project
   goal: Ship a fast command-line tool
   main_language: TypeScript
+  type: cli
 
 human_context:
   who: Developers who live in the terminal
@@ -285,14 +284,13 @@ Define once. Every AI reads it in its own language.
 
 **Output:** `project.faf`
 ```yaml
-faf_version: 2.5.0
-
-app_type: frontend
+faf_version: "3.0"
 
 project:
   name: my-app
   goal: A dashboard people actually want to open
   main_language: TypeScript
+  type: frontend
 
 stack:
   frontend: React
@@ -313,7 +311,7 @@ answer — they are the part no tool can infer.
 
 ## Scoring
 
-33 slots. `app_type` decides which a project is asked about; the rest are marked
+33 slots. The app type (`project.type`) decides which a project is asked about; the rest are marked
 `slotignored` and leave the denominator.
 
 ```

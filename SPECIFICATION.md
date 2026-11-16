@@ -26,15 +26,17 @@ sits next to `package.json`, not hidden away.
 Required: `faf_version`, and a `project` block with a `name`. Everything else is
 optional — you write what is true and leave the rest.
 
+`faf_version` is `"3.0"` for files written today. Files stamped `2.5.0`, the earlier
+series, still parse; `faf migrate` moves one to `"3.0"`.
+
 ```yaml
-faf_version: 2.5.0
+faf_version: "3.0"
 
 project:
   name: awesome-ai-project
   goal: Next-generation AI context optimization engine
   main_language: TypeScript
-
-app_type: fullstack
+  type: fullstack
 
 human_context:
   who: Developers building AI-assisted tooling
@@ -64,8 +66,7 @@ The blocks that describe a project:
 | Key | Holds |
 |-----|-------|
 | `faf_version` | format version of this file |
-| `project` | `name` · `goal` · `main_language` |
-| `app_type` | what kind of app this is — see below |
+| `project` | `name` · `goal` · `main_language` · `type` (the app type — see below) |
 | `stack` | the scored technology slots |
 | `human_context` | the six Ws |
 | `tech_stack` | flat list of technologies |
@@ -110,7 +111,7 @@ Every slot starts **empty**. Three states, never a fourth:
 - **slotignored** — not required for this app type. Labelled, and does not score.
 - **populated** — holds a verified fact.
 
-**`app_type` decides which slots are required.** A CLI tool is not asked about its CSS
+**The app type (`project.type`) decides which slots are required.** A CLI tool is not asked about its CSS
 framework; a documentation repo is not asked about a database. Slots the type does not
 require are labelled `slotignored` and leave the calculation entirely. Nothing is held
 against a project for lacking something it was never meant to have.
@@ -135,24 +136,24 @@ scores the same everywhere, and anyone can check the arithmetic by hand.
 Tiers label the number: 100 is ✪ Trophy, with Gold, Silver, Bronze, Green, Yellow,
 Red and White below it.
 
-## 21 or 33
+## 33 slots, one number
 
-**[faf-cli](https://www.npmjs.com/package/faf-cli) (MIT, free) scores 21 slots, for
-every app type.** That is the whole picture for a single application, and it costs
-nothing.
+Every FAF scorer counts the same 33 slots, and a file gets the same score from each
+of them. For a single application, 12 of the 33 are not required: monorepo
+infrastructure, team application and team operations. They are `slotignored` and
+leave the calculation. They become required once a project is a monorepo or a team.
 
-**The full 33** adds 12 slots that only matter once a project becomes a monorepo or a
-team: how packages are organised, what orchestrates the build, how versioning and
-shared configuration work. Tools built for monorepos and teams score all 33.
+**[faf-cli](https://www.npmjs.com/package/faf-cli) (MIT, free)** fills the 21 slots a
+single application can have; the other 12 stay in the file, marked.
 
-Both are honest, and they agree. Scoring this repository's `example.faf`:
+Scoring this repository's `example.faf`:
 
 ```
-33-slot   33 total · 12 slotignored · 21 active · 21 populated → 100
-faf-cli   21 total ·  1 slotignored · 20 active · 20 populated → 100
+33-slot engine   33 total · 12 slotignored · 21 active · 21 populated → 100
+faf-cli 8.10.0   ✪ TROPHY 100% 21/21 slots — example.faf
 ```
 
-Same file, same answer, different universe.
+Same file, same number.
 
 ## scores is carried, not computed
 
