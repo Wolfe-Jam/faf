@@ -10,7 +10,8 @@
     "CONTRIBUTING.md",
     "CLAUDE.md",
     "NPM-COMMUNITY-UPDATE.md",
-    "BINARY-FORMAT.md"
+    "BINARY-FORMAT.md",
+    "WHERE-TO-FIND-FAF.md"
   ],
   "includeExtensions": [".faf", ".fafm"],
   "rules": [

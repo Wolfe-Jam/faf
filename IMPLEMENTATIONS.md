@@ -9,9 +9,9 @@ FAFb **wire v2** is specified in [faf-rust `BINARY-FORMAT.md`](https://github.co
 
 ## CLI
 
-| Package | Version | Registry | Install |
-|---------|---------|----------|---------|
-| [faf-cli](https://npmjs.com/package/faf-cli) | v7.16.2 | npm | `npm i -g faf-cli` |
+| Package | Registry | Install |
+|---------|----------|---------|
+| [faf-cli](https://npmjs.com/package/faf-cli) | npm · Homebrew | `npm i -g faf-cli` · `brew install wolfe-jam/faf/faf-cli` |
 
 `npx faf-cli auto` writes or refreshes `project.faf`. `faf compile` emits a `.fafb` via the WASM kernel. Live totals: [faf.one/downloads](https://faf.one/downloads).
 
@@ -23,6 +23,7 @@ FAFb **wire v2** is specified in [faf-rust `BINARY-FORMAT.md`](https://github.co
 | [faf-mcp](https://npmjs.com/package/faf-mcp) | Universal | npm | `npm i -g faf-mcp` |
 | [grok-faf-mcp](https://npmjs.com/package/grok-faf-mcp) | xAI | npm | `npm i -g grok-faf-mcp` |
 | [gemini-faf-mcp](https://pypi.org/project/gemini-faf-mcp/) | Google | PyPI | `pip install gemini-faf-mcp` |
+| [rust-faf-mcp](https://crates.io/crates/rust-faf-mcp) | Rust, any MCP client | crates.io · npm | `cargo install rust-faf-mcp` |
 | [MCPaaS](https://mcpaas.live) | Infrastructure | SaaS | mcpaas.live |
 
 ## Compilers & Runtimes
@@ -47,7 +48,7 @@ v1 ROMs (numeric section types, `version_major = 1`) are not this format. A v2 r
 
 ## AI Interop
 
-faf-cli v7.16.2 authors the instruction files from one `project.faf`:
+faf-cli authors the instruction files from one `project.faf`:
 
 | Format | Platform | Command |
 |--------|----------|---------|
@@ -55,6 +56,18 @@ faf-cli v7.16.2 authors the instruction files from one `project.faf`:
 | `GEMINI.md` | Google Gemini | `faf export --gemini` |
 | `.cursorrules` | Cursor | `faf export --cursor` |
 | `CLAUDE.md` | Anthropic Claude | `faf sync` |
+| All of the above | — | `faf export --all` |
+
+## Try it
+
+- In the browser: [devtools.faf.one](https://devtools.faf.one)
+- Any public GitHub repo, no install: `npx faf-cli git https://github.com/facebook/react` (writes `./project.faf` with the tech slots filled)
+- Your own project: `npx faf-cli init`, then `npx faf-cli go` for the goal and six W's
+
+## Find more
+
+- [`.faf` files on GitHub](https://github.com/search?q=extension%3Afaf&type=code)
+- [npm packages named faf](https://www.npmjs.com/search?q=faf) · [PyPI](https://pypi.org/search/?q=faf)
 
 ---
 
