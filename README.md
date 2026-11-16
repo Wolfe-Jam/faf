@@ -361,9 +361,9 @@ npm install -g claude-faf-mcp
 ### 📚 Learn More
 
 1. **[Specification](SPECIFICATION.md)** - Complete format documentation
-2. **[Implementations](IMPLEMENTATIONS.md)** - All tools, SDKs, and servers
+2. **[.faf by example](docs/EXAMPLES.md)** - One task per section: valid, invalid, 100%, schema, .fafm, .fafa
 3. **[Examples](examples/)** - Real-world .faf and .fafm files
-4. **[Implementations](IMPLEMENTATIONS.md)** - Tools, SDKs and servers
+4. **[Implementations](IMPLEMENTATIONS.md)** - All tools, SDKs, and servers
 
 ## Status
 
