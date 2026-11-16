@@ -23,7 +23,7 @@ Portable, shareable AI-Context for any AI, human or team, regardless of size, lo
 
 ---
 
-## 🏆 Historic Milestones: Three IANA Registrations
+## ✪ Historic Milestones: Three IANA Registrations
 
 **`.faf`**, **`.fafm`**, and **`.fafa`** are now officially recognized Internet standard formats — registered alongside PDF, JSON, XML, and other Internet standards.
 
@@ -70,7 +70,7 @@ Permanent Memory. Instant Recall.
 
 **Live repos:**
 - **[FAFipedia](https://github.com/Wolfe-Jam/fafipedia)** — the canonical knowledge base we're shipping page-by-page
-- **[ZEPH💨](https://github.com/Wolfe-Jam/xai-faf-zeph)** — page 3 Ultra Context Layer (Pure Zig → WASM 2.7 KB)
+- **[ZEPH💨](https://github.com/Wolfe-Jam/xai-faf-zeph)** — page 3 Ultra Context Layer (Pure Zig → WASM)
 
 ⭐ [Star faf-cli on GitHub](https://github.com/Wolfe-Jam/faf-cli), the CLI that writes your project.faf: bookmarks it for you, helps other devs find it too.
 
@@ -139,7 +139,7 @@ Instead of explaining your project every time, AI reads your .faf once and knows
 | **WHAT** is it? | The `package.json` for AI context — IANA-registered format (`application/vnd.faf+yaml`) |
 | **WHERE** does it work? | Everywhere AI needs context (Claude Code, Gemini CLI, Cursor, OpenAI Codex, etc.) |
 | **WHY** do you need it? | Context persists across sessions. Bi-syncs to AGENTS.md, CLAUDE.md, .cursorrules, GEMINI.md automatically. Stop re-explaining your project. |
-| **WHEN** should you use it? | New projects (day one), existing projects (now), exploring repos (`faf git <url>` — 2 seconds) |
+| **WHEN** should you use it? | New projects (day one), existing projects (now), exploring repos (`faf git <url>` — one shallow clone, no install) |
 | **HOW** does it work? | `npx faf-cli init` — or `npx faf-cli git <url>` for any GitHub repo, no install, no clone |
 
 ---
@@ -164,7 +164,7 @@ Instead of explaining your project every time, AI reads your .faf once and knows
 | **Machine-readable** | Yes (schema) | No (free text) | No (free text) | No (free text) | No (free text) |
 | **Authors others** | Yes (all 4) | No | No | No | No |
 
-FAF is the structured source. The others are prose outputs. `faf bi-sync --all` authors all four from one `project.faf`.
+FAF is the structured source. The others are prose outputs. `faf export --all` authors them from one `project.faf`; `faf sync` writes CLAUDE.md.
 
 ---
 
@@ -206,9 +206,9 @@ stack:
 <td width="50%">
 
 ### 🩵 [faf-cli](https://npmjs.com/package/faf-cli)
-**Command-Line Tool** - v6.7.1
+**Command-Line Tool**
 
-- 50+ championship commands
+- 38 commands ([every command, with an example](https://github.com/Wolfe-Jam/faf-cli/blob/main/docs/COMMANDS.md))
 - AI interop: authors AGENTS.md, .cursorrules, CLAUDE.md, GEMINI.md
 - TURBO-CAT format discovery
 - Downloads: [faf.one/downloads](https://faf.one/downloads)
@@ -221,10 +221,10 @@ npm install -g faf-cli
 <td width="50%">
 
 ### 🧡 [claude-faf-mcp](https://npmjs.com/package/claude-faf-mcp)
-**Claude Desktop MCP** - v5.5.2
+**Claude Desktop MCP**
 
-- 38 tools for Claude
-- Championship scoring (0-100% Trophy)
+- Core 14 tools for Claude, 30 with `FAF_TOOLS=all`
+- Scoring 0–100%, ✪ Trophy at 100%
 - Anthropic MCP Registry (PR #2759)
 - Downloads: [faf.one/downloads](https://faf.one/downloads)
 
@@ -320,13 +320,16 @@ answer — they are the part no tool can infer.
 score = populated / active × 100
 ```
 
-| Score | Reading |
-|-------|---------|
-| 0-60% | Incomplete |
-| 61-80% | Basic |
-| 81-90% | Good |
-| 91-99% | Excellent |
+| Score | Tier |
+|-------|------|
 | 100% | ✪ Trophy |
+| 99% | ★ Gold |
+| 95% | ◆ Silver |
+| 85% | ◇ Bronze |
+| 70% | ● Green |
+| 55% | ● Yellow |
+| 1% | ○ Red |
+| 0% | ♡ White |
 
 See [SPECIFICATION.md](SPECIFICATION.md) for the slot list and the rule.
 
@@ -359,21 +362,22 @@ npm install -g claude-faf-mcp
 
 1. **[Specification](SPECIFICATION.md)** - Complete format documentation
 2. **[Implementations](IMPLEMENTATIONS.md)** - All tools, SDKs, and servers
-3. **[Examples](examples/)** - Real-world .faf files (5 examples)
-4. **[Where to Find FAF](WHERE-TO-FIND-FAF.md)** - Ecosystem directory
+3. **[Examples](examples/)** - Real-world .faf and .fafm files
+4. **[Implementations](IMPLEMENTATIONS.md)** - Tools, SDKs and servers
 
 ## Status
 
-🏆 **IANA-Registered Internet Standards** — Two registered media types in the FAF family
+✪ **IANA-Registered Internet Standards** — Three registered media types in the FAF family
 - ✅ **IANA Registration** — `application/vnd.faf+yaml` (October 30, 2025)
 - ✅ **IANA Registration** — `application/vnd.fafm+yaml` (May 13, 2026)
+- ✅ **IANA Registration** — `application/vnd.fafa+yaml` (June 26, 2026)
 - ✅ **Anthropic Official** - MCP Registry PR #2759 merged (October 17, 2025)
 - ✅ **Google Chrome Verified** - Web Store approved 2x (Sep 11 & Oct 29, 2025)
 - ✅ Format specification complete
 - ✅ Enhanced with project-level context and AI workflows
 - ✅ Production tools available (faf-cli, claude-faf-mcp)
 - ✅ Over 110k+ downloads; see [faf.one/downloads](https://faf.one/downloads) for latest stats
-- ✅ WJTTC Championship-grade testing across ecosystem packages
+- ✅ WJTTC testing across ecosystem packages
 - ✅ Open source (MIT License)
 
 ## Major Milestones
@@ -386,8 +390,8 @@ npm install -g claude-faf-mcp
 - **Feb 2, 2026** - FAFb v1 pre-release wire (retired). Live spec is **wire v2** in [faf-rust](https://github.com/Wolfe-Jam/faf-rust/blob/main/crates/faf-fafb/BINARY-FORMAT.md)
 - **Jan 2026** - gemini-faf-mcp v1.0.2 on PyPI (Google MCP bridge)
 - **Nov 2025** - IETF standardization in progress (`vnd` prefix removal)
-- **May 13, 2026** - 🏆 **IANA Registration #2** (`application/vnd.fafm+yaml` — Voice Memory Layer)
-- **Oct 30, 2025** - 🏆 **IANA Registration #1** (`application/vnd.faf+yaml` — Foundational Context Layer)
+- **May 13, 2026** - ✪ **IANA Registration #2** (`application/vnd.fafm+yaml` — Voice Memory Layer)
+- **Oct 30, 2025** - ✪ **IANA Registration #1** (`application/vnd.faf+yaml` — Foundational Context Layer)
 - **Oct 29, 2025** - Google Chrome Web Store approval (2nd)
 - **Oct 17, 2025** - Official Anthropic MCP Registry merger (PR #2759)
 - **Oct 12, 2025** - Specification v1.1.0 published
