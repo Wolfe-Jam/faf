@@ -1,0 +1,11 @@
+# Pages Docs7 publishes are the ones listed in docs.json; keep everything else off the site.
+CLAUDE.md
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+SECURITY.md
+SUPPORT.md
+NPM-COMMUNITY-UPDATE.md
+BINARY-FORMAT.md
+WHERE-TO-FIND-FAF.md
+.github/
+discussions/
