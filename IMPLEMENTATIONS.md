@@ -31,9 +31,9 @@ FAFb **wire v2** is specified in [faf-rust `BINARY-FORMAT.md`](https://github.co
 | Package | Version | Formats | Registry | Install |
 |---------|---------|---------|----------|---------|
 | [faf-cli](https://npmjs.com/package/faf-cli) | v8.10.1 | `.fafm` (`faf memory`), `.fafa` (`faf cards` reads `agent.fafa`) | npm | `npm i -g faf-cli` |
-| [claude-fafm-sdk](https://pypi.org/project/claude-fafm-sdk/) | 2.2.0 | `.fafm` | PyPI | `pip install claude-fafm-sdk` |
-| [grok-faf-voice](https://pypi.org/project/grok-faf-voice/) | 0.6.0 | `.fafm` | PyPI | `pip install grok-faf-voice` |
-| [faf-agent-mcp](https://pypi.org/project/faf-agent-mcp/) | 0.1.4 | publishes an `agent.fafa` | PyPI | `pip install faf-agent-mcp` |
+| [claude-fafm-sdk](https://pypi.org/project/claude-fafm-sdk/) | 2.2.0 | `.fafm` (`knowledge` profile) | PyPI | `pip install claude-fafm-sdk` |
+| [grok-faf-voice](https://pypi.org/project/grok-faf-voice/) | 0.6.0 | `.fafm` (`voice` profile) | PyPI | `pip install grok-faf-voice` |
+| [faf-agent-mcp](https://pypi.org/project/faf-agent-mcp/) | 0.1.4 | `.fafa` (publishes its own `agent.fafa`) | PyPI | `pip install faf-agent-mcp` |
 
 ## Compilers & Runtimes
 

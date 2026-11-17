@@ -1,6 +1,6 @@
 # `.fafa` — FAF Agent Format Specification
 
-**Version:** 1.0
+**Version:** 1.0.1
 **Status:** Stable
 **MIME Type:** `application/vnd.fafa+yaml`
 **File Extension:** `.fafa`
@@ -99,7 +99,7 @@ Each capability is a structured object.
 
 **Required:** `name` (unique within the document), `type` (`tool` | `resource` | `prompt` | `event` | other).
 
-**Optional:** `description`, `input_schema`, `output_schema`, `tags`, `apophatic` (boolean — if true, the capability refuses a request outside its declared scope instead of attempting a partial answer), `cites_spec` (the format/spec the capability operates against, e.g. `application/vnd.faf+yaml`).
+**Optional:** `description`, `input_schema`, `output_schema`, `tags`, `apophatic` (boolean — if true, the capability refuses a request outside its declared scope rather than attempting best-effort), `cites_spec` (the format/spec the capability operates against, e.g. `application/vnd.faf+yaml`).
 
 `apophatic` and `cites_spec` are FAF-family conventions.
 
@@ -212,7 +212,7 @@ Implementations SHOULD scope capability consumption to the declaring agent's ver
 - `0.x` — draft, format may change, not for production
 - `1.0` — stable; backwards-compatible changes only within `1.x`
 
-The top-level `version` field declares which version of this specification the document conforms to.
+The top-level `version` field declares which version of this specification the document conforms to. It is `major.minor` (e.g. `"1.0"`); a patch release of this document (e.g. 1.0.1) corrects the text and does not change what documents declare.
 
 ---
 
@@ -252,6 +252,7 @@ The top-level `version` field declares which version of this specification the d
 |---------|------|---------|
 | 0.1 | 2026-05-11 | Initial draft |
 | 1.0 | 2026-05-18 | Stable release for IANA registration |
+| 1.0.1 | 2026-11-17 | Corrections to match the schema, which is unchanged: the provenance media-type field is `mediaType` (the text said `spec`); `agent.displayName` listed; §16 aligned with the IANA registration (no optional parameters, versioning in-band); `.fafa` shares no fields with `.faf`. Editorial: neutral examples, plain text |
 
 ---
 
