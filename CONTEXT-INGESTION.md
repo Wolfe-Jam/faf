@@ -1,30 +1,21 @@
 # `.faf` Context Ingestion — Contract Specification
 
-**Version:** 0.2 — sealed with @grok (2026-07-09)
-**Status:** Open standard, co-sketched in public
+**Version:** 0.2 (2026-07-09)
 **Media type:** `application/vnd.faf+yaml` (IANA-registered) · compiled form `.fafb`
 **Companion specs:** `.faf` → SPECIFICATION.md · `.fafa` → AGENT-FORMAT.md · `.fafm` → MEMORY-FORMAT.md
-**Origin:** Proposed by @grok (X, 2026-07-08); co-sketched openly.
-
----
-
-**What this is** — the *read*: a `.faf`, ingested into one canonical Agent Context object. Provider-agnostic.
-
-**What this isn't** — the format, the scoring engine, or a transport. It composes with MCP and AGENTS.md; competes with none.
+**Credit:** Drafted with Grok in public, July 2026.
 
 ---
 
 ## 1. Purpose
 
-The minimal, provider-agnostic **contract** for *ingesting* a `.faf`: reading it into a canonical **Agent Context** object, so any agent — Grok, Claude, Cursor, the next one — orients instantly (stack, commands, guardrails, provenance) with no re-explaining.
+This is the minimal, provider-agnostic **contract** for *ingesting* a `.faf`: reading it into a canonical **Agent Context** object that gives an agent the project's stack, commands, guardrails, and provenance.
 
 The `.faf` stays the single source of truth. The object is the **view** a consumer reads it into — never a second source.
 
-## 2. Why this exists
+## 2. Scope
 
-Every MCP server, AGENTS.md generator, and runtime re-invents the same read: *how does an agent learn a repo?* The object model gets respecified endlessly; the neutral **contract** stays unowned.
-
-`.faf` owns the format (IANA). This owns the **read** — one shape every consumer trusts. Provider-agnostic; composes with MCP and AGENTS.md workflows, competes with none.
+This contract defines the read. It does not define the format, the scoring engine, or a transport. It works alongside MCP and AGENTS.md.
 
 ## 3. Core concepts
 
@@ -92,7 +83,7 @@ agent_context:
 - **Single source.** Everything derives from the `.faf`. Surface facts; never invent.
 - **Provenance required.** Every object carries its source (git ref + media type).
 - **Consistent labels.** Slots carry display labels; every surface renders alike.
-- **Provider-agnostic.** One object serves Grok, Claude, Cursor, the next — unchanged.
+- **Provider-agnostic.** One object serves every provider, unchanged.
 - **Non-destructive.** Emitted files preserve hand-written content.
 - **Readiness observable, not required.** The score tier travels when present; ingestion doesn't need it.
 - **Forward-compatible.** Unknown fields ignored, never rejected.
@@ -121,7 +112,7 @@ A **projection** maps the object onto a consumer's surfaces — **deterministic 
 
 ### Worked examples
 
-Same four surfaces, two providers — provider-agnosticism proven, not asserted *(Grok row co-sketched with @grok)*:
+Non-normative. Two example mappings of the same four surfaces:
 
 | Surface | Grok — via `grok-faf-mcp` | Claude — via `claude-faf-mcp` |
 |---------|---------------------------|-------------------------------|
@@ -130,11 +121,11 @@ Same four surfaces, two providers — provider-agnosticism proven, not asserted 
 | **Policy** | `always` / `ask_first` / `never` → system policy + tool preconditions | `always` / `ask_first` / `never` → `CLAUDE.md` rules + tool preconditions |
 | **Memory** | pin `provenance` + `readiness` in a shared session slot | persist `provenance` + `readiness` via the `.fafm` memory layer |
 
-Both are live proof points. Cursor, Copilot, and the rest map the same four surfaces to their own primitives. **The mappings differ; the contract does not.**
+Other consumers map the same four surfaces to their own primitives. **The mappings differ; the contract does not.**
 
 ### The orientation block — worked template
 
-The Orientation surface, concrete — a template rendered *only* from the object. Grok injects it as the prompt's opening; Claude writes it to `CLAUDE.md` + SessionStart. Same shape.
+The Orientation surface as a template, rendered *only* from the object. Every consumer renders the same shape.
 
 ```text
 # Orientation — <project>   (generated from project.faf @ <ref> · do not edit)
@@ -147,15 +138,11 @@ Why    <why>          How    <how>
 Stack  <main_language> · <runtime> · <framework> · …   (labeled slots)
 ```
 
-**Deterministic:** same object, same block — no discretion, no invention.
-
 ## 7. Projection — sticky surfaces (files)
 
-Projection, one mechanism, two modes. §6 is the **live projections** — surfaces read at runtime (prompt, tools, memory). This is the **sticky projections** — persisted surfaces: the instruction files on disk. A file is a projection that *sticks*: same object, same rules, committed instead of held. **Live vs sticky** — both faithful casts of one source.
+Projection has two modes. §6 covers **live projections**: surfaces read at runtime (prompt, tools, memory). This section covers **sticky projections**: instruction files persisted on disk. A file projection follows the same object and the same rules, and is committed instead of held in a session.
 
-> **Define once, project everywhere.** One `project.faf`; every surface — live or on disk — is a faithful projection of it.
-
-**The file family — one object, every surface:**
+**The file family:**
 
 | File | Consumer |
 |------|----------|
@@ -165,18 +152,18 @@ Projection, one mechanism, two modes. §6 is the **live projections** — surfac
 | `GEMINI.md` | Gemini |
 | `.github/copilot-instructions.md` | GitHub Copilot |
 
-Each is the *same* context in the shape its consumer expects — never re-authored, never drifting.
+Each file carries the same context in the shape its consumer expects.
 
 **A conformant file projection is:**
 
 1. **Deterministic** — same object, same file, every time.
-2. **Sourced, not invented** — every line traces to a field; nothing to hallucinate from.
-3. **Auditable** — every line traces to a field, so a reviewer or linter checks the file against the object, line by line. Provable, not claimed.
+2. **Sourced, not invented** — every line traces to a field.
+3. **Auditable** — a reviewer or linter can check the file against the object, line by line.
 4. **Non-destructive** — one marked block; surrounding hand-written content survives.
 5. **Labeled + provenance-marked** — slots keep their labels; a quiet marker records the source and how to refresh.
 6. **Current by re-projection** — change the source, re-project, the file follows. No hand-edit, no drift.
 
-**Reference implementation:** `faf export --agents` / `export --all` — shipped. Human field guide: [faf.one/agents](https://faf.one/agents). The projection *rules* are open; a generator's detection and scoring are its own moat.
+**Reference implementation:** `faf export --agents` (AGENTS.md) and `faf export --all` (every format) in faf-cli. Human field guide: [faf.one/agents](https://faf.one/agents).
 
 ### Worked example — `project.faf` → `AGENTS.md`
 
@@ -193,26 +180,19 @@ Which object field becomes which section:
 
 The full rendered file (~35 lines, every line sourced) is live at [faf.one/agents](https://faf.one/agents). The same object also emits `CLAUDE.md`, `.cursorrules`, `GEMINI.md`, and `copilot-instructions.md`.
 
-## 8. Prototype evidence
+## 8. Implementations
 
-The contract describes what FAF already ships:
-
-- **`faf-cli`** — `export --agents`, `git owner/repo`, `score`, `diff`, `sync`: ingestion + projection, end to end.
-- **`grok-faf-mcp`** — URL-based ingestion + live context tools. The Grok proof point.
-- **Per-group guides** (Grok · Claude · Bun) — tailored consumption of one object.
-- IANA media type · 100,000+ downloads · deterministic Trophy scoring.
+Tools that implement this contract are listed in [IMPLEMENTATIONS.md](IMPLEMENTATIONS.md).
 
 ## 9. Out of scope
 
 - **Scoring rules and weights** — in faf-cli; not the ingestion contract.
-- **`.fafb` binary internals** — see BINARY-FORMAT.md.
+- **`.fafb` binary internals** — see the [FAFb specification](https://github.com/Wolfe-Jam/faf-rust/blob/main/crates/faf-fafb/BINARY-FORMAT.md).
 - **Discovery, hosting, auth, registry** — out of band.
 
 ## 10. Status
 
-- **v0.1 sealed** (2026-07-08) — the object (§4) + live projection (§6), with @grok on X.
-- **v0.2 sealed** (2026-07-09) — sticky projection, the file layer (§7).
+- **v0.1** (2026-07-08) — the object (§4) and live projection (§6).
+- **v0.2** (2026-07-09) — sticky projection, the file layer (§7).
 
-Open under `.faf`'s MIT + IANA terms. Provider mappings and feedback via issues and discussions.
-
-*Ingest once. Orient any agent. Re-explain never.*
+Open under `.faf`'s MIT and IANA terms. Send provider mappings and feedback through issues and discussions.
