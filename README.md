@@ -82,7 +82,7 @@ The score is deterministic: the same file gets the same score from every conform
 npx faf-cli init
 ```
 
-MCP servers for Claude, Cursor, Codex, Goose, Grok, Gemini and other MCP clients, a Rust implementation and the rest are listed in [IMPLEMENTATIONS.md](IMPLEMENTATIONS.md).
+MCP servers for Claude, Cursor, Codex, Goose, OpenCode, Grok, Gemini and other MCP clients, a Rust implementation and the rest are listed in [IMPLEMENTATIONS.md](IMPLEMENTATIONS.md).
 
 ## Citing
 
