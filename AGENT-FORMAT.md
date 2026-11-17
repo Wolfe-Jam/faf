@@ -70,7 +70,7 @@ attachment:                  # OPTIONAL — infrastructure context
 
 provenance:                  # OPTIONAL — context substrate
   faf: "./project.faf"
-  spec: "application/vnd.faf+yaml"
+  mediaType: "application/vnd.faf+yaml"
 
 signature:                   # OPTIONAL — provenance / integrity
   method: ...
@@ -129,7 +129,7 @@ Describes the infrastructure context within which the agent operates. It does no
 
 Cites the context substrate the agent operates from. This is the FAF-family integration point: a `.fafa` agent SHOULD declare which `.faf` it reads.
 
-**Optional:** `faf` (reference to a `.faf` document — path, URL, or namepoint), `fafm` (reference to a `.fafm` document), `spec` (media type of the substrate), `version`.
+**Optional:** `faf` (reference to a `.faf` document — path, URL, or namepoint), `fafm` (reference to a `.fafm` document), `mediaType` (media type of the substrate), `version`.
 
 ---
 
