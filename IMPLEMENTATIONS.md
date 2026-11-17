@@ -11,7 +11,7 @@ FAFb **wire v2** is specified in [faf-rust `BINARY-FORMAT.md`](https://github.co
 
 | Package | Version | Registry | Install |
 |---------|---------|----------|---------|
-| [faf-cli](https://npmjs.com/package/faf-cli) | v8.10.0 | npm · Homebrew | `npm i -g faf-cli` · `brew install wolfe-jam/faf/faf-cli` |
+| [faf-cli](https://npmjs.com/package/faf-cli) | v8.10.1 | npm · Homebrew | `npm i -g faf-cli` · `brew install wolfe-jam/faf/faf-cli` |
 
 `npx faf-cli auto` writes or refreshes `project.faf`. `faf compile` emits a `.fafb` via the WASM kernel. Live totals: [faf.one/downloads](https://faf.one/downloads).
 
@@ -25,6 +25,14 @@ FAFb **wire v2** is specified in [faf-rust `BINARY-FORMAT.md`](https://github.co
 | [gemini-faf-mcp](https://pypi.org/project/gemini-faf-mcp/) | Google | PyPI | `pip install gemini-faf-mcp` |
 | [rust-faf-mcp](https://crates.io/crates/rust-faf-mcp) | Rust, any MCP client | crates.io · npm | `cargo install rust-faf-mcp` |
 | [MCPaaS](https://mcpaas.live) | Infrastructure | SaaS | mcpaas.live |
+
+## Memory and agent cards
+
+| Package | Version | Formats | Registry | Install |
+|---------|---------|---------|----------|---------|
+| [faf-cli](https://npmjs.com/package/faf-cli) | v8.10.1 | `.fafm` (`faf memory`), `.fafa` (`faf cards` reads `agent.fafa`) | npm | `npm i -g faf-cli` |
+| [claude-fafm-sdk](https://pypi.org/project/claude-fafm-sdk/) | 2.2.0 | `.fafm` | PyPI | `pip install claude-fafm-sdk` |
+| [grok-faf-voice](https://pypi.org/project/grok-faf-voice/) | 0.6.0 | `.fafm` | PyPI | `pip install grok-faf-voice` |
 
 ## Compilers & Runtimes
 
@@ -52,10 +60,11 @@ faf-cli authors the instruction files from one `project.faf`:
 
 | Format | Platform | Command |
 |--------|----------|---------|
-| `AGENTS.md` | OpenAI Codex + tools | `faf export --agents` |
+| `AGENTS.md` | Codex, Cursor, Goose, OpenCode, Warp and others | `faf export --agents` |
 | `GEMINI.md` | Google Gemini | `faf export --gemini` |
 | `.cursorrules` | Cursor | `faf export --cursor` |
 | `CLAUDE.md` | Anthropic Claude | `faf sync` |
+| `.github/copilot-instructions.md` | GitHub Copilot | `faf export --copilot` |
 | All of the above | — | `faf export --all` |
 
 ## Try it
