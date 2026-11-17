@@ -6,7 +6,7 @@
 **File Extension:** `.fafa`
 **IANA Registration:** Registered 2026-06-26 (vendor tree)
 **DOI:** [10.5281/zenodo.21951641](https://doi.org/10.5281/zenodo.21951641)
-**Last Updated:** 2026-08-15
+**Last Updated:** 2026-11-17
 
 ---
 
@@ -16,25 +16,13 @@
 
 It is the agent-specific sibling of the IANA-registered `.faf` format (`application/vnd.faf+yaml`) and the IANA-registered `.fafm` format (`application/vnd.fafm+yaml`).
 
-**Design Goals**
-
-- Declarative, never executable — a `.fafa` document describes an agent; it never instructs one
-- Vendor-neutral — no dependency on any single agent-interaction protocol
-- Composable — sits at the format layer beneath protocols, not in competition with them
-- Human-readable, YAML-native, forward-compatible by default
-- Clear separation of concerns within the family
-
-*In the FAF family: `.faf` carries what the project **IS** (Foundational Context Layer). `.fafm` carries what the agent **REMEMBERS** (Voice Memory Layer). `.fafa` carries what the agent **IS** (Agent Card).*
+A `.fafa` document describes an agent; it never instructs one.
 
 ---
 
-## 2. Why This Format Exists
+## 2. Scope
 
-Agent-interaction work consistently defines an object model for agent identity, capability, and endpoint — and then defers the serialization format to "some JSON" or an unspecified schema. The object model is specified repeatedly; the on-the-wire, in-the-registry, in-the-repo *format* is left unowned.
-
-`.fafa` fills that gap with a vendor-registered, YAML-native, FAF-family-coherent answer. It does not define discovery, transport, authorization, or orchestration. It defines the **document** those mechanisms carry, reference, and resolve.
-
-The format is complementary by default. It composes with existing and future agent-interaction protocols; it competes with none of them.
+`.fafa` defines the document that describes an agent. It does not define discovery, transport, authorization, or orchestration.
 
 ---
 
@@ -58,22 +46,22 @@ A `.fafa` file is a single YAML document:
 version: "1.0"
 
 agent:                       # REQUIRED — identity
-  name: faf-agent
-  id: "did:web:faf.one:agent"
-  vendor: WolfeJAM
+  name: acme-agent
+  id: "did:web:example.com:agent"
+  vendor: Acme
   version: "1.0.0"
-  description: "Cites the spec or refuses out of scope, without drama"
+  description: "Summarizes support tickets"
 
 capabilities:                # REQUIRED — what the agent can do (may be empty)
-  - name: validate
+  - name: summarize
     type: tool
-    description: "Validate .faf documents against the spec"
-    tags: [validation, faf, spec]
+    description: "Summarize a support ticket"
+    tags: [support, summary]
 
 endpoints:                   # REQUIRED — how to reach the agent (non-empty)
   - protocol: mcp
     transport: stdio
-    location: faf-agent-mcp
+    location: acme-agent
 
 attachment:                  # OPTIONAL — infrastructure context
   gateway: ...
@@ -111,9 +99,9 @@ Each capability is a structured object.
 
 **Required:** `name` (unique within the document), `type` (`tool` | `resource` | `prompt` | `event` | other).
 
-**Optional:** `description`, `input_schema`, `output_schema`, `tags`, `apophatic` (boolean — if true, the capability refuses out-of-scope invocation rather than attempting best-effort), `cites_spec` (the format/spec the capability operates against, e.g. `application/vnd.faf+yaml`).
+**Optional:** `description`, `input_schema`, `output_schema`, `tags`, `apophatic` (boolean — if true, the capability refuses a request outside its declared scope instead of attempting a partial answer), `cites_spec` (the format/spec the capability operates against, e.g. `application/vnd.faf+yaml`).
 
-`apophatic` and `cites_spec` are FAF-family conventions: capabilities that cite their spec or refuse cleanly.
+`apophatic` and `cites_spec` are FAF-family conventions.
 
 ---
 
@@ -163,23 +151,19 @@ endpoints:
 
 ## 11. Relationship to the FAF Family
 
-```
-.faf    →  Foundational Context Layer    (project IS — static, read once)
-.fafm   →  Voice Memory Layer (VML)      (agent REMEMBERS — mutating, persisted)
-.fafa   →  Agent Card                    (agent IS — declarative identity + capability)
-```
+| Format | Media type | Describes |
+|--------|------------|-----------|
+| `.faf` | `application/vnd.faf+yaml` | a project's context |
+| `.fafm` | `application/vnd.fafm+yaml` | memory |
+| `.fafa` | `application/vnd.fafa+yaml` | an agent's identity, capabilities and endpoints |
 
-Three formats. Three roles. One ecosystem.
+`.fafa` is its own YAML document type. It does not reuse `.faf` fields, and a `.fafa` document is not a valid `.faf` document. All three formats use the YAML 1.2 / RFC 9512 baseline and the MIT license.
 
-`.fafa` is **format-level**, not protocol-level. It composes with — does not replace — agent-interaction protocols: a protocol carries, references, or resolves a `.fafa` document; the document declares the agent the protocol acts upon.
-
-The `.fafa` schema **extends** `application/vnd.faf+yaml` — a `.fafa` document remains a valid YAML file. Consumers that only understand `.faf` will safely ignore the agent-specific blocks and still extract identity from top-level fields. Consumers that understand `.fafa` gain the full agent declaration. All three formats share the same family branding, YAML 1.2 / RFC 9512 baseline, and MIT license.
+`.fafa` is format-level, not protocol-level. A protocol carries, references, or resolves a `.fafa` document; the document declares the agent the protocol acts upon. A protocol that needs an agent-identity-and-capability document MAY use `.fafa` without adopting any other part of the FAF family.
 
 ---
 
 ## 12. Security & Privacy Considerations
-
-The following addresses the IANA media-type security-considerations checklist.
 
 ### Active or executable content
 
@@ -220,8 +204,6 @@ Implementations SHOULD scope capability consumption to the declaring agent's ver
 - SHOULD use UTF-8 encoding
 - SHOULD keep documents within common registry storage budgets (recommended < 64 KB)
 
-`.fafa` composes with agent-interaction protocols at the format layer. A protocol that needs an agent-identity-and-capability document MAY use `.fafa` as that document without adopting any other part of the FAF family. A consumer that understands only `application/vnd.faf+yaml` can still parse a `.fafa` file as valid YAML and extract top-level identity.
-
 ---
 
 ## 14. Versioning
@@ -229,7 +211,6 @@ Implementations SHOULD scope capability consumption to the declaring agent's ver
 - Semantic versioning in the `version` field
 - `0.x` — draft, format may change, not for production
 - `1.0` — stable; backwards-compatible changes only within `1.x`
-- `2.0` — breaking changes only with strong cause
 
 The top-level `version` field declares which version of this specification the document conforms to.
 
@@ -253,8 +234,8 @@ The top-level `version` field declares which version of this specification the d
 **Encoding considerations:** 8bit (UTF-8; binary content, if any, base64-encoded inside YAML)
 **Security considerations:** See §12
 **Interoperability considerations:** See §13
-**Published specification:** This document, canonical at `https://github.com/Wolfe-Jam/faf/blob/main/AGENT-FORMAT.md`; paper DOI [10.5281/zenodo.21951641](https://doi.org/10.5281/zenodo.21951641); reference implementation `faf-agent-mcp` (PyPI)
-**Applications that use this media type:** faf-agent-mcp (reference implementation), xAI/Grok, claude-faf-mcp, gemini-faf-mcp and future FAF MCP-family integrations
+**Published specification:** This document, canonical at `https://github.com/Wolfe-Jam/faf/blob/main/AGENT-FORMAT.md`
+**Applications that use this media type:** See [IMPLEMENTATIONS.md](IMPLEMENTATIONS.md)
 **Fragment identifier considerations:** N/A
 **Additional information — File extension:** `.fafa`
 **Person & email address for further information:** James Wolfe, team@faf.one
@@ -265,38 +246,12 @@ The top-level `version` field declares which version of this specification the d
 
 ---
 
-## 17. Reference Implementation
-
-`faf-agent-mcp` (PyPI) is the reference consumer of `.fafa`. The agent reads its own `.fafa` declaration to advertise capabilities to MCP clients.
-
-| Surface | Path / Identifier |
-|---------|-------------------|
-| PyPI | `faf-agent-mcp` |
-| Canonical spec | `https://github.com/Wolfe-Jam/faf/blob/main/AGENT-FORMAT.md` |
-| Paper | [10.5281/zenodo.21951641](https://doi.org/10.5281/zenodo.21951641) |
-| Family siblings | `application/vnd.faf+yaml`, `application/vnd.fafm+yaml` |
-
----
-
-## 18. Future Versions
-
-Deferred to successive versions, resolved before any field becomes load-bearing in `1.x`:
-
-- Multiple simultaneous identifier schemes for `agent.id`
-- `signature` as an array (multiple signers)
-- Hierarchical / grouped capability declaration
-- A `lifecycle` field for create / start / stop / destroy semantics
-- Content-addressed provenance (binary-form hash) for tamper-evidence
-- Expression of degraded / partial capability (e.g., available but rate-limited)
-
----
-
-## 19. Change History
+## 17. Change History
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 0.1 | 2026-05-11 | Initial draft — agent / capabilities / endpoints / attachment / provenance structure |
-| 1.0 | 2026-05-18 | IANA-readiness pass: full RFC 6838 §4.6 template fields inlined (§16); Security restructured to the media-type security-considerations checklist (§12); Interoperability separated and RFC 9512-anchored (§13); family-relationship section made schema-extension-explicit (§11); competitor-draft enumeration removed (gap stated structurally, not by rivalry); internal-path references removed; change controller = FAF Foundation, contact = team@faf.one; released as initial stable specification for IANA media-type registration |
+| 0.1 | 2026-05-11 | Initial draft |
+| 1.0 | 2026-05-18 | Stable release for IANA registration |
 
 ---
 
