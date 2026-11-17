@@ -89,7 +89,7 @@ Declares identity.
 
 **Required:** `name` (Unicode string, unique within the issuing vendor namespace), `id` (globally unique identifier — DID, URI, or vendor-scoped UUID).
 
-**Optional:** `vendor`, `version` (semantic version of the agent, NOT of this spec), `description`, `homepage`, `license` (SPDX identifier).
+**Optional:** `displayName` (human-readable name, distinct from the machine `name` and `id`), `vendor`, `version` (semantic version of the agent, NOT of this spec), `description`, `homepage`, `license` (SPDX identifier).
 
 ---
 
@@ -157,7 +157,7 @@ endpoints:
 | `.fafm` | `application/vnd.fafm+yaml` | memory |
 | `.fafa` | `application/vnd.fafa+yaml` | an agent's identity, capabilities and endpoints |
 
-`.fafa` is its own YAML document type. It does not reuse `.faf` fields, and a `.fafa` document is not a valid `.faf` document. All three formats use the YAML 1.2 / RFC 9512 baseline and the MIT license.
+`.fafa` extends the `.faf` family: it adds an agent card alongside a project's facts. It is its own YAML document type with its own schema and shares no fields with `.faf`, so a `.faf` parser does not read it. All three formats use the YAML 1.2 / RFC 9512 baseline and the MIT license.
 
 `.fafa` is format-level, not protocol-level. A protocol carries, references, or resolves a `.fafa` document; the document declares the agent the protocol acts upon. A protocol that needs an agent-identity-and-capability document MAY use `.fafa` without adopting any other part of the FAF family.
 
@@ -230,7 +230,7 @@ The top-level `version` field declares which version of this specification the d
 **Type name:** application
 **Subtype name:** vnd.fafa+yaml
 **Required parameters:** N/A
-**Optional parameters:** version
+**Optional parameters:** N/A (versioning is in-band, in the document's `version` field)
 **Encoding considerations:** 8bit (UTF-8; binary content, if any, base64-encoded inside YAML)
 **Security considerations:** See §12
 **Interoperability considerations:** See §13
@@ -240,7 +240,7 @@ The top-level `version` field declares which version of this specification the d
 **Additional information — File extension:** `.fafa`
 **Person & email address for further information:** James Wolfe, team@faf.one
 **Intended usage:** COMMON
-**Restrictions on usage:** N/A
+**Restrictions on usage:** None
 **Author:** James Wolfe
 **Change controller:** FAF Foundation
 
