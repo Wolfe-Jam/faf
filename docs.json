@@ -1,13 +1,37 @@
 {
   "$schema": "https://context7.com/schema/docs7.json",
   "name": "FAF format specification",
-  "colors": { "primary": "#00D4D4" },
+  "colors": {
+    "primary": "#00D4D4"
+  },
   "favicon": "/assets/logos/faf-icon-64.png",
   "navigation": {
     "groups": [
-      { "group": "The format", "pages": ["README", "SPECIFICATION", "docs/EXAMPLES"] },
-      { "group": "Sibling formats", "pages": ["MEMORY-FORMAT", "AGENT-FORMAT", "CONTEXT-INGESTION"] },
-      { "group": "Tools", "pages": ["IMPLEMENTATIONS"] }
+      {
+        "group": "The format",
+        "pages": [
+          "README",
+          "SPECIFICATION",
+          "docs/EXAMPLES"
+        ]
+      },
+      {
+        "group": "Sibling formats",
+        "pages": [
+          "MEMORY-FORMAT",
+          "AGENT-FORMAT",
+          "CONTEXT-INGESTION"
+        ]
+      },
+      {
+        "group": "Tools",
+        "pages": [
+          "IMPLEMENTATIONS"
+        ]
+      }
     ]
+  },
+  "appearance": {
+    "default": "light"
   }
 }
