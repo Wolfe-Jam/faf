@@ -10,11 +10,13 @@ This repository holds the specifications for `.faf` and its two sibling formats,
 
 ## Media types
 
-| | Format | Holds | Media type | Standard filename | Registered with IANA |
-|---|---|---|---|---|---|
-| <img src="assets/marks/dotfaf-128.png" alt="" width="32" /> | `.faf` | project facts | [`application/vnd.faf+yaml`](https://www.iana.org/assignments/media-types/application/vnd.faf+yaml) | `project.faf` | 30 October 2025 |
-| <img src="assets/marks/nelly-128.png" alt="" width="32" /> | `.fafm` | memory | [`application/vnd.fafm+yaml`](https://www.iana.org/assignments/media-types/application/vnd.fafm+yaml) | `project.fafm` | 13 May 2026 |
-| <img src="assets/marks/fafa-128.png" alt="" width="32" /> | `.fafa` | an agent card | [`application/vnd.fafa+yaml`](https://www.iana.org/assignments/media-types/application/vnd.fafa+yaml) | `agent.fafa` | 26 June 2026 |
+<p align="center"><img src="assets/marks/fam-trio.png" alt="The marks of the three formats: a smiley for .faf, an elephant for .fafm, a robot for .fafa." width="360" /></p>
+
+| Format | Holds | Media type | Standard filename | Registered with IANA |
+|---|---|---|---|---|
+| `.faf` | project facts | [`application/vnd.faf+yaml`](https://www.iana.org/assignments/media-types/application/vnd.faf+yaml) | `project.faf` | 30 October 2025 |
+| `.fafm` | memory | [`application/vnd.fafm+yaml`](https://www.iana.org/assignments/media-types/application/vnd.fafm+yaml) | `project.fafm` | 13 May 2026 |
+| `.fafa` | an agent card | [`application/vnd.fafa+yaml`](https://www.iana.org/assignments/media-types/application/vnd.fafa+yaml) | `agent.fafa` | 26 June 2026 |
 
 All three are UTF-8 encoded YAML 1.2.
 
