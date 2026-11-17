@@ -2,7 +2,7 @@
 
 # .faf format specification
 
-<p align="center"><img src="assets/faf-hero-clean.png" alt="Illustration: a project's scattered facts (frameworks, tools, configuration, commands) gathered into one .faf file." width="420" /></p>
+<img src="assets/faf-hero-clean.png" alt="Illustration: a project's scattered facts (frameworks, tools, configuration, commands) gathered into one .faf file." width="360" />
 
 `.faf` is a YAML format for a project's facts: its name, goal, main language, app type, stack, and the six W's (who, what, why, where, when, how). The file is named `project.faf` and sits in the repository root, next to `package.json`. AI tools read it for context about the project.
 
