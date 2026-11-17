@@ -2,7 +2,7 @@
 
 # .faf format specification
 
-<p align="center"><img src="assets/faf-hero-clean.png" alt="Illustration: a project's scattered facts (frameworks, tools, configuration, commands) gathered into one .faf file." width="600" /></p>
+<p align="center"><img src="assets/faf-hero-clean.png" alt="Illustration: a project's scattered facts (frameworks, tools, configuration, commands) gathered into one .faf file." width="420" /></p>
 
 `.faf` is a YAML format for a project's facts: its name, goal, main language, app type, stack, and the six W's (who, what, why, where, when, how). The file is named `project.faf` and sits in the repository root, next to `package.json`. AI tools read it for context about the project.
 
@@ -12,9 +12,9 @@ This repository holds the specifications for `.faf` and its two sibling formats,
 
 | Format | Holds | Media type | Standard filename | Registered with IANA |
 |---|---|---|---|---|
-| `.faf` | project facts | [`application/vnd.faf+yaml`](https://www.iana.org/assignments/media-types/application/vnd.faf+yaml) | `project.faf` | 30 October 2025 |
-| `.fafm` | memory | [`application/vnd.fafm+yaml`](https://www.iana.org/assignments/media-types/application/vnd.fafm+yaml) | `project.fafm` | 13 May 2026 |
-| `.fafa` | an agent card | [`application/vnd.fafa+yaml`](https://www.iana.org/assignments/media-types/application/vnd.fafa+yaml) | `agent.fafa` | 26 June 2026 |
+| <img src="assets/marks/dotfaf-128.png" alt="" width="40" /> `.faf` | project facts | [`application/vnd.faf+yaml`](https://www.iana.org/assignments/media-types/application/vnd.faf+yaml) | `project.faf` | 30 October 2025 |
+| <img src="assets/marks/nelly-128.png" alt="" width="40" /> `.fafm` | memory | [`application/vnd.fafm+yaml`](https://www.iana.org/assignments/media-types/application/vnd.fafm+yaml) | `project.fafm` | 13 May 2026 |
+| <img src="assets/marks/fafa-128.png" alt="" width="40" /> `.fafa` | an agent card | [`application/vnd.fafa+yaml`](https://www.iana.org/assignments/media-types/application/vnd.fafa+yaml) | `agent.fafa` | 26 June 2026 |
 
 All three are UTF-8 encoded YAML 1.2.
 
