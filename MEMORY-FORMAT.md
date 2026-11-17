@@ -17,19 +17,12 @@ of the IANA-registered `.faf` context format (`application/vnd.faf+yaml`).
 
 `.fafm` serves multiple **profiles** (see §3):
 - **`voice`** — the original **Voice Memory Layer (VML)**: memory for voice
-  agents. Reference impl: `grok-faf-voice`.
-- **`knowledge`** — typed, cross-linked memory for knowledge/agent runtimes
-  (e.g. Claude Code memory). Added in v1.1.
+  agents.
+- **`knowledge`** — typed, cross-linked memory for knowledge and agent runtimes
+  (e.g. coding-agent memory). Added in v1.1.
 
-**Design Goals**
-- Simplicity first — minimal cognitive load for implementers and users
-- Human-readable and append-only by default
-- One format, multiple profiles — never fork
-- Soul-identifier-centric addressing
-- Clear separation of concerns: `.faf` = project facts, `.fafm` = memories
-
-*In the FAF family: `.faf` carries **facts** (what the project IS). `.fafm`
-carries **memories** (what was said, decided, learned, remembered).*
+`.fafm` is human-readable, append-only by default, and addressed by soul
+identifier. `.faf` holds project facts; `.fafm` holds memories.
 
 ---
 
@@ -37,7 +30,7 @@ carries **memories** (what was said, decided, learned, remembered).*
 
 | Term          | Definition |
 |---------------|----------|
-| **Soul identifier** (`namepoint`) | Permanent identity/address for a memory store. Voice profile uses `@handle` format; other profiles MAY use namespaced forms (e.g. `@claude-code:wolfejam`). |
+| **Soul identifier** (`namepoint`) | Permanent identity/address for a memory store. Voice profile uses `@handle` format; other profiles MAY use namespaced forms (e.g. `@acme:alex`). |
 | **Profile**   | The memory shape/use-case discriminator (`voice` default, `knowledge`). See §3. |
 | **Etch**      | Write operation that stores memory |
 | **Recall**    | Read operation that retrieves relevant memory |
@@ -51,10 +44,10 @@ carries **memories** (what was said, decided, learned, remembered).*
 selects the use-case shape. **Absent ⇒ `voice`** (so every v1.0 document is an
 implicit voice document — fully back-compatible).
 
-| Profile | Use-case | Facts shape | Reference impl |
-|---------|----------|-------------|----------------|
-| `voice` *(default)* | Voice agents (VML) | simple — string or `{text, tags?}` | `grok-faf-voice` |
-| `knowledge` | Knowledge/agent memory | rich objects (see §6); `text:` still required | `claude-fafm-sdk` (PyPI) |
+| Profile | Use-case | Facts shape |
+|---------|----------|-------------|
+| `voice` *(default)* | Voice agents (VML) | simple — string or `{text, tags?}` |
+| `knowledge` | Knowledge/agent memory | rich objects (see §6); `text:` still required |
 
 An unknown `profile` value is invalid: a profile changes how facts are read, so
 a consumer MUST NOT guess one (v1.2 makes this explicit; unknown `type` and
@@ -171,7 +164,7 @@ index:
 ### 6.1 Priority vocabulary (canonical)
 `ephemeral | standard | high | critical`
 
-Legacy `grok-faf-voice` `ScratchpadEntry` mapping:
+Legacy voice priority mapping:
 `low → ephemeral` · `medium → standard` · `high → high` · (+ `critical`).
 Implementations SHOULD ship a migration helper applying this mapping.
 
@@ -195,11 +188,9 @@ applies to `type` on a fact in any profile.
 
 ---
 
-## 7. Voice Profile Behaviors (reference-impl reality)
+## 7. Voice Profile Behaviors
 
-The `voice` profile's reference implementation (`grok-faf-voice`, `FAFMemory`)
-implements memory semantics richer than the baseline `facts: []`. Documented
-here so the spec is the single source of truth (no spec↔impl drift).
+A `voice` implementation MAY add these behaviors on top of `memory.facts`:
 
 - **Scratchpad** — in-session ephemeral entries (`value`, `priority`,
   optional `tag`) held before promotion.
@@ -216,10 +207,9 @@ here so the spec is the single source of truth (no spec↔impl drift).
 - **Pronunciation** — a fact's `say` (§5) MAY feed the speech runtime's
   replacement and key-term features; it is never spoken as content.
 
-Persistence (reference impl): the soul is hosted at the namepoint over MCP
-(`https://mcpaas.live/mcp`, Streamable HTTP, per-soul auth; see §13). Locally
-the implementation stores only its identity credential
-(`~/.grok-faf-voice/identity.json`, mode 0600). A local `.fafm` copy is opt-in.
+Persistence: the soul MAY be hosted at the namepoint (§15), with only an
+identity credential stored locally (owner-only permissions, §13). A local
+`.fafm` copy is then optional.
 
 ---
 
@@ -271,7 +261,6 @@ a voice fact).
 | `recall`       | Retrieve relevant memory for a session   | Shipped |
 | `scratchpad`   | Hold in-session ephemeral entries        | Shipped (voice) |
 | `smart-merge`  | Promote/keep/merge at session end        | Shipped (voice) |
-| `etch session` | Store full session summary               | Planned |
 | `forget`       | Delete by id (MUST); range / tag / wipe (SHOULD) | Required (§8) |
 
 ---
@@ -303,8 +292,7 @@ a voice fact).
 
 ### 10.1 Validation
 A machine-readable JSON Schema (`schemas/fafm.schema.json`) accompanies this
-spec for validator tooling. A reference `fafm validate` command is planned in
-the FAF CLI. Implementations SHOULD validate documents against the schema +
+spec for validator tooling. Implementations SHOULD validate documents against the schema +
 `version` + `profile` before etch.
 
 ---
@@ -330,20 +318,20 @@ memory:
 ```yaml
 version: "1.2"
 profile: "knowledge"
-namepoint: "@claude-code:wolfejam"
+namepoint: "@acme:alex"
 created: "2026-05-21T00:00:00Z"
 last_etched: "2026-05-21T00:00:00Z"
 retention: "forever"
 index:
-  - "precision-is-power — named tiers > umbrella terms"
+  - "short-answers — keep replies under three sentences"
 memory:
   facts:
-    - text: "Replace lossy umbrella terms with named tiers + a quality assertion."
-      id: "precision-is-power"
+    - text: "Keep replies under three sentences unless asked for detail."
+      id: "short-answers"
       type: "feedback"
       priority: "high"
-      tags: ["copy", "doctrine"]
-      links: ["no-made-up-numbers"]
+      tags: ["style"]
+      links: ["plain-language"]
       timestamp: "2026-05-20T00:00:00Z"
       source: "session note"
 ```
@@ -352,18 +340,8 @@ memory:
 
 ## 12. Relationship to `.faf`
 
-```
-.faf    →  Foundational Context Layer    (project IS — static, read once)
-.fafm   →  FAF Memory                     (agent REMEMBERS — mutating, persisted)
-```
-
-Two formats. Two lifecycles. One ecosystem. `.faf` is read once and trusted as
-canonical context. `.fafm` accretes over time — entries appended, summarized,
-and selectively promoted into `.faf` when they become enduring facts.
-
-Both share family branding, YAML philosophy, and MIT license. A `.fafm` document
-remains valid YAML; `.faf`-only consumers safely ignore the `memory` block and
-still extract identity from `namepoint` and top-level fields.
+A `.fafm` document is valid YAML. `.faf`-only consumers ignore the `memory`
+block and can still read identity from `namepoint` and top-level fields.
 
 ---
 
@@ -373,15 +351,11 @@ still extract identity from `namepoint` and top-level fields.
 - Local identity credentials and personal-memory `.fafm` files **MUST** be
   written with owner-only permissions (`0600` or the platform equivalent).
   Project memory (`project.fafm`, §15) follows the project's own permissions and
-  SHOULD NOT hold personal data. MCPaaS backend: encrypted at rest.
+  SHOULD NOT hold personal data.
 - Soul identifier (`namepoint`) is the sole addressing key.
-- Memory is **never** deleted by the model; delete is an operator / SDK / UI
-  operation (§8).
 
 ### User control
-- Implementations **MUST** provide forget by entry id, and **SHOULD** support
-  time range, tag and full wipe (§8). Forget is an operator / SDK operation and
-  **MUST NOT** be exposed to the model.
+- Forget: see §8.
 - `.fafm` files **MUST NOT** contain secrets, API keys, or credentials.
 - Files **MUST** be transmitted over authenticated, encrypted channels (TLS).
 
@@ -416,7 +390,7 @@ prevent cross-context influence between projects, agents, or users.
 
 **v1.0 → v1.1 migration:** v1.0 files are already valid v1.1 documents (no action
 required). To enrich, add `profile: knowledge` and optional fields under
-`memory.facts` (keeping `text:`). No migration tax; no breaking changes.
+`memory.facts` (keeping `text:`). No breaking changes.
 
 **v1.1 → v1.2 migration:** v1.1 files are valid v1.2 documents. Two notes:
 - A v1.1 reader that validates against the v1.1 schema rejects non-canonical
@@ -454,10 +428,9 @@ required). To enrich, add `profile: knowledge` and optional fields under
 **Encoding considerations:** 8bit (UTF-8; binary content base64-encoded in YAML)
 **Security considerations:** See §13
 **Interoperability considerations:** See §12, §10
-**Published specification:** This document; reference implementation at
-https://github.com/Wolfe-Jam/grok-faf-voice
-**Applications that use this media type:** Voice agents, LiveKit deployments,
-Grok Voice SDKs, knowledge/agent memory runtimes
+**Published specification:** This document
+**Applications that use this media type:** Voice agents, knowledge and agent
+memory runtimes
 **Person & email for further information:** James Wolfe, team@faf.one
 **Intended usage:** COMMON · **Restrictions:** None
 **Author:** James Wolfe · **Change controller:** FAF Foundation
@@ -467,35 +440,19 @@ Grok Voice SDKs, knowledge/agent memory runtimes
 
 ---
 
-## 17. Reference Implementations
+## 17. Implementations
 
-| Profile | Impl | Surface | Class / entry |
-|---------|------|---------|---------------|
-| `voice` | `grok-faf-voice` | PyPI · GitHub | `FAFMemory` — `etch`, `recall` |
-| `knowledge` | `claude-fafm-sdk` | PyPI · GitHub | `Soul`, `Namepoint`, CLI |
-
-The `.fafm` **format** is open + registered (anyone may implement). Specific
-premium implementations may be independently licensed.
+Anyone may implement the format. Known implementations are listed in
+[IMPLEMENTATIONS.md](IMPLEMENTATIONS.md).
 
 ---
 
-## 18. Future Versions
+## 18. Change History
 
-- Cryptographic signing / provenance chains (partially reserved in §6)
-- Selective sync / partial-load protocols for large souls
-- Optional binary sibling (`.fafmb`) for scale/perf
-- Distributed memory-service patterns (sharding, hot/cold tiers) at scale
-
----
-
-## 19. Change History
-
-| Version | Date       | Changes |
-|---------|------------|---------|
-| 0.1–0.6 | 2026-04-30/05-01 | Initial drafts → IANA-readiness (see git history) |
-| 1.0     | 2026-05-01 | Released as stable spec for IANA registration |
-| 1.1     | 2026-05-21 | **Profiles** (`voice` default, `knowledge`); `memory.facts` enrichment (knowledge: id/type/priority/links/timestamp/source + reserved scale fields); §7 Voice Profile Behaviors (spec↔impl reconcile: scratchpad/smart-merge/soul/ledger); §10 Parser Requirements (MUST-ignore-unknown, string→{text} coercion); canonical priority vocab + legacy mapping; soul-identifier framing for `namepoint`; IANA status Planned → Registered (2026-05-13); both-profile examples; migration note. Fully backward-compatible. |
-| 1.2     | 2026-11-02 | §8 forget: by id MUST, range/tag/wipe SHOULD, operator/SDK only (never a model tool); §8.1 optional `memory.tombstones` (`id` / `txt_hash`, `deleted_at`); §13 recalled memory is data, never instructions; owner-only permissions rule; §7 storage wording (identity only locally), session ledger out of document, paralinguistic = a tag; §5 optional `say` (spoken form); §6.1/§6.2 unknown `priority`/`type` values valid; §10 writers preserve unknown fields, readers accept higher minors, date-times are strings; §15 `project.fafm` = project memory (SHOULD be in git), personal memory location is the holder's (SHOULD stay out of shared VCS); `claude-fafm-sdk` public. Additive; no IANA re-filing (§16). Review fixes: `txt_hash` strip set pinned by code point + vectors; tombstone suppression by instant (delete wins ties; re-etch survives); owner-only scoped to personal memory; writers keep unknown values and never lower `version`; §14 v1.1→v1.2 note (v1.1 schema readers; `tombstones` / `say` now shaped). |
+- **0.1–0.6** (2026-04-30 to 2026-05-01): drafts.
+- **1.0** (2026-05-01): first stable version, for IANA registration.
+- **1.1** (2026-05-21): profiles (`voice`, `knowledge`); knowledge fact fields; parser requirements.
+- **1.2** (2026-11-02): forget rules and tombstones; `say`; unknown `type` / `priority` values valid; writers preserve unknown fields; recalled memory is data; owner-only permissions; `project.fafm`. Additive.
 
 ---
 
