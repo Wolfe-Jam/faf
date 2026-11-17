@@ -30,7 +30,7 @@
         "id": {
           "type": "string",
           "description": "Globally unique identifier — DID, URI, or vendor-scoped UUID.",
-          "examples": ["did:web:faf.one:agent"]
+          "examples": ["did:web:example.com:agent"]
         },
         "vendor": { "type": "string" },
         "version": {
