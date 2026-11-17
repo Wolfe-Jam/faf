@@ -10,7 +10,7 @@ This repository holds the specifications for `.faf` and its two sibling formats,
 
 ## Media types
 
-<img src="assets/marks/fam-trio.png" alt="The marks of the three formats: a smiley for .faf, an elephant for .fafm, a robot for .fafa." width="300" />
+<img src="assets/marks/fam-trio.png" alt="The marks of the three formats: a smiley for .faf, an elephant for .fafm, a robot for .fafa." width="240" />
 
 | Format | Holds | Media type | Standard filename | Registered with IANA |
 |---|---|---|---|---|
