@@ -20,7 +20,7 @@
     },
     "namepoint": {
       "type": "string",
-      "description": "Soul identifier. Voice uses @handle; other profiles MAY namespace, e.g. @claude-code:wolfejam."
+      "description": "Soul identifier. Voice uses @handle; other profiles MAY namespace, e.g. @acme:alex."
     },
     "created": { "type": "string", "format": "date-time" },
     "last_etched": { "type": "string", "format": "date-time" },

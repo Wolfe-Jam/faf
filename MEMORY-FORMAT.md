@@ -5,7 +5,7 @@
 **MIME Type:** `application/vnd.fafm+yaml`
 **File Extension:** `.fafm`
 **IANA Registration:** Registered 2026-05-13
-**Last Updated:** 2026-11-02
+**Last Updated:** 2026-11-17
 
 ---
 
@@ -21,8 +21,7 @@ of the IANA-registered `.faf` context format (`application/vnd.faf+yaml`).
 - **`knowledge`** — typed, cross-linked memory for knowledge and agent runtimes
   (e.g. coding-agent memory). Added in v1.1.
 
-`.fafm` is human-readable, append-only by default, and addressed by soul
-identifier. `.faf` holds project facts; `.fafm` holds memories.
+`.fafm` is human-readable and addressed by soul identifier. `.faf` holds project facts; `.fafm` holds memories.
 
 ---
 
@@ -198,14 +197,18 @@ A `voice` implementation MAY add these behaviors on top of `memory.facts`:
   entry: `promote` (→ soul) · `keep_ephemeral` (discard) · `merge_into`
   (combine). Decisions carry `rationale` + `confidence`.
 - **Soul** — the durable, promoted memory (the persisted `.fafm`).
-- **Session ledger** — audit trail + cross-session resumption. The ledger is
-  held by the implementation, not in the document; `memory.sessions` stays
-  reserved.
+- **Session ledger** — audit trail + cross-session resumption, held by the
+  implementation, not in the document.
 - **Paralinguistic markers** — voice-specific (how the user spoke), stored as
-  facts tagged `paralinguistic` (a tag, not a `type`). Voice profile only;
-  knowledge-profile parsers **MUST ignore** them.
+  facts tagged `paralinguistic` (a tag, not a `type`).
 - **Pronunciation** — a fact's `say` (§5) MAY feed the speech runtime's
   replacement and key-term features; it is never spoken as content.
+
+These rules apply whether or not an implementation adds the behaviors:
+
+- `memory.sessions` stays reserved.
+- Facts tagged `paralinguistic` are voice-profile only; knowledge-profile
+  parsers **MUST ignore** them.
 
 Persistence: the soul MAY be hosted at the namepoint (§15), with only an
 identity credential stored locally (owner-only permissions, §13). A local
@@ -224,7 +227,7 @@ Per-entry forgetting (knowledge): `ttl` / `decay_policy` (§6).
 **Implementations MUST provide a forget capability** supporting deletion by entry
 `id`. They SHOULD support deletion by time range, by tag, and full wipe. Forget
 is an operator / SDK operation: it MUST NOT be exposed as a tool or function the
-model can call (§13).
+model can call.
 
 ### 8.1 Tombstones (optional, v1.2)
 An implementation that syncs or merges copies of a soul SHOULD record deletes in
@@ -255,13 +258,13 @@ a voice fact).
 
 ## 9. Core Operations
 
-| Operation      | Description                              | Status |
-|----------------|------------------------------------------|--------|
-| `etch memory`  | Store fact(s) into a soul                | Shipped |
-| `recall`       | Retrieve relevant memory for a session   | Shipped |
-| `scratchpad`   | Hold in-session ephemeral entries        | Shipped (voice) |
-| `smart-merge`  | Promote/keep/merge at session end        | Shipped (voice) |
-| `forget`       | Delete by id (MUST); range / tag / wipe (SHOULD) | Required (§8) |
+| Operation      | Description |
+|----------------|-------------|
+| `etch memory`  | Store fact(s) into a soul |
+| `recall`       | Retrieve relevant memory for a session |
+| `scratchpad`   | Hold in-session ephemeral entries (voice, §7) |
+| `smart-merge`  | Promote, keep or merge at session end (voice, §7) |
+| `forget`       | Delete by id (MUST); by range, tag or full wipe (SHOULD); §8 |
 
 ---
 
@@ -340,8 +343,9 @@ memory:
 
 ## 12. Relationship to `.faf`
 
-A `.fafm` document is valid YAML. `.faf`-only consumers ignore the `memory`
-block and can still read identity from `namepoint` and top-level fields.
+`.fafm` extends the `.faf` family: it adds memory alongside a project's facts.
+It is its own YAML document type with its own schema and shares no fields with
+`.faf`, so a `.faf` parser does not read it.
 
 ---
 
@@ -355,7 +359,7 @@ block and can still read identity from `namepoint` and top-level fields.
 - Soul identifier (`namepoint`) is the sole addressing key.
 
 ### User control
-- Forget: see §8.
+- Forget is an operator / SDK operation, never a tool the model can call (§8).
 - `.fafm` files **MUST NOT** contain secrets, API keys, or credentials.
 - Files **MUST** be transmitted over authenticated, encrypted channels (TLS).
 
@@ -428,7 +432,7 @@ required). To enrich, add `profile: knowledge` and optional fields under
 **Encoding considerations:** 8bit (UTF-8; binary content base64-encoded in YAML)
 **Security considerations:** See §13
 **Interoperability considerations:** See §12, §10
-**Published specification:** This document
+**Published specification:** This document, canonical at `https://github.com/Wolfe-Jam/faf/blob/main/MEMORY-FORMAT.md`
 **Applications that use this media type:** Voice agents, knowledge and agent
 memory runtimes
 **Person & email for further information:** James Wolfe, team@faf.one
@@ -449,10 +453,12 @@ Anyone may implement the format. Known implementations are listed in
 
 ## 18. Change History
 
-- **0.1–0.6** (2026-04-30 to 2026-05-01): drafts.
-- **1.0** (2026-05-01): first stable version, for IANA registration.
-- **1.1** (2026-05-21): profiles (`voice`, `knowledge`); knowledge fact fields; parser requirements.
-- **1.2** (2026-11-02): forget rules and tombstones; `say`; unknown `type` / `priority` values valid; writers preserve unknown fields; recalled memory is data; owner-only permissions; `project.fafm`. Additive.
+| Version | Date | Changes |
+|---------|------|---------|
+| 0.1–0.6 | 2026-04-30 to 2026-05-01 | Drafts |
+| 1.0 | 2026-05-01 | First stable version, for IANA registration |
+| 1.1 | 2026-05-21 | Profiles (`voice`, `knowledge`); knowledge fact fields; parser requirements |
+| 1.2 | 2026-11-02 | Forget rules and tombstones; `say`; unknown `type` / `priority` values valid; writers preserve unknown fields; readers accept higher minor versions; writers never lower `version`; date-times are strings; recalled memory is data; owner-only permissions; `project.fafm`. Additive |
 
 ---
 
