@@ -3,7 +3,7 @@
 A **shared conformance suite** for the FAF format family. The spec owns this
 corpus (pure **data** — no code, no deps, no runner, consistent with
 `@faf/specification` being specification-only). Every implementation
-(`faf-cli`, `faf-rust-sdk`, `faf-wasm-sdk`, `@faf/enterprise`, third parties)
+(`faf-cli`, `faf-rust-sdk`, `faf-wasm-sdk`, third parties)
 runs the *same* fixtures with its own test runner — so the standard is proven
 to be read identically everywhere. This is the family's anti-drift anchor.
 

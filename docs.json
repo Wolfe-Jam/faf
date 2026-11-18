@@ -28,10 +28,36 @@
         "pages": [
           "IMPLEMENTATIONS"
         ]
+      },
+      {
+        "group": "Proof",
+        "pages": [
+          "examples/README",
+          "conformance/README"
+        ]
       }
     ]
   },
   "appearance": {
     "default": "dark"
+  },
+  "logo": {
+    "light": "/assets/logos/faf-icon-64.png",
+    "dark": "/assets/logos/faf-icon-64.png"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/Wolfe-Jam/faf"
+      },
+      {
+        "label": "faf.one",
+        "href": "https://faf.one"
+      }
+    ]
+  },
+  "feedback": {
+    "thumbsRating": true
   }
 }
