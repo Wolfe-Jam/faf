@@ -1,3 +1,7 @@
+---
+title: Examples
+---
+
 # .faf Examples
 
 Five `.faf` files, each a different app type (`project.type`), arranged as a ladder — from the

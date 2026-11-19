@@ -1,3 +1,7 @@
+---
+title: Conformance
+---
+
 # FAF Conformance Corpus
 
 A **shared conformance suite** for the FAF format family. The spec owns this
