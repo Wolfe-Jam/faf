@@ -33,7 +33,7 @@
       "additionalProperties": true,
       "properties": {
         "who": { "type": "string", "description": "Who is this for?" },
-        "what": { "type": "string", "description": "What are they building?" },
+        "what": { "type": "string", "description": "What is it?" },
         "why": { "type": "string", "description": "Why does it exist?" },
         "where": { "type": "string", "description": "Where does it run?" },
         "when": { "type": "string", "description": "When was it started / timeline." },
